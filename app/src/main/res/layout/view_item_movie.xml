@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/width_movie_item"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/margin_medium_2"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardMovieImage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="@dimen/margin_medium_2"
+        app:cardElevation="@dimen/margin_medium_2">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivMovieImage"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_movie_image"
+            app:srcCompat="@drawable/john_wick_image"
+            android:scaleType="centerCrop"
+            />
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvMovieName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="John Wick"
+        android:textColor="@color/black"
+        android:layout_below="@id/cardMovieImage"
+        android:layout_marginTop="@dimen/margin_medium_2"
+        android:gravity="center"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvMovieGenre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Action/Thriller"
+        android:textColor="@color/secondary_text"
+        android:textSize="@dimen/text_smaller"
+        android:layout_below="@id/tvMovieName"
+        android:layout_marginStart="@dimen/margin_medium_2"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvDivider"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" . "
+        android:textColor="@color/secondary_text"
+        android:textSize="@dimen/text_small"
+        android:layout_toEndOf="@id/tvMovieGenre"
+        android:layout_alignBaseline="@id/tvMovieGenre"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvMovieDuration"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="2h 10m"
+        android:textColor="@color/secondary_text"
+        android:textSize="@dimen/text_smaller"
+        android:layout_toEndOf="@id/tvDivider"
+        android:layout_alignBaseline="@id/tvDivider"/>
+
+</RelativeLayout>

@@ -34,5 +34,7 @@
 
     <!-- Specifics -->
     <dimen name="height_btn_start">70dp</dimen>
+    <dimen name="width_movie_item">135dp</dimen>
+    <dimen name="height_movie_image">180dp</dimen>
 
 </resources>
