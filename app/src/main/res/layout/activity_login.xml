@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.LoginActivity">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvLoginTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lbl_welcome_title"
+        android:textSize="@dimen/text_heading_1x"
+        android:textStyle="bold"
+        android:layout_marginTop="50dp"
+        android:layout_marginStart="@dimen/margin_medium_2"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvLoginSubTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lbl_login_sub_title"
+        android:textColor="@color/secondary_text"
+        android:layout_below="@id/tvLoginTitle"
+        android:layout_alignStart="@id/tvLoginTitle"
+        android:layout_marginTop="@dimen/margin_medium"/>
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayoutLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:tabTextColor="@color/black"
+        app:tabSelectedTextColor="@color/colorPrimary"
+        app:tabIndicatorColor="@color/colorPrimary"
+        app:tabIndicatorHeight="4dp"
+        android:layout_below="@id/tvLoginSubTitle"
+        android:layout_marginTop="@dimen/margin_large"
+        android:layout_marginHorizontal="@dimen/margin_medium_3"/>
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPagerLogin"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/tabLayoutLogin"
+        android:layout_marginTop="@dimen/margin_medium_2"/>
+
+</RelativeLayout>

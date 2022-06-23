@@ -3,4 +3,16 @@
     <string name="lbl_welcome_title">Welcome!</string>
     <string name="lbl_welcome_sub_title">Hello! Welcome to Galaxy App.</string>
     <string name="btn_start">Get Started</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="lbl_login_sub_title">Welcome back, login to continue</string>
+    <string name="lbl_email">Email</string>
+    <string name="email_hint">lilyjohnson@gmail.com</string>
+    <string name="lbl_password">Password</string>
+    <string name="password_hint">*******</string>
+    <string name="lbl_forgot_password">Forgot Password?</string>
+    <string name="btn_sign_in_with_facebook">Sign in with facebook</string>
+    <string name="btn_sign_in_with_google">Sign in with google</string>
+    <string name="btn_confirm">Confirm</string>
+    <string name="lbl_phone">Phone</string>
+    <string name="phone_hint">+959786</string>
 </resources>
