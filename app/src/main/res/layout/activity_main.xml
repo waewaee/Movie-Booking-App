@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
+    tools:context=".MainActivity">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivWelcomeImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/cinema_image"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="150dp"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvWelcomeTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lbl_welcome_title"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_heading_1x"
+        android:textStyle="bold"
+        android:letterSpacing="0.1"
+        android:layout_below="@id/ivWelcomeImage"
+        android:layout_marginTop="@dimen/margin_xxlarge"
+        android:layout_centerHorizontal="true"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvWelcomeSubTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lbl_welcome_sub_title"
+        android:textColor="@color/white"
+        android:letterSpacing="0.1"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/tvWelcomeTitle"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnStart"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_btn_start"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:text="@string/btn_start"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_regular_2x"
+        android:textStyle="bold"
+        android:textAllCaps="false"
+        app:cornerRadius="@dimen/margin_medium"
+        app:strokeColor="@color/white"
+        app:strokeWidth="1dp"
+        android:layout_marginHorizontal="@dimen/margin_medium"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="@dimen/margin_xxlarge"/>
+
+</RelativeLayout>
