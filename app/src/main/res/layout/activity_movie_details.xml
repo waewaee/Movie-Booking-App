@@ -112,14 +112,14 @@
                 android:id="@+id/tvFirstGenre"
                 android:layout_width="80dp"
                 android:layout_height="@dimen/margin_xxlarge"
-                android:text="Action"
-                android:textColor="@color/secondary_text"
+                android:layout_below="@id/tvMovieDuration"
+                android:layout_alignStart="@id/tvMovieDuration"
+                android:layout_marginTop="@dimen/margin_medium"
                 android:background="@drawable/background_round_genre_chip"
                 android:gravity="center"
                 android:paddingHorizontal="@dimen/margin_medium"
-                android:layout_alignStart="@id/tvMovieDuration"
-                android:layout_below="@id/tvMovieDuration"
-                android:layout_marginTop="@dimen/margin_medium"/>
+                android:text="Action"
+                android:textColor="@color/secondary_text" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvSecondGenre"
@@ -138,12 +138,12 @@
                 android:id="@+id/tvPlotSummaryLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/lbl_plot_summary"
-                android:textSize="@dimen/text_regular_3x"
-                android:textColor="@color/black"
-                android:textStyle="bold"
                 android:layout_below="@id/tvFirstGenre"
-                android:layout_marginTop="@dimen/margin_medium_2"/>
+                android:layout_marginTop="@dimen/margin_medium_2"
+                android:text="@string/lbl_plot_summary"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_regular_3x"
+                android:textStyle="bold" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvPlotSummary"

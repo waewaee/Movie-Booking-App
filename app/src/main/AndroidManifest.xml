@@ -10,9 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MovieBookingApp">
         <activity
+            android:name=".activities.BookTicketActivity"
+            android:exported="true" />
+        <activity
             android:name=".activities.MovieDetailsActivity"
             android:exported="true"
-            android:theme="@style/Theme.MovieBookingApp.TransparentStatusBarWithoutAppBar"/>
+            android:theme="@style/Theme.MovieBookingApp.TransparentStatusBarWithoutAppBar" />
         <activity
             android:name=".activities.MovieListActivity"
             android:exported="true"

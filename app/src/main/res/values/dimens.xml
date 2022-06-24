@@ -40,5 +40,6 @@
     <dimen name="height_btn_play">70dp</dimen>
     <dimen name="width_profile">50dp</dimen>
     <dimen name="height_profile">50dp</dimen>
+    <dimen name="height_date_picker">60dp</dimen>
 
 </resources>
