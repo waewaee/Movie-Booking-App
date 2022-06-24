@@ -1,4 +1,4 @@
-package com.waewaee.moviebookingapp.activities.delegates
+package com.waewaee.moviebookingapp.delegates
 
 interface MovieViewHolderDelegate {
     fun onTapMovie()

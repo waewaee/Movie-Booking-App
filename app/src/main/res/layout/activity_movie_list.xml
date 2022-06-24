@@ -37,14 +37,13 @@
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/ivProfile"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
+                    android:layout_width="@dimen/width_profile"
+                    android:layout_height="@dimen/height_profile"
                     app:srcCompat="@drawable/unicorn_small"
                     android:scaleType="centerCrop"
                     android:background="@color/purple_200"
                     app:shapeAppearanceOverlay="@style/roundedImageView"
-                    android:layout_marginStart="@dimen/margin_medium_2"
-                    android:layout_marginTop="@dimen/margin_medium_2"/>
+                    android:layout_marginStart="@dimen/margin_medium_2"/>
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvTitleMovieList"
@@ -54,7 +53,7 @@
                     android:textColor="@color/black"
                     android:textSize="@dimen/text_heading_1x"
                     android:textStyle="bold"
-                    android:layout_marginTop="@dimen/margin_large"
+                    android:layout_marginTop="@dimen/margin_medium"
                     android:layout_marginStart="@dimen/margin_medium_2"/>
 
             </LinearLayout>
@@ -72,7 +71,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/vpNowShowingMovieList"
-                android:layout_marginTop="@dimen/margin_medium_3"/>
+                android:layout_marginTop="@dimen/margin_medium_3"
+                android:layout_marginBottom="@dimen/margin_medium_3"/>
 
         </RelativeLayout>
 

@@ -7,7 +7,7 @@ import android.os.Bundle
 import android.view.Menu
 import com.google.android.material.snackbar.Snackbar
 import com.waewaee.moviebookingapp.R
-import com.waewaee.moviebookingapp.activities.delegates.MovieViewHolderDelegate
+import com.waewaee.moviebookingapp.delegates.MovieViewHolderDelegate
 import com.waewaee.moviebookingapp.view.pods.MovieListViewPod
 import kotlinx.android.synthetic.main.activity_movie_list.*
 
@@ -51,6 +51,7 @@ class MovieListActivity : AppCompatActivity(), MovieViewHolderDelegate {
     }
 
     override fun onTapMovie() {
-        Snackbar.make(window.decorView, "Tapped movie", Snackbar.LENGTH_SHORT).show()
+//        Snackbar.make(window.decorView, "Tapped movie", Snackbar.LENGTH_SHORT).show()
+        startActivity(MovieDetailsActivity.newIntent(this))
     }
 }

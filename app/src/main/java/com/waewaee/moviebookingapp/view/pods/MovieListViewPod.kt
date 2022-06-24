@@ -4,7 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.widget.RelativeLayout
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.waewaee.moviebookingapp.activities.delegates.MovieViewHolderDelegate
+import com.waewaee.moviebookingapp.delegates.MovieViewHolderDelegate
 import com.waewaee.moviebookingapp.adapters.MovieAdapter
 import kotlinx.android.synthetic.main.view_pod_movie_list.view.*
 

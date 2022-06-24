@@ -50,6 +50,7 @@
         android:textStyle="bold"
         android:textAllCaps="false"
         app:cornerRadius="@dimen/margin_medium"
+        app:elevation="@dimen/margin_medium_2"
         android:layout_below="@id/btnSignInWithGoogle"
         android:layout_marginBottom="@dimen/margin_xxlarge"/>
 

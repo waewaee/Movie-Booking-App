@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToPadding="false"
+    tools:context=".activities.MovieDetailsActivity">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.4"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guide2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.35"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:srcCompat="@drawable/john_wick_image"
+        android:scaleType="centerCrop"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/guide1"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/btnBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_baseline_arrow_back_ios_black_24dp"
+        android:tint="@color/white"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="@dimen/margin_medium_2"
+        android:layout_marginTop="@dimen/margin_large"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/btnPlay"
+        android:layout_width="@dimen/width_btn_play"
+        android:layout_height="@dimen/height_btn_play"
+        app:srcCompat="@drawable/ic_baseline_play_circle_outline_black_24dp"
+        app:tint="@color/white"
+        android:foreground="@color/color_transparent_overlay"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/guide1"/>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:cardCornerRadius="@dimen/margin_xlarge"
+        app:layout_constraintTop_toBottomOf="@id/guide2"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/margin_medium_2">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvMovieName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="John Wick"
+                android:textSize="@dimen/text_heading_1x"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:letterSpacing="0.1"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvMovieDuration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2h 10m"
+                android:textSize="@dimen/text_regular_2x"
+                android:layout_alignStart="@id/tvMovieName"
+                android:layout_below="@id/tvMovieName"
+                android:layout_marginTop="@dimen/margin_medium"/>
+
+            <RatingBar
+                android:id="@+id/ratingBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Widget.AppCompat.RatingBar.Small"
+                android:rating="5"
+                android:numStars="5"
+                android:progressTint="@color/color_rating_bar"
+                android:layout_toEndOf="@id/tvMovieDuration"
+                android:layout_alignTop="@id/tvMovieDuration"
+                android:layout_marginStart="@dimen/margin_medium_2"
+                android:layout_marginTop="@dimen/margin_small"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvMovieRating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="iMDb 6.9"
+                android:textSize="@dimen/text_regular_2x"
+                android:layout_toEndOf="@id/ratingBar"
+                android:layout_alignBaseline="@id/tvMovieDuration"
+                android:layout_marginStart="@dimen/margin_medium_2"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvFirstGenre"
+                android:layout_width="80dp"
+                android:layout_height="@dimen/margin_xxlarge"
+                android:text="Action"
+                android:textColor="@color/secondary_text"
+                android:background="@drawable/background_round_genre_chip"
+                android:gravity="center"
+                android:paddingHorizontal="@dimen/margin_medium"
+                android:layout_alignStart="@id/tvMovieDuration"
+                android:layout_below="@id/tvMovieDuration"
+                android:layout_marginTop="@dimen/margin_medium"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvSecondGenre"
+                android:layout_width="80dp"
+                android:layout_height="@dimen/margin_xxlarge"
+                android:text="Thriller"
+                android:textColor="@color/secondary_text"
+                android:background="@drawable/background_round_genre_chip"
+                android:gravity="center"
+                android:paddingHorizontal="@dimen/margin_medium"
+                android:layout_toEndOf="@id/tvFirstGenre"
+                android:layout_marginStart="@dimen/margin_medium_2"
+                android:layout_alignTop="@id/tvFirstGenre"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvPlotSummaryLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/lbl_plot_summary"
+                android:textSize="@dimen/text_regular_3x"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:layout_below="@id/tvFirstGenre"
+                android:layout_marginTop="@dimen/margin_medium_2"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvPlotSummary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/plot_summary"
+                android:textSize="@dimen/text_regular_2x"
+                android:layout_below="@id/tvPlotSummaryLabel"
+                android:layout_marginTop="@dimen/margin_medium"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvCastLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/lbl_cast"
+                android:textSize="@dimen/text_regular_3x"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:layout_below="@id/tvPlotSummary"
+                android:layout_marginTop="@dimen/margin_medium_2"/>
+
+            <LinearLayout
+                android:id="@+id/llCasts"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@id/tvCastLabel"
+                android:layout_marginTop="@dimen/margin_medium">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/ivFirstCast"
+                    android:layout_width="@dimen/width_btn_play"
+                    android:layout_height="@dimen/height_btn_play"
+                    app:srcCompat="@drawable/john_wick_image"
+                    android:scaleType="centerCrop"
+                    app:shapeAppearanceOverlay="@style/roundedImageView"
+                    android:layout_marginStart="@dimen/margin_medium_2"/>
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/ivSecondCast"
+                    android:layout_width="@dimen/width_btn_play"
+                    android:layout_height="@dimen/height_btn_play"
+                    app:srcCompat="@drawable/john_wick_image"
+                    android:scaleType="centerCrop"
+                    app:shapeAppearanceOverlay="@style/roundedImageView"
+                    android:layout_marginStart="@dimen/margin_medium_3"/>
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/ivThirdCast"
+                    android:layout_width="@dimen/width_btn_play"
+                    android:layout_height="@dimen/height_btn_play"
+                    app:srcCompat="@drawable/john_wick_image"
+                    android:scaleType="centerCrop"
+                    app:shapeAppearanceOverlay="@style/roundedImageView"
+                    android:layout_marginStart="@dimen/margin_medium_3"/>
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/ivFourthCast"
+                    android:layout_width="@dimen/width_btn_play"
+                    android:layout_height="@dimen/height_btn_play"
+                    app:srcCompat="@drawable/john_wick_image"
+                    android:scaleType="centerCrop"
+                    app:shapeAppearanceOverlay="@style/roundedImageView"
+                    android:layout_marginStart="@dimen/margin_medium_3"/>
+
+            </LinearLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnGetTicket"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_btn_start"
+                android:text="Get your ticket"
+                android:textAllCaps="false"
+                android:textSize="@dimen/text_regular_2x"
+                app:cornerRadius="@dimen/margin_medium"
+                app:elevation="@dimen/margin_medium_2"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="@dimen/margin_medium"/>
+
+        </RelativeLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
