@@ -45,12 +45,29 @@
             android:layout_marginTop="@dimen/margin_medium"/>
 
         <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvNameLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/lbl_name"
+            android:textColor="@color/secondary_text"
+            android:layout_below="@id/etPassword"
+            android:layout_marginTop="@dimen/margin_medium_2"/>
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/etName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/name_hint"
+            android:layout_below="@id/tvNameLabel"
+            android:layout_marginTop="@dimen/margin_medium"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvPhoneLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/lbl_phone"
             android:textColor="@color/secondary_text"
-            android:layout_below="@id/etPassword"
+            android:layout_below="@id/etName"
             android:layout_marginTop="@dimen/margin_medium_2"/>
 
         <androidx.appcompat.widget.AppCompatEditText

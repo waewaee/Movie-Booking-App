@@ -46,7 +46,7 @@
                     android:layout_marginStart="@dimen/margin_medium_2"/>
 
                 <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tvTitleMovieList"
+                    android:id="@+id/tvProfileName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Hi Lily!"

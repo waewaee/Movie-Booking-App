@@ -15,7 +15,7 @@
         <activity
             android:name=".activities.MovieDetailsActivity"
             android:exported="true"
-            android:theme="@style/Theme.MovieBookingApp.TransparentStatusBarWithoutAppBar" />
+            android:theme="@style/Theme.MovieBookingApp.TransparentStatusBar" />
         <activity
             android:name=".activities.MovieListActivity"
             android:exported="true"
@@ -23,7 +23,7 @@
         <activity
             android:name=".activities.LoginActivity"
             android:exported="true"
-            android:theme="@style/Theme.MovieBookingApp.TransparentStatusBarWithoutAppBar" />
+            android:theme="@style/Theme.MovieBookingApp.TransparentStatusBar" />
         <activity
             android:name=".activities.WelcomeActivity"
             android:exported="true">

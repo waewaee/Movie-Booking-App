@@ -11,11 +11,12 @@
         android:id="@+id/tvLoginTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_medium_2"
+        android:layout_marginTop="50dp"
         android:text="@string/lbl_welcome_title"
         android:textSize="@dimen/text_heading_1x"
         android:textStyle="bold"
-        android:layout_marginTop="50dp"
-        android:layout_marginStart="@dimen/margin_medium_2"/>
+        android:textColor="@color/black"/>
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvLoginSubTitle"
@@ -35,6 +36,7 @@
         app:tabSelectedTextColor="@color/colorPrimary"
         app:tabIndicatorColor="@color/colorPrimary"
         app:tabIndicatorHeight="4dp"
+        app:tabTextAppearance="@style/MyCustomTextAppearance"
         android:layout_below="@id/tvLoginSubTitle"
         android:layout_marginTop="@dimen/margin_large"
         android:layout_marginHorizontal="@dimen/margin_medium_3"/>

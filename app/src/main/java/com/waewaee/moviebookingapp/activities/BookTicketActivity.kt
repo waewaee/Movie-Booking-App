@@ -21,8 +21,12 @@ class BookTicketActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_book_ticket)
 
-        var datePickerAdapter = DatePickerAdapter()
+        val datePickerAdapter = DatePickerAdapter()
         rvDatePicker.adapter = datePickerAdapter
         rvDatePicker.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false )
+
+        btnBack.setOnClickListener {
+            super.onBackPressed()
+        }
     }
 }

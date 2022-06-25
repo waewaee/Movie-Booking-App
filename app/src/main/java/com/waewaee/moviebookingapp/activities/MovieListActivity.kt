@@ -47,7 +47,7 @@ class MovieListActivity : AppCompatActivity(), MovieViewHolderDelegate {
         mNowShowingMovieListViewPod.setUpMovieListViewPod(this)
 
         mComingSoonMovieListViewPod = vpComingSoonMovieList as MovieListViewPod
-        mComingSoonMovieListViewPod.setUpMovieListViewPod(this, "Coming Soon")
+        mComingSoonMovieListViewPod.setUpMovieListViewPod(this, getString(R.string.new_title_movie_list_view_pod))
     }
 
     override fun onTapMovie() {

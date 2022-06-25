@@ -9,9 +9,10 @@
         android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Now Showing"
+        android:text="@string/default_title_movie_list_view_pod"
         android:textSize="@dimen/text_regular_3x"
         android:textStyle="bold"
+        android:textColor="@color/black"
         android:layout_marginStart="@dimen/margin_medium_2"
         android:layout_marginTop="@dimen/margin_medium_2"/>
     

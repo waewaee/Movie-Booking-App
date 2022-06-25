@@ -18,4 +18,9 @@
     <string name="lbl_plot_summary">Plot Summary</string>
     <string name="plot_summary">Legendary assassin John Wick (Keanu Reeves) retired from his violent career after marrying the love of his life. Her sudden death leaves John in deep mourning. When sadistic mobster Iosef Tarasov (Alfie Allen) and his thugs steal John\'s prized car and kill the puppy that was a last gift from his wife, John unleashes the remorseless killing machine within and seeks vengeance.</string>
     <string name="lbl_cast">Cast</string>
+    <string name="default_title_movie_list_view_pod">Now Showing</string>
+    <string name="new_title_movie_list_view_pod">Coming Soon</string>
+    <string name="btn_get_your_ticket">Get your ticket</string>
+    <string name="lbl_name">Name</string>
+    <string name="name_hint">Lily Johnson</string>
 </resources>

@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         app:srcCompat="@drawable/cinema_image"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"/>
+        android:layout_marginTop="@dimen/margin_top_welcome_image"/>
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvWelcomeTitle"

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingEnd="@dimen/margin_medium_3"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/ivCastImage"
+        android:layout_width="@dimen/width_btn_play"
+        android:layout_height="@dimen/height_btn_play"
+        app:srcCompat="@drawable/john_wick_image"
+        android:scaleType="centerCrop"
+        app:shapeAppearanceOverlay="@style/roundedImageView"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvCastName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Keanu Reeves"
+        android:textColor="@color/secondary_text"
+        android:textSize="@dimen/text_small"
+        android:textStyle="bold"
+        android:layout_below="@id/ivCastImage"
+        android:layout_marginTop="@dimen/margin_medium_2"/>
+
+</RelativeLayout>

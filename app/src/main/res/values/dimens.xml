@@ -41,5 +41,7 @@
     <dimen name="width_profile">50dp</dimen>
     <dimen name="height_profile">50dp</dimen>
     <dimen name="height_date_picker">60dp</dimen>
+    <dimen name="margin_top_welcome_image">100dp</dimen>
+    <dimen name="width_genre_chip">100dp</dimen>
 
 </resources>
