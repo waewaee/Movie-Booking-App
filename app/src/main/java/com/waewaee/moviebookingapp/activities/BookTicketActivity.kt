@@ -36,5 +36,9 @@ class BookTicketActivity : AppCompatActivity() {
         btnBack.setOnClickListener {
             super.onBackPressed()
         }
+
+        btnNext.setOnClickListener {
+            startActivity(ChooseSnackActivity.newIntent(this))
+        }
     }
 }

@@ -10,6 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MovieBookingApp">
         <activity
+            android:name=".activities.ChooseSnackActivity"
+            android:exported="true"
+            android:theme="@style/Theme.MovieBookingApp.TransparentStatusBar"/>
+        <activity
             android:name=".activities.BookTicketActivity"
             android:exported="true" />
         <activity

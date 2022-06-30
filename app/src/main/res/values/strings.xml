@@ -26,4 +26,6 @@
     <string name="lbl_tab_login">Login</string>
     <string name="lbl_tab_sign_up">Sign Up</string>
     <string name="btn_next">Next</string>
+    <string name="promo_code_hint"><i>Enter promo code</i></string>
+    <string name="lbl_get_promo_code">Don\'t have any promo code ? <b>Get it now</b></string>
 </resources>

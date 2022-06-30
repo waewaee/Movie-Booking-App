@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/margin_medium_2"
+    android:paddingBottom="@dimen/margin_medium_2">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvSnackSetName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Combo Set M"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_regular_2x"
+        android:textStyle="bold"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvSnackSetDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Combo Size M 22oz. Coke (X1) \n medium popcorn (X1)"
+        android:textColor="@color/secondary_text"
+        android:layout_below="@id/tvSnackSetName"
+        android:layout_marginTop="@dimen/margin_medium"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="15$"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_regular_2x"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="@dimen/margin_large"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/btnAdd"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="@drawable/background_button_group_right"
+            android:text="+"
+            android:textColor="@color/black"
+            android:gravity="center"
+            android:layout_below="@id/tvPrice"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="@dimen/margin_medium"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/btnNumber"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:background="@drawable/background_button_group_middle"
+        android:text="0"
+        android:gravity="center"
+        android:layout_below="@id/tvPrice"
+        android:layout_toLeftOf="@id/btnAdd"
+        android:layout_marginTop="@dimen/margin_medium"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/btnMinus"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:background="@drawable/background_button_group_left"
+        android:text="-"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:layout_below="@id/tvPrice"
+        android:layout_toLeftOf="@id/btnNumber"
+        android:layout_marginTop="@dimen/margin_medium"/>
+
+</RelativeLayout>
