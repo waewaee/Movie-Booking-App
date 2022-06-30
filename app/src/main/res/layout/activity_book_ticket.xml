@@ -54,20 +54,14 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:background="@drawable/background_elevated_card_view"
-        android:padding="@dimen/margin_medium_2"
         app:layout_constraintTop_toBottomOf="@id/guide2"
         app:layout_constraintBottom_toBottomOf="parent">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvCinemaLabel"
-            android:layout_width="wrap_content"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvCinema"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Available In"
-            android:textSize="@dimen/text_regular_3x"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:layout_marginTop="@dimen/margin_medium"/>
-
+            android:layout_marginTop="@dimen/margin_card_medium_2"/>
 
     </RelativeLayout>
 

@@ -5,19 +5,23 @@
       <map>
         <entry key="..\:/AndroidStudioProjects/MovieBookingApp/app/src/main/res/drawable/background_elevated_card_view.xml" value="0.149" />
         <entry key="..\:/AndroidStudioProjects/MovieBookingApp/app/src/main/res/drawable/background_round_genre_chip.xml" value="0.149" />
+        <entry key="..\:/AndroidStudioProjects/MovieBookingApp/app/src/main/res/drawable/background_showtime.xml" value="0.149" />
         <entry key="..\:/AndroidStudioProjects/MovieBookingApp/app/src/main/res/layout/activity_book_ticket.xml" value="0.16666666666666666" />
         <entry key="..\:/AndroidStudioProjects/MovieBookingApp/app/src/main/res/layout/activity_login.xml" value="0.14666666666666667" />
         <entry key="..\:/AndroidStudioProjects/MovieBookingApp/app/src/main/res/layout/activity_main.xml" value="0.14666666666666667" />
-        <entry key="..\:/AndroidStudioProjects/MovieBookingApp/app/src/main/res/layout/activity_movie_details.xml" value="0.14666666666666667" />
+        <entry key="..\:/AndroidStudioProjects/MovieBookingApp/app/src/main/res/layout/activity_movie_details.xml" value="0.16666666666666666" />
         <entry key="..\:/AndroidStudioProjects/MovieBookingApp/app/src/main/res/layout/activity_movie_details_old.xml" value="0.14666666666666667" />
         <entry key="..\:/AndroidStudioProjects/MovieBookingApp/app/src/main/res/layout/activity_movie_list.xml" value="0.14666666666666667" />
         <entry key="..\:/AndroidStudioProjects/MovieBookingApp/app/src/main/res/layout/activity_welcome.xml" value="0.16666666666666666" />
         <entry key="..\:/AndroidStudioProjects/MovieBookingApp/app/src/main/res/layout/fragment_login.xml" value="0.13333333333333333" />
         <entry key="..\:/AndroidStudioProjects/MovieBookingApp/app/src/main/res/layout/fragment_sign_up.xml" value="0.13333333333333333" />
+        <entry key="..\:/AndroidStudioProjects/MovieBookingApp/app/src/main/res/layout/view_holder_cinema.xml" value="0.13333333333333333" />
         <entry key="..\:/AndroidStudioProjects/MovieBookingApp/app/src/main/res/layout/view_item_cast.xml" value="0.16666666666666666" />
+        <entry key="..\:/AndroidStudioProjects/MovieBookingApp/app/src/main/res/layout/view_item_cinema.xml" value="0.13333333333333333" />
         <entry key="..\:/AndroidStudioProjects/MovieBookingApp/app/src/main/res/layout/view_item_date_picker.xml" value="0.16666666666666666" />
         <entry key="..\:/AndroidStudioProjects/MovieBookingApp/app/src/main/res/layout/view_item_genre_chip.xml" value="0.13333333333333333" />
         <entry key="..\:/AndroidStudioProjects/MovieBookingApp/app/src/main/res/layout/view_item_movie.xml" value="0.22" />
+        <entry key="..\:/AndroidStudioProjects/MovieBookingApp/app/src/main/res/layout/view_item_showtime.xml" value="0.16666666666666666" />
         <entry key="..\:/AndroidStudioProjects/MovieBookingApp/app/src/main/res/layout/view_pod_login_sign_up.xml" value="0.16666666666666666" />
         <entry key="..\:/AndroidStudioProjects/MovieBookingApp/app/src/main/res/layout/view_pod_movie_list.xml" value="0.13333333333333333" />
         <entry key="..\:/AndroidStudioProjects/MovieBookingApp/app/src/main/res/menu/menu_movie_list.xml" value="0.13333333333333333" />

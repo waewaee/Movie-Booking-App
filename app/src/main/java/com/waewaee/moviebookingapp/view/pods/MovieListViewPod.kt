@@ -32,4 +32,5 @@ class MovieListViewPod @JvmOverloads constructor(
         rvMovieList.adapter = adapter
         rvMovieList.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
     }
+
 }

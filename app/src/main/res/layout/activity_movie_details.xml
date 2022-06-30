@@ -12,7 +12,7 @@
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:layout_width="match_parent"
-            android:layout_height="300dp"
+            android:layout_height="@dimen/height_collapsing_toolbar_movie_details"
             app:layout_scrollFlags="scroll|enterAlways"
             app:contentScrim="@color/transparent">
 

@@ -1,15 +1,19 @@
 package com.waewaee.moviebookingapp.fragments
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.waewaee.moviebookingapp.R
-import com.waewaee.moviebookingapp.activities.MovieListActivity
-import kotlinx.android.synthetic.main.view_pod_login_sign_up.view.*
+import com.waewaee.moviebookingapp.delegates.LoginSignUpDelegate
+import com.waewaee.moviebookingapp.view.pods.LoginSignUpViewPod
+import kotlinx.android.synthetic.main.fragment_sign_up.*
 
-class SignUpFragment : Fragment() {
+class SignUpFragment(private val signUpDelegate: LoginSignUpDelegate) : Fragment() {
+
+    lateinit var signUpViewPod: LoginSignUpViewPod
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,9 +29,11 @@ class SignUpFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        view.btnConfirm.setOnClickListener {
-            requireActivity().startActivity(MovieListActivity.newIntent(requireActivity().applicationContext))
-        }
+        signUpViewPod = vpSignUp as LoginSignUpViewPod
+        signUpViewPod.setUpSignUpViewPod(signUpDelegate)
+//        view.btnConfirm.setOnClickListener {
+//            requireActivity().startActivity(MovieListActivity.newIntent(requireActivity().applicationContext))
+//        }
     }
 
 }

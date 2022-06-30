@@ -5,6 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.view.WindowManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.waewaee.moviebookingapp.R
 import com.waewaee.moviebookingapp.adapters.CastAdapter
@@ -25,6 +26,11 @@ class MovieDetailsActivity : AppCompatActivity() {
 
 //        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_LAYOUT_STABLE
 //        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_FULLSCREEN
+
+        window.setFlags(
+            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+            WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
+        )
 
         val genreChipAdapter = GenreChipAdapter()
         rvGenre.adapter = genreChipAdapter

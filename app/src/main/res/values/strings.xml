@@ -23,4 +23,6 @@
     <string name="btn_get_your_ticket">Get your ticket</string>
     <string name="lbl_name">Name</string>
     <string name="name_hint">Lily Johnson</string>
+    <string name="lbl_tab_login">Login</string>
+    <string name="lbl_tab_sign_up">Sign Up</string>
 </resources>
