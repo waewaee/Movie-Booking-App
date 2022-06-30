@@ -44,5 +44,6 @@
     <dimen name="margin_top_welcome_image">100dp</dimen>
     <dimen name="width_genre_chip">100dp</dimen>
     <dimen name="height_collapsing_toolbar_movie_details">300dp</dimen>
+    <dimen name="margin_bottom_cinema">100dp</dimen>
 
 </resources>

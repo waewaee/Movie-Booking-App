@@ -61,8 +61,22 @@
             android:id="@+id/rvCinema"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_card_medium_2"/>
+            android:layout_marginTop="@dimen/margin_card_medium_2"
+            android:layout_marginBottom="@dimen/margin_bottom_cinema"/>
 
     </RelativeLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnNext"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_btn_start"
+        android:text="@string/btn_next"
+        android:textAllCaps="false"
+        android:textSize="@dimen/text_regular_2x"
+        app:cornerRadius="@dimen/margin_medium"
+        app:elevation="@dimen/margin_medium_2"
+        android:layout_marginHorizontal="@dimen/margin_medium_2"
+        android:layout_marginBottom="@dimen/margin_large"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -25,4 +25,5 @@
     <string name="name_hint">Lily Johnson</string>
     <string name="lbl_tab_login">Login</string>
     <string name="lbl_tab_sign_up">Sign Up</string>
+    <string name="btn_next">Next</string>
 </resources>
