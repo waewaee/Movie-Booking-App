@@ -28,4 +28,16 @@
     <string name="btn_next">Next</string>
     <string name="promo_code_hint"><i>Enter promo code</i></string>
     <string name="lbl_get_promo_code">Don\'t have any promo code ? <b>Get it now</b></string>
+    <string name="lbl_payment_amount">Payment amount</string>
+    <string name="card_stars">****</string>
+    <string name="lbl_card_holder_cap_letters">CARD HOLDER</string>
+    <string name="lbl_expires">EXPIRES</string>
+    <string name="lbl_card_number">Card Number</string>
+    <string name="lbl_card_holder_small_letters">Card Holder</string>
+    <string name="lbl_expiration_date">Expiration Date</string>
+    <string name="lbl_cvc">CVC</string>
+    <string name="hint_card_number">1234.5678.9101.8014</string>
+    <string name="hint_expiration_date">08/21</string>
+    <string name="hint_cvc">150</string>
+    <string name="btn_add_new_card">Add new card</string>
 </resources>

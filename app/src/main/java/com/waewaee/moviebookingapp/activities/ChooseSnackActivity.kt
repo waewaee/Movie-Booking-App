@@ -29,5 +29,13 @@ class ChooseSnackActivity : AppCompatActivity() {
         val paymentMethodAdapter = PaymentMethodAdapter()
         rvPaymentMethods.adapter = paymentMethodAdapter
         rvPaymentMethods.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+
+        btnPay.setOnClickListener {
+            startActivity(PaymentActivity.newIntent(this))
+        }
+
+        btnBack.setOnClickListener {
+            super.onBackPressed()
+        }
     }
 }

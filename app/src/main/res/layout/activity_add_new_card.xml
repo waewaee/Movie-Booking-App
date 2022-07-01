@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/margin_medium_2"
+    tools:context=".activities.AddNewCardActivity">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/btnBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_baseline_arrow_back_ios_black_24dp"
+        android:layout_marginTop="@dimen/margin_medium"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvCardNumberLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lbl_card_number"
+        android:textColor="@color/secondary_text"
+        android:textSize="@dimen/text_regular_2x"
+        android:layout_below="@id/btnBack"
+        android:layout_marginTop="@dimen/margin_medium_3"/>
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/etCardNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/hint_card_number"
+        android:inputType="number"
+        android:layout_below="@id/tvCardNumberLabel"
+        android:layout_marginTop="@dimen/margin_medium_2"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvCardHolderLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lbl_card_holder_small_letters"
+        android:textColor="@color/secondary_text"
+        android:textSize="@dimen/text_regular_2x"
+        android:layout_below="@id/etCardNumber"
+        android:layout_marginTop="@dimen/margin_medium_2"/>
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/etCardHolderName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/name_hint"
+        android:inputType="text"
+        android:layout_below="@id/tvCardHolderLabel"
+        android:layout_marginTop="@dimen/margin_medium_2"/>
+
+    <LinearLayout
+        android:id="@+id/llForTwoLabels"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/etCardHolderName"
+        android:layout_marginTop="@dimen/margin_medium_2"
+        android:weightSum="2">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvExpirationDateLabel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/lbl_expiration_date"
+            android:textColor="@color/secondary_text"
+            android:textSize="@dimen/text_regular_2x"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvCVCLabel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/lbl_cvc"
+            android:textColor="@color/secondary_text"
+            android:textSize="@dimen/text_regular_2x"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llForTwoEditTexts"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/llForTwoLabels"
+        android:layout_marginTop="@dimen/margin_medium_2"
+        android:weightSum="2">
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/etExpirationDate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="@string/hint_expiration_date"
+            android:inputType="number" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/etCVC"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="@string/hint_cvc"
+            android:inputType="number"/>
+
+    </LinearLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnConfirm"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_btn_start"
+        android:text="@string/btn_confirm"
+        android:textAllCaps="false"
+        android:textSize="@dimen/text_regular_2x"
+        app:cornerRadius="@dimen/margin_medium"
+        app:elevation="@dimen/margin_medium_2"
+        android:layout_marginHorizontal="@dimen/margin_medium_2"
+        android:layout_marginBottom="@dimen/margin_xlarge"
+        android:layout_alignParentBottom="true"/>
+
+</RelativeLayout>

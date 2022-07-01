@@ -81,7 +81,7 @@
         app:cornerRadius="@dimen/margin_medium"
         app:elevation="@dimen/margin_medium_2"
         android:layout_marginHorizontal="@dimen/margin_medium_2"
-        android:layout_marginBottom="@dimen/margin_large"
+        android:layout_marginBottom="@dimen/margin_xlarge"
         app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
