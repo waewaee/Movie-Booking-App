@@ -10,9 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MovieBookingApp">
         <activity
-            android:name=".activities.AddNewCardActivity"
+            android:name=".activities.VoucherActivity"
             android:exported="true"
             android:theme="@style/Theme.MovieBookingApp.TransparentStatusBar"/>
+        <activity
+            android:name=".activities.AddNewCardActivity"
+            android:exported="true"
+            android:theme="@style/Theme.MovieBookingApp.TransparentStatusBar" />
         <activity
             android:name=".activities.PaymentActivity"
             android:exported="true"

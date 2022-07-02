@@ -30,6 +30,10 @@ class PaymentActivity : AppCompatActivity() {
             startActivity(AddNewCardActivity.newIntent(this))
         }
 
+        btnPay.setOnClickListener {
+            startActivity(VoucherActivity.newIntent(this))
+        }
+
         val adapter = CarouselAdapter()
         val carousel = alirezat775.lib.carouselview.Carousel(this, cardCarousel, adapter)
         carousel.setOrientation(CarouselView.HORIZONTAL, false)

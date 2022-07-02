@@ -45,5 +45,7 @@
     <dimen name="width_genre_chip">100dp</dimen>
     <dimen name="height_collapsing_toolbar_movie_details">300dp</dimen>
     <dimen name="margin_bottom_cinema">100dp</dimen>
+    <dimen name="width_barcode">200dp</dimen>
+    <dimen name="height_barcode">100dp</dimen>
 
 </resources>

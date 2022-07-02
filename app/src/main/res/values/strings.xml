@@ -40,4 +40,14 @@
     <string name="hint_expiration_date">08/21</string>
     <string name="hint_cvc">150</string>
     <string name="btn_add_new_card">Add new card</string>
+    <string name="dash_divider">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</string>
+    <string name="lbl_price">Price</string>
+    <string name="lbl_seats">Seats</string>
+    <string name="lbl_row">Row</string>
+    <string name="lbl_screen">Screen</string>
+    <string name="lbl_theater">Theater</string>
+    <string name="lbl_showtime_date">Showtime - Date</string>
+    <string name="lbl_booking_no">Booking no</string>
+    <string name="lbl_voucher_title">Awesome!</string>
+    <string name="lbl_voucher_sub_title">This is your ticket.</string>
 </resources>
