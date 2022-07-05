@@ -18,4 +18,9 @@
         <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
 
+    <style name="Theme.MovieBookingApp.GreyTransparentStatusBar" parent="Theme.MovieBookingApp">
+        <item name="android:fitsSystemWindows">true</item>
+        <item name="android:statusBarColor">@color/md_grey_200</item>
+    </style>
+
 </resources>

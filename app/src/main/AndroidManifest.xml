@@ -12,7 +12,7 @@
         <activity
             android:name=".activities.VoucherActivity"
             android:exported="true"
-            android:theme="@style/Theme.MovieBookingApp.TransparentStatusBar"/>
+            android:theme="@style/Theme.MovieBookingApp.GreyTransparentStatusBar"/>
         <activity
             android:name=".activities.AddNewCardActivity"
             android:exported="true"

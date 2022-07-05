@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/md_grey_200"
     tools:context=".activities.VoucherActivity">
 
     <androidx.appcompat.widget.AppCompatImageView
@@ -35,223 +36,267 @@
         android:layout_below="@id/tvVoucherTitle"
         android:layout_centerHorizontal="true"/>
 
-    <RelativeLayout
-        android:id="@+id/rlVoucher"
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cvVoucher"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:background="@drawable/background_voucher"
         android:layout_marginTop="@dimen/margin_medium_2"
         android:layout_marginHorizontal="@dimen/margin_large"
-        android:layout_marginBottom="@dimen/margin_medium_3"
         android:layout_below="@id/tvVoucherSubTitle"
-        android:elevation="@dimen/margin_card_medium_2">
+        app:strokeWidth="1dp"
+        app:strokeColor="@color/md_grey_300"
+        android:elevation="@dimen/margin_medium_2"
+        app:cardCornerRadius="@dimen/margin_medium_2">
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/ivMovieImage"
+        <RelativeLayout
+            android:id="@+id/rlVoucher"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:src="@drawable/john_wick_image"
-            android:scaleType="centerCrop" />
+            android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/tvMovieName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="John Wick 3: Parabellum"
-            android:textColor="@color/black"
-            android:textSize="@dimen/text_regular_3x"
-            android:layout_below="@id/ivMovieImage"
-            android:layout_marginTop="@dimen/margin_medium"
-            android:layout_marginStart="@dimen/margin_medium_2"/>
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivMovieImage"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:src="@drawable/john_wick_image"
+                android:scaleType="centerCrop" />
 
-        <TextView
-            android:id="@+id/tvMovieDuration"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="130m"
-            android:textSize="@dimen/text_regular_2x"
-            android:layout_below="@id/tvMovieName"
-            android:layout_marginStart="@dimen/margin_medium_2"/>
+            <TextView
+                android:id="@+id/tvMovieName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="John Wick 3: Parabellum"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_regular_3x"
+                android:layout_below="@id/ivMovieImage"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:layout_marginStart="@dimen/margin_medium_2"/>
 
-        <TextView
-            android:id="@+id/tvDash"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text=" - "
-            android:textSize="@dimen/text_regular_2x"
-            android:layout_toEndOf="@id/tvMovieDuration"
-            android:layout_alignTop="@id/tvMovieDuration"/>
+            <TextView
+                android:id="@+id/tvMovieDuration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="130m"
+                android:textSize="@dimen/text_regular_2x"
+                android:layout_below="@id/tvMovieName"
+                android:layout_marginStart="@dimen/margin_medium_2"/>
 
-        <TextView
-            android:id="@+id/tvMovieDimension"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="IMAX"
-            android:textSize="@dimen/text_regular_2x"
-            android:layout_toEndOf="@id/tvDash"
-            android:layout_alignTop="@id/tvDash"/>
+            <TextView
+                android:id="@+id/tvDash"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" - "
+                android:textSize="@dimen/text_regular_2x"
+                android:layout_toEndOf="@id/tvMovieDuration"
+                android:layout_alignTop="@id/tvMovieDuration"/>
 
-        <TextView
-            android:id="@+id/tvFirstHorizontalDivider"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/dash_divider"
-            android:textSize="@dimen/text_regular_3x"
-            android:layout_below="@id/tvMovieDuration"
-            android:layout_marginTop="@dimen/margin_medium"
-            android:layout_marginStart="@dimen/margin_small"/>
+            <TextView
+                android:id="@+id/tvMovieDimension"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="IMAX"
+                android:textSize="@dimen/text_regular_2x"
+                android:layout_toEndOf="@id/tvDash"
+                android:layout_alignTop="@id/tvDash"/>
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvBookingNoLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/lbl_booking_no"
-            android:layout_below="@id/tvFirstHorizontalDivider"
-            android:layout_marginStart="@dimen/margin_medium_2"/>
+            <TextView
+                android:id="@+id/tvFirstHorizontalDivider"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvMovieDuration"
+                android:layout_marginStart="@dimen/margin_small"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:text="@string/dash_divider"
+                android:textSize="@dimen/text_regular_3x" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvBookingNo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="CG123456789"
-            android:textStyle="bold"
-            android:layout_alignParentEnd="true"
-            android:layout_alignTop="@id/tvBookingNoLabel"
-            android:layout_marginEnd="@dimen/margin_medium_2"/>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvBookingNoLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/lbl_booking_no"
+                android:layout_below="@id/tvFirstHorizontalDivider"
+                android:layout_marginStart="@dimen/margin_medium_2"/>
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvShowtimeDateLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/lbl_showtime_date"
-            android:layout_below="@id/tvBookingNoLabel"
-            android:layout_marginStart="@dimen/margin_medium_2"
-            android:layout_marginTop="@dimen/margin_medium"/>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvBookingNo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CG123456789"
+                android:textStyle="bold"
+                android:layout_alignParentEnd="true"
+                android:layout_alignTop="@id/tvBookingNoLabel"
+                android:layout_marginEnd="@dimen/margin_medium_2"/>
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvShowtimeDate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="7:00 PM - 10 May"
-            android:textStyle="bold"
-            android:layout_alignParentEnd="true"
-            android:layout_alignTop="@id/tvShowtimeDateLabel"
-            android:layout_marginEnd="@dimen/margin_medium_2"/>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvShowtimeDateLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/lbl_showtime_date"
+                android:layout_below="@id/tvBookingNoLabel"
+                android:layout_marginStart="@dimen/margin_medium_2"
+                android:layout_marginTop="@dimen/margin_medium"/>
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvTheaterLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/lbl_theater"
-            android:layout_below="@id/tvShowtimeDateLabel"
-            android:layout_marginStart="@dimen/margin_medium_2"
-            android:layout_marginTop="@dimen/margin_medium"/>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvShowtimeDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="7:00 PM - 10 May"
+                android:textStyle="bold"
+                android:layout_alignParentEnd="true"
+                android:layout_alignTop="@id/tvShowtimeDateLabel"
+                android:layout_marginEnd="@dimen/margin_medium_2"/>
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvTheater"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Galaxy Cinema - Golden City"
-            android:textStyle="bold"
-            android:layout_alignParentEnd="true"
-            android:layout_alignTop="@id/tvTheaterLabel"
-            android:layout_marginEnd="@dimen/margin_medium_2"/>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvTheaterLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/lbl_theater"
+                android:layout_below="@id/tvShowtimeDateLabel"
+                android:layout_marginStart="@dimen/margin_medium_2"
+                android:layout_marginTop="@dimen/margin_medium"/>
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvScreenLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/lbl_screen"
-            android:layout_below="@id/tvTheaterLabel"
-            android:layout_marginStart="@dimen/margin_medium_2"
-            android:layout_marginTop="@dimen/margin_medium"/>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvTheater"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Galaxy Cinema - Golden City"
+                android:textStyle="bold"
+                android:layout_alignParentEnd="true"
+                android:layout_alignTop="@id/tvTheaterLabel"
+                android:layout_marginEnd="@dimen/margin_medium_2"/>
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvScreen"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="2"
-            android:textStyle="bold"
-            android:layout_alignParentEnd="true"
-            android:layout_alignTop="@id/tvScreenLabel"
-            android:layout_marginEnd="@dimen/margin_medium_2"/>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvScreenLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/lbl_screen"
+                android:layout_below="@id/tvTheaterLabel"
+                android:layout_marginStart="@dimen/margin_medium_2"
+                android:layout_marginTop="@dimen/margin_medium"/>
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvRowLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/lbl_row"
-            android:layout_below="@id/tvScreenLabel"
-            android:layout_marginStart="@dimen/margin_medium_2"
-            android:layout_marginTop="@dimen/margin_medium"/>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvScreen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2"
+                android:textStyle="bold"
+                android:layout_alignParentEnd="true"
+                android:layout_alignTop="@id/tvScreenLabel"
+                android:layout_marginEnd="@dimen/margin_medium_2"/>
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvRow"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="D"
-            android:textStyle="bold"
-            android:layout_alignParentEnd="true"
-            android:layout_alignTop="@id/tvRowLabel"
-            android:layout_marginEnd="@dimen/margin_medium_2"/>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvRowLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/lbl_row"
+                android:layout_below="@id/tvScreenLabel"
+                android:layout_marginStart="@dimen/margin_medium_2"
+                android:layout_marginTop="@dimen/margin_medium"/>
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvSeatLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/lbl_seats"
-            android:layout_below="@id/tvRowLabel"
-            android:layout_marginStart="@dimen/margin_medium_2"
-            android:layout_marginTop="@dimen/margin_medium"/>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvRow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="D"
+                android:textStyle="bold"
+                android:layout_alignParentEnd="true"
+                android:layout_alignTop="@id/tvRowLabel"
+                android:layout_marginEnd="@dimen/margin_medium_2"/>
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvSeat"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="5, 6"
-            android:textStyle="bold"
-            android:layout_alignParentEnd="true"
-            android:layout_alignTop="@id/tvSeatLabel"
-            android:layout_marginEnd="@dimen/margin_medium_2"/>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvSeatLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/lbl_seats"
+                android:layout_below="@id/tvRowLabel"
+                android:layout_marginStart="@dimen/margin_medium_2"
+                android:layout_marginTop="@dimen/margin_medium"/>
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvPriceLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/lbl_price"
-            android:layout_below="@id/tvSeatLabel"
-            android:layout_marginStart="@dimen/margin_medium_2"
-            android:layout_marginTop="@dimen/margin_medium"/>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvSeat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="5, 6"
+                android:textStyle="bold"
+                android:layout_alignParentEnd="true"
+                android:layout_alignTop="@id/tvSeatLabel"
+                android:layout_marginEnd="@dimen/margin_medium_2"/>
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvPrice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="$40.00"
-            android:textStyle="bold"
-            android:layout_alignParentEnd="true"
-            android:layout_alignTop="@id/tvPriceLabel"
-            android:layout_marginEnd="@dimen/margin_medium_2"/>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvPriceLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/lbl_price"
+                android:layout_below="@id/tvSeatLabel"
+                android:layout_marginStart="@dimen/margin_medium_2"
+                android:layout_marginTop="@dimen/margin_medium"/>
 
-        <TextView
-            android:id="@+id/tvSecondHorizontalDivider"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/dash_divider"
-            android:textSize="@dimen/text_regular_3x"
-            android:layout_below="@id/tvPriceLabel"
-            android:layout_marginTop="@dimen/margin_card_medium_2"
-            android:layout_marginStart="@dimen/margin_small"/>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="$40.00"
+                android:textStyle="bold"
+                android:layout_alignParentEnd="true"
+                android:layout_alignTop="@id/tvPriceLabel"
+                android:layout_marginEnd="@dimen/margin_medium_2"/>
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/ivBarcode"
-            android:layout_width="@dimen/width_barcode"
-            android:layout_height="@dimen/height_barcode"
-            app:srcCompat="@drawable/barcode"
-            android:scaleType="centerCrop"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@id/tvSecondHorizontalDivider"/>
+            <TextView
+                android:id="@+id/tvSecondHorizontalDivider"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvPriceLabel"
+                android:layout_marginStart="@dimen/margin_small"
+                android:layout_marginTop="@dimen/margin_card_medium_2"
+                android:text="@string/dash_divider"
+                android:textSize="@dimen/text_regular_3x" />
 
-    </RelativeLayout>
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivBarcode"
+                android:layout_width="@dimen/width_barcode"
+                android:layout_height="@dimen/height_barcode"
+                app:srcCompat="@drawable/barcode"
+                android:scaleType="centerCrop"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/tvSecondHorizontalDivider"/>
+
+        </RelativeLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        app:srcCompat="@drawable/semi_circle_voucher_border"
+        android:layout_marginStart="@dimen/margin_card_medium_2"
+        android:layout_marginTop="380dp"
+        android:elevation="@dimen/margin_medium"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        app:srcCompat="@drawable/semi_circle_voucher_border"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="@dimen/margin_card_medium_2"
+        android:layout_marginTop="380dp"
+        android:elevation="@dimen/margin_medium"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        app:srcCompat="@drawable/semi_circle_voucher_border"
+        android:layout_marginStart="@dimen/margin_card_medium_2"
+        android:layout_marginTop="600dp"
+        android:elevation="@dimen/margin_medium"/>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        app:srcCompat="@drawable/semi_circle_voucher_border"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="@dimen/margin_card_medium_2"
+        android:layout_marginTop="600dp"
+        android:elevation="@dimen/margin_medium"/>
+
 
 </RelativeLayout>

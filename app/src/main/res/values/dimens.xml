@@ -47,5 +47,7 @@
     <dimen name="margin_bottom_cinema">100dp</dimen>
     <dimen name="width_barcode">200dp</dimen>
     <dimen name="height_barcode">100dp</dimen>
+    <dimen name="width_visa_card_item">300dp</dimen>
+    <dimen name="height_visa_card_item">200dp</dimen>
 
 </resources>

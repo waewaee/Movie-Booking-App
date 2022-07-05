@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView
-    android:layout_width="300dp"
-    android:layout_height="200dp"
+    android:layout_width="@dimen/width_visa_card_item"
+    android:layout_height="@dimen/height_visa_card_item"
     app:cardCornerRadius="@dimen/margin_card_medium"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
@@ -15,8 +15,8 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/ivCardLogo"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
+            android:layout_width="@dimen/width_profile"
+            android:layout_height="@dimen/height_profile"
             app:srcCompat="@drawable/visa_small"/>
 
         <androidx.appcompat.widget.AppCompatImageView
