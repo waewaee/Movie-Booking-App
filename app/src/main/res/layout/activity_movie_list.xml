@@ -1,81 +1,220 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
+<androidx.drawerlayout.widget.DrawerLayout
+    android:id="@+id/drawerLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:openDrawer="start"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     tools:context=".activities.MovieListActivity">
 
-    <com.google.android.material.appbar.AppBarLayout
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white"
-        app:elevation="0dp">
+        android:layout_height="match_parent">
 
-        <com.google.android.material.appbar.MaterialToolbar
-            android:id="@+id/toolbar"
+        <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            app:titleTextColor="@color/white"/>
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            app:elevation="0dp">
 
-    </com.google.android.material.appbar.AppBarLayout>
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:titleTextColor="@color/white"/>
 
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        </com.google.android.material.appbar.AppBarLayout>
 
-        <RelativeLayout
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-            <LinearLayout
-                android:id="@+id/llProfile"
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <com.google.android.material.imageview.ShapeableImageView
-                    android:id="@+id/ivProfile"
-                    android:layout_width="@dimen/width_profile"
-                    android:layout_height="@dimen/height_profile"
-                    app:srcCompat="@drawable/unicorn_small"
-                    android:scaleType="centerCrop"
-                    android:background="@color/purple_200"
-                    app:shapeAppearanceOverlay="@style/roundedImageView"
-                    android:layout_marginStart="@dimen/margin_medium_2"/>
+                <LinearLayout
+                    android:id="@+id/llProfile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/tvProfileName"
-                    android:layout_width="wrap_content"
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/ivProfile"
+                        android:layout_width="@dimen/width_profile"
+                        android:layout_height="@dimen/height_profile"
+                        app:srcCompat="@drawable/unicorn_small"
+                        android:scaleType="centerCrop"
+                        android:background="@color/purple_200"
+                        app:shapeAppearanceOverlay="@style/roundedImageView"
+                        android:layout_marginStart="@dimen/margin_medium_2"/>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvProfileName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Hi Lily!"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_heading_1x"
+                        android:textStyle="bold"
+                        android:layout_marginTop="@dimen/margin_medium"
+                        android:layout_marginStart="@dimen/margin_medium_2"/>
+
+                </LinearLayout>
+
+                <include
+                    android:id="@+id/vpNowShowingMovieList"
+                    layout="@layout/view_pod_movie_list"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Hi Lily!"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/text_heading_1x"
-                    android:textStyle="bold"
-                    android:layout_marginTop="@dimen/margin_medium"
-                    android:layout_marginStart="@dimen/margin_medium_2"/>
+                    android:layout_below="@id/llProfile" />
 
-            </LinearLayout>
+                <include
+                    android:id="@+id/vpComingSoonMovieList"
+                    layout="@layout/view_pod_movie_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/vpNowShowingMovieList"
+                    android:layout_marginTop="@dimen/margin_medium_3"
+                    android:layout_marginBottom="@dimen/margin_medium_3"/>
 
-            <include
-                android:id="@+id/vpNowShowingMovieList"
-                layout="@layout/view_pod_movie_list"
-                android:layout_width="match_parent"
+            </RelativeLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navigationView"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="@color/colorPrimary"
+        android:maxWidth="@dimen/max_width_navigation_view"
+        android:fitsSystemWindows="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingHorizontal="@dimen/margin_large">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/ivProfileOnMenu"
+                android:layout_width="@dimen/width_profile"
+                android:layout_height="@dimen/height_profile"
+                app:srcCompat="@drawable/unicorn_small"
+                android:scaleType="centerCrop"
+                android:background="@color/md_grey_500"
+                app:shapeAppearanceOverlay="@style/roundedImageView"
+                android:layout_marginTop="@dimen/margin_top_left_menu_profile"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvProfileNameOnMenu"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/llProfile"/>
+                android:text="@string/name_hint"
+                android:textSize="@dimen/text_regular_3x"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:layout_toEndOf="@id/ivProfileOnMenu"
+                android:layout_alignTop="@id/ivProfileOnMenu"
+                android:layout_marginStart="@dimen/margin_medium_2"/>
 
-            <include
-                android:id="@+id/vpComingSoonMovieList"
-                layout="@layout/view_pod_movie_list"
-                android:layout_width="match_parent"
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvProfileEmailOnMenu"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/vpNowShowingMovieList"
-                android:layout_marginTop="@dimen/margin_medium_3"
-                android:layout_marginBottom="@dimen/margin_medium_3"/>
+                android:text="@string/email_hint"
+                android:textColor="@color/white"
+                android:layout_below="@id/tvProfileNameOnMenu"
+                android:layout_alignStart="@id/tvProfileNameOnMenu"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvEditOnMenu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/lbl_edit"
+                android:textColor="@color/white"
+                android:clickable="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignBaseline="@id/tvProfileEmailOnMenu"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvPromotionCodeOnMenu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/lbl_promotion_code"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_regular_2x"
+                android:drawableStart="@drawable/ic_baseline_local_offer_white_24dp"
+                android:drawablePadding="@dimen/margin_medium_2"
+                android:layout_below="@id/tvProfileEmailOnMenu"
+                android:layout_marginTop="@dimen/margin_xxlarge"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvSelectLanguageOnMenu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/lbl_select_a_language"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_regular_2x"
+                android:drawableStart="@drawable/ic_baseline_g_translate_white_24dp"
+                android:drawablePadding="@dimen/margin_medium_2"
+                android:layout_below="@id/tvPromotionCodeOnMenu"
+                android:layout_marginTop="@dimen/margin_xxlarge"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvTermOfServicesOnMenu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/lbl_term_of_services"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_regular_2x"
+                android:drawableStart="@drawable/ic_baseline_assignment_white_24dp"
+                android:drawablePadding="@dimen/margin_medium_2"
+                android:layout_below="@id/tvSelectLanguageOnMenu"
+                android:layout_marginTop="@dimen/margin_xxlarge"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvHelpOnMenu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/lbl_help"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_regular_2x"
+                android:drawableStart="@drawable/ic_baseline_help_white_24dp"
+                android:drawablePadding="@dimen/margin_medium_2"
+                android:layout_below="@id/tvTermOfServicesOnMenu"
+                android:layout_marginTop="@dimen/margin_xxlarge"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvRateUsOnMenu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/lbl_rate_us"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_regular_2x"
+                android:drawableStart="@drawable/ic_baseline_stars_white_24dp"
+                android:drawablePadding="@dimen/margin_medium_2"
+                android:layout_below="@id/tvHelpOnMenu"
+                android:layout_marginTop="@dimen/margin_xxlarge"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvLogOutOnMenu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/lbl_log_out"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_regular_2x"
+                android:drawableStart="@drawable/ic_baseline_logout_white_24dp"
+                android:drawablePadding="@dimen/margin_medium_2"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="@dimen/margin_xxlarge"/>
 
         </RelativeLayout>
 
-    </androidx.core.widget.NestedScrollView>
+    </com.google.android.material.navigation.NavigationView>
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</androidx.drawerlayout.widget.DrawerLayout>

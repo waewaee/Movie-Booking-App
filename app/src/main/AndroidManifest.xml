@@ -9,10 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MovieBookingApp">
+
         <activity
             android:name=".activities.VoucherActivity"
             android:exported="true"
-            android:theme="@style/Theme.MovieBookingApp.GreyTransparentStatusBar"/>
+            android:theme="@style/Theme.MovieBookingApp.GreyTransparentStatusBar" />
         <activity
             android:name=".activities.AddNewCardActivity"
             android:exported="true"

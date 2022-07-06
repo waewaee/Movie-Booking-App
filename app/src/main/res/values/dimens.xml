@@ -49,5 +49,7 @@
     <dimen name="height_barcode">100dp</dimen>
     <dimen name="width_visa_card_item">300dp</dimen>
     <dimen name="height_visa_card_item">200dp</dimen>
+    <dimen name="max_width_navigation_view">300dp</dimen>
+    <dimen name="margin_top_left_menu_profile">64dp</dimen>
 
 </resources>

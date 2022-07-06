@@ -51,4 +51,13 @@
     <string name="lbl_voucher_title">Awesome!</string>
     <string name="lbl_voucher_sub_title">This is your ticket.</string>
     <string name="lbl_payment_method">Payment Method</string>
+    <string name="open_drawer">Open Drawer</string>
+    <string name="close_drawer">Close Drawer</string>
+    <string name="lbl_edit">Edit</string>
+    <string name="lbl_promotion_code">Promotion Code</string>
+    <string name="lbl_select_a_language">Select a language</string>
+    <string name="lbl_term_of_services">Term of services</string>
+    <string name="lbl_help">Help</string>
+    <string name="lbl_rate_us">Rate us</string>
+    <string name="lbl_log_out">Log out</string>
 </resources>

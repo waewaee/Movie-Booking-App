@@ -5,6 +5,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
+import androidx.appcompat.app.ActionBarDrawerToggle
 import com.google.android.material.snackbar.Snackbar
 import com.waewaee.moviebookingapp.R
 import com.waewaee.moviebookingapp.delegates.MovieViewHolderDelegate
@@ -15,6 +16,7 @@ class MovieListActivity : AppCompatActivity(), MovieViewHolderDelegate {
 
     lateinit var mNowShowingMovieListViewPod: MovieListViewPod
     lateinit var mComingSoonMovieListViewPod: MovieListViewPod
+    lateinit var actionBarDrawerToggle: ActionBarDrawerToggle
 
     companion object {
         fun newIntent(context: Context): Intent{
@@ -28,7 +30,24 @@ class MovieListActivity : AppCompatActivity(), MovieViewHolderDelegate {
 
         setUpToolbar()
         setUpViewPods()
+        setUpDrawer()
 
+        ivProfileOnMenu.setOnClickListener {
+            Snackbar.make(window.decorView, "Profile picture tapped", Snackbar.LENGTH_SHORT).show()
+        }
+
+    }
+
+    private fun setUpDrawer() {
+        actionBarDrawerToggle = ActionBarDrawerToggle(this,
+            drawerLayout, toolbar,
+            R.string.open_drawer,
+            R.string.close_drawer )
+
+        actionBarDrawerToggle.let {
+            drawerLayout.addDrawerListener(it)
+            it.syncState()
+        }
     }
 
     private fun setUpToolbar() {
