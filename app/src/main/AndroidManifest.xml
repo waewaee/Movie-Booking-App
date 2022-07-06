@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MovieBookingApp">
-
+        <activity
+            android:name=".activities.SeatingPlanActivity"
+            android:exported="true"
+            android:theme="@style/Theme.MovieBookingApp.TransparentStatusBar"/>
         <activity
             android:name=".activities.VoucherActivity"
             android:exported="true"

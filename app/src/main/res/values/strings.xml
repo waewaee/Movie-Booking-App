@@ -41,6 +41,7 @@
     <string name="hint_cvc">150</string>
     <string name="btn_add_new_card">Add new card</string>
     <string name="dash_divider">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</string>
+    <string name="dash_divider_long">- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</string>
     <string name="lbl_price">Price</string>
     <string name="lbl_seats">Seats</string>
     <string name="lbl_row">Row</string>
@@ -60,4 +61,8 @@
     <string name="lbl_help">Help</string>
     <string name="lbl_rate_us">Rate us</string>
     <string name="lbl_log_out">Log out</string>
+    <string name="lbl_available">Available</string>
+    <string name="lbl_reserved">Reserved</string>
+    <string name="lbl_your_selection">Your Selection</string>
+    <string name="lbl_tickets">Tickets</string>
 </resources>

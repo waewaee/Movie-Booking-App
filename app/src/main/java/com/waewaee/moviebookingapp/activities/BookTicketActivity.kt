@@ -38,7 +38,7 @@ class BookTicketActivity : AppCompatActivity() {
         }
 
         btnNext.setOnClickListener {
-            startActivity(ChooseSnackActivity.newIntent(this))
+            startActivity(SeatingPlanActivity.newIntent(this))
         }
     }
 }

@@ -265,16 +265,16 @@
     </com.google.android.material.card.MaterialCardView>
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:layout_width="24dp"
-        android:layout_height="24dp"
+        android:layout_width="@dimen/width_circle"
+        android:layout_height="@dimen/height_circle"
         app:srcCompat="@drawable/semi_circle_voucher_border"
         android:layout_marginStart="@dimen/margin_card_medium_2"
         android:layout_marginTop="380dp"
         android:elevation="@dimen/margin_medium"/>
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:layout_width="24dp"
-        android:layout_height="24dp"
+        android:layout_width="@dimen/width_circle"
+        android:layout_height="@dimen/height_circle"
         app:srcCompat="@drawable/semi_circle_voucher_border"
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="@dimen/margin_card_medium_2"
@@ -282,16 +282,16 @@
         android:elevation="@dimen/margin_medium"/>
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:layout_width="24dp"
-        android:layout_height="24dp"
+        android:layout_width="@dimen/width_circle"
+        android:layout_height="@dimen/height_circle"
         app:srcCompat="@drawable/semi_circle_voucher_border"
         android:layout_marginStart="@dimen/margin_card_medium_2"
         android:layout_marginTop="600dp"
         android:elevation="@dimen/margin_medium"/>
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:layout_width="24dp"
-        android:layout_height="24dp"
+        android:layout_width="@dimen/width_circle"
+        android:layout_height="@dimen/height_circle"
         app:srcCompat="@drawable/semi_circle_voucher_border"
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="@dimen/margin_card_medium_2"

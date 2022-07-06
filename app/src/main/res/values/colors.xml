@@ -367,4 +367,6 @@
     <color name="color_transparent_overlay">#26000000</color>
     <color name="color_rating_bar">#e7b943</color>
     <color name="color_visa_card">#9778FC</color>
+    <color name="color_movie_seat_available">#d1d8eb</color>
+    <color name="color_movie_seat_taken">#8291b2</color>
 </resources>
