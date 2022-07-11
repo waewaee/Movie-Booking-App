@@ -22,14 +22,12 @@ class ChooseSnackActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_choose_snack)
 
-        val snackAdapter = SnackAdapter()
-        rvSnacks.adapter = snackAdapter
-        rvSnacks.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        setUpSnackRecyclerView()
+        setUpPaymentMethodRecyclerView()
+        setUpListeners()
+    }
 
-        val paymentMethodAdapter = PaymentMethodAdapter()
-        rvPaymentMethods.adapter = paymentMethodAdapter
-        rvPaymentMethods.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-
+    private fun setUpListeners() {
         btnPay.setOnClickListener {
             startActivity(PaymentActivity.newIntent(this))
         }
@@ -37,5 +35,17 @@ class ChooseSnackActivity : AppCompatActivity() {
         btnBack.setOnClickListener {
             super.onBackPressed()
         }
+    }
+
+    private fun setUpPaymentMethodRecyclerView() {
+        val paymentMethodAdapter = PaymentMethodAdapter()
+        rvPaymentMethods.adapter = paymentMethodAdapter
+        rvPaymentMethods.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+    }
+
+    private fun setUpSnackRecyclerView() {
+        val snackAdapter = SnackAdapter()
+        rvSnacks.adapter = snackAdapter
+        rvSnacks.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
     }
 }

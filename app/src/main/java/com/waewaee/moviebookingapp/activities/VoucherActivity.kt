@@ -19,6 +19,10 @@ class VoucherActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_voucher)
 
+        setUpListeners()
+    }
+
+    private fun setUpListeners() {
         btnClose.setOnClickListener {
             startActivity(MovieListActivity.newIntent(this))
         }

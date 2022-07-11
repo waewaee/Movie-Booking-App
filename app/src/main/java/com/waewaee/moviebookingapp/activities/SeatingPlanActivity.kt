@@ -24,12 +24,19 @@ class SeatingPlanActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_seating_plan)
 
+        setUpSeatRecyclerView()
+        setUpListeners()
+    }
+
+    private fun setUpSeatRecyclerView() {
         rvSeats.adapter = mAdapter
         rvSeats.layoutManager = GridLayoutManager(this, 10)
 
         mAdapter.setNewData(DUMMY_SEATS)
-        
-        btnBack.setOnClickListener { 
+    }
+
+    private fun setUpListeners() {
+        btnBack.setOnClickListener {
             super.onBackPressed()
         }
 

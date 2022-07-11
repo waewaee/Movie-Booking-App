@@ -31,16 +31,19 @@ class MovieListActivity : AppCompatActivity(), MovieViewHolderDelegate {
         setUpToolbar()
         setUpViewPods()
         setUpDrawer()
+        setUpListeners()
+    }
 
+    private fun setUpListeners() {
         ivProfileOnMenu.setOnClickListener {
             Snackbar.make(window.decorView, "Profile picture tapped", Snackbar.LENGTH_SHORT).show()
         }
-
     }
 
     private fun setUpDrawer() {
         actionBarDrawerToggle = ActionBarDrawerToggle(this,
-            drawerLayout, toolbar,
+            drawerLayout,
+            toolbar,
             R.string.open_drawer,
             R.string.close_drawer )
 

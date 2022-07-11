@@ -19,6 +19,10 @@ class AddNewCardActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_new_card)
 
+        setUpListeners()
+    }
+
+    private fun setUpListeners() {
         btnConfirm.setOnClickListener {
             super.onBackPressed()
         }

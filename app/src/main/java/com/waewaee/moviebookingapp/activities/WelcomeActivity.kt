@@ -10,6 +10,10 @@ class WelcomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_welcome)
 
+        setUpListeners()
+    }
+
+    private fun setUpListeners() {
         btnStart.setOnClickListener {
             startActivity(LoginActivity.newIntent(this))
         }

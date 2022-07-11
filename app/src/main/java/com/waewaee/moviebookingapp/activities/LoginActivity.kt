@@ -22,15 +22,22 @@ class LoginActivity : AppCompatActivity(), LoginSignUpDelegate {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        val adapter = LoginSignUpViewPagerAdapter(this, this)
-        viewPagerLogin.adapter = adapter
+        setUpViewPager()
+        setUpTapLayout()
+    }
 
+    private fun setUpTapLayout() {
         TabLayoutMediator(tabLayoutLogin, viewPagerLogin) {tab, position ->
             when(position) {
                 0 -> tab.text = getString(R.string.lbl_tab_login)
                 else -> tab.text = getString(R.string.lbl_tab_sign_up)
             }
         }.attach()
+    }
+
+    private fun setUpViewPager() {
+        val adapter = LoginSignUpViewPagerAdapter(this, this)
+        viewPagerLogin.adapter = adapter
     }
 
     override fun onTapLogin() {

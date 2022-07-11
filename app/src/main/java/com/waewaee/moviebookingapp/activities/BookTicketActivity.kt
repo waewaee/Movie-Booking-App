@@ -25,14 +25,12 @@ class BookTicketActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_book_ticket)
 
-        val datePickerAdapter = DatePickerAdapter()
-        rvDatePicker.adapter = datePickerAdapter
-        rvDatePicker.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false )
+        setUpDatePickerRecyclerView()
+        setUpCinemaRecyclerView()
+        setUpListeners()
+    }
 
-        val cinemaAdapter = CinemaAdapter()
-        rvCinema.adapter = cinemaAdapter
-        rvCinema.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-
+    private fun setUpListeners() {
         btnBack.setOnClickListener {
             super.onBackPressed()
         }
@@ -40,5 +38,17 @@ class BookTicketActivity : AppCompatActivity() {
         btnNext.setOnClickListener {
             startActivity(SeatingPlanActivity.newIntent(this))
         }
+    }
+
+    private fun setUpCinemaRecyclerView() {
+        val cinemaAdapter = CinemaAdapter()
+        rvCinema.adapter = cinemaAdapter
+        rvCinema.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+    }
+
+    private fun setUpDatePickerRecyclerView() {
+        val datePickerAdapter = DatePickerAdapter()
+        rvDatePicker.adapter = datePickerAdapter
+        rvDatePicker.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false )
     }
 }

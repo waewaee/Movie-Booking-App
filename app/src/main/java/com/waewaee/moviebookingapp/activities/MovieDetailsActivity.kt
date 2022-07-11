@@ -32,14 +32,12 @@ class MovieDetailsActivity : AppCompatActivity() {
             WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS
         )
 
-        val genreChipAdapter = GenreChipAdapter()
-        rvGenre.adapter = genreChipAdapter
-        rvGenre.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        setUpGenreRecyclerView()
+        setUpCastRecyclerView()
+        setUpListeners()
+    }
 
-        val castAdapter = CastAdapter()
-        rvCasts.adapter = castAdapter
-        rvCasts.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-
+    private fun setUpListeners() {
         btnGetTicket.setOnClickListener {
             startActivity(BookTicketActivity.newIntent(this))
         }
@@ -47,5 +45,17 @@ class MovieDetailsActivity : AppCompatActivity() {
         btnBack.setOnClickListener {
             super.onBackPressed()
         }
+    }
+
+    private fun setUpCastRecyclerView() {
+        val castAdapter = CastAdapter()
+        rvCasts.adapter = castAdapter
+        rvCasts.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+    }
+
+    private fun setUpGenreRecyclerView() {
+        val genreChipAdapter = GenreChipAdapter()
+        rvGenre.adapter = genreChipAdapter
+        rvGenre.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
     }
 }

@@ -22,6 +22,11 @@ class PaymentActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_payment)
 
+        setUpCarousel()
+        setUpListeners()
+    }
+
+    private fun setUpListeners() {
         btnBack.setOnClickListener {
             super.onBackPressed()
         }
@@ -33,7 +38,9 @@ class PaymentActivity : AppCompatActivity() {
         btnPay.setOnClickListener {
             startActivity(VoucherActivity.newIntent(this))
         }
+    }
 
+    private fun setUpCarousel() {
         val adapter = CarouselAdapter()
         val carousel = alirezat775.lib.carouselview.Carousel(this, cardCarousel, adapter)
         carousel.setOrientation(CarouselView.HORIZONTAL, false)
