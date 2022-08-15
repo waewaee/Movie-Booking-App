@@ -13,6 +13,7 @@ val DUMMY_SEATS = listOf(
     MovieSeatVO(title = "", type = SEAT_TYPE_AVAILABLE),
     MovieSeatVO(title = "", type = SEAT_TYPE_EMPTY),
     MovieSeatVO(title = "A", type = SEAT_TYPE_TEXT),
+
     MovieSeatVO(title = "B", type = SEAT_TYPE_TEXT),
     MovieSeatVO(title = "", type = SEAT_TYPE_AVAILABLE),
     MovieSeatVO(title = "", type = SEAT_TYPE_AVAILABLE),
@@ -23,6 +24,7 @@ val DUMMY_SEATS = listOf(
     MovieSeatVO(title = "", type = SEAT_TYPE_AVAILABLE),
     MovieSeatVO(title = "", type = SEAT_TYPE_AVAILABLE),
     MovieSeatVO(title = "B", type = SEAT_TYPE_TEXT),
+
     MovieSeatVO(title = "C", type = SEAT_TYPE_TEXT),
     MovieSeatVO(title = "", type = SEAT_TYPE_AVAILABLE),
     MovieSeatVO(title = "", type = SEAT_TYPE_AVAILABLE),
@@ -33,6 +35,7 @@ val DUMMY_SEATS = listOf(
     MovieSeatVO(title = "", type = SEAT_TYPE_AVAILABLE),
     MovieSeatVO(title = "", type = SEAT_TYPE_AVAILABLE),
     MovieSeatVO(title = "C", type = SEAT_TYPE_TEXT),
+
     MovieSeatVO(title = "D", type = SEAT_TYPE_TEXT),
     MovieSeatVO(title = "", type = SEAT_TYPE_AVAILABLE),
     MovieSeatVO(title = "", type = SEAT_TYPE_AVAILABLE),
@@ -43,6 +46,7 @@ val DUMMY_SEATS = listOf(
     MovieSeatVO(title = "", type = SEAT_TYPE_AVAILABLE),
     MovieSeatVO(title = "", type = SEAT_TYPE_AVAILABLE),
     MovieSeatVO(title = "D", type = SEAT_TYPE_TEXT),
+
     MovieSeatVO(title = "E", type = SEAT_TYPE_TEXT),
     MovieSeatVO(title = "", type = SEAT_TYPE_AVAILABLE),
     MovieSeatVO(title = "", type = SEAT_TYPE_TAKEN),
@@ -53,6 +57,7 @@ val DUMMY_SEATS = listOf(
     MovieSeatVO(title = "", type = SEAT_TYPE_AVAILABLE),
     MovieSeatVO(title = "", type = SEAT_TYPE_AVAILABLE),
     MovieSeatVO(title = "E", type = SEAT_TYPE_TEXT),
+
     MovieSeatVO(title = "F", type = SEAT_TYPE_TEXT),
     MovieSeatVO(title = "", type = SEAT_TYPE_AVAILABLE),
     MovieSeatVO(title = "", type = SEAT_TYPE_AVAILABLE),
@@ -63,6 +68,7 @@ val DUMMY_SEATS = listOf(
     MovieSeatVO(title = "", type = SEAT_TYPE_AVAILABLE),
     MovieSeatVO(title = "", type = SEAT_TYPE_AVAILABLE),
     MovieSeatVO(title = "F", type = SEAT_TYPE_TEXT),
+
     MovieSeatVO(title = "G", type = SEAT_TYPE_TEXT),
     MovieSeatVO(title = "", type = SEAT_TYPE_AVAILABLE),
     MovieSeatVO(title = "", type = SEAT_TYPE_AVAILABLE),

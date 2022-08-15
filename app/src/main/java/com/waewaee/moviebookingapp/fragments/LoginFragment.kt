@@ -8,15 +8,25 @@ import android.view.View
 import android.view.ViewGroup
 import com.waewaee.moviebookingapp.R
 import com.waewaee.moviebookingapp.delegates.LoginSignUpDelegate
+import com.waewaee.moviebookingapp.delegates.ViewPodDelegate
 import com.waewaee.moviebookingapp.view.pods.LoginSignUpViewPod
 import kotlinx.android.synthetic.main.fragment_login.*
 
-class LoginFragment(private val loginDelegate: LoginSignUpDelegate) : Fragment() {
+class LoginFragment() : Fragment(), ViewPodDelegate {
 
     lateinit var loginViewPod: LoginSignUpViewPod
+    private lateinit var loginDelegate: LoginSignUpDelegate
+
+     private var userEmail = ""
+     private var userPassword = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        loginDelegate = context as LoginSignUpDelegate
     }
 
     override fun onCreateView(
@@ -30,9 +40,32 @@ class LoginFragment(private val loginDelegate: LoginSignUpDelegate) : Fragment()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         loginViewPod = vpLogin as LoginSignUpViewPod
-        loginViewPod.setUpLoginViewPod(loginDelegate)
+        loginViewPod.setUpViewPod(this)
 //        view.btnConfirm.setOnClickListener {
 //            requireActivity().startActivity(MovieListActivity.newIntent(requireContext()))
 //        }
+    }
+
+    override fun onTapConfirm() {
+        if (check()) {
+            loginDelegate.onTapLogin(userEmail, userPassword)
+        }
+    }
+
+    private fun check(): Boolean {
+        if (etEmail.text.isNullOrBlank()) {
+            etEmail.setError("Cannot be empty!")
+        } else  {
+            userEmail = etEmail.text.toString()
+        }
+
+        if (etPassword.text.isNullOrBlank()) {
+            etPassword.setError("Cannot be empty!")
+        } else {
+            userPassword = etPassword.text.toString()
+        }
+
+        return userEmail.isNotEmpty() && userPassword.isNotEmpty()
+
     }
 }
