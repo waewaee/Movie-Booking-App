@@ -1,6 +1,7 @@
 package com.waewaee.moviebookingapp.network.dataagents
 
 import com.waewaee.moviebookingapp.data.vos.ErrorVO
+import com.waewaee.moviebookingapp.network.responses.LoginResponse
 
 interface CinemaDataAgent {
 
@@ -9,6 +10,7 @@ interface CinemaDataAgent {
         password: String,
         onSuccess: (ErrorVO) -> Unit,
         onFailure: (String) -> Unit,
+        setToken: (String) -> Unit,
     )
 
     fun getSignUpWithEmail(
@@ -16,7 +18,7 @@ interface CinemaDataAgent {
         email: String,
         password: String,
         phone: String,
-        onSuccess: (ErrorVO) -> Unit,
+        onSuccess: (LoginResponse) -> Unit,
         onFailure: (String) -> Unit,
     )
 

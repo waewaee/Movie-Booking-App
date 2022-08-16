@@ -36,7 +36,8 @@ object RetrofitCinemaDataAgentImpl: CinemaDataAgent {
         email: String,
         password: String,
         onSuccess: (ErrorVO) -> Unit,
-        onFailure: (String) -> Unit
+        onFailure: (String) -> Unit,
+        setToken: (String) -> Unit,
     ) {
         mCinemaApi?.getLoginWithEmail(email = email, password = password)
             ?.enqueue(object : Callback<LoginResponse> {
@@ -47,6 +48,7 @@ object RetrofitCinemaDataAgentImpl: CinemaDataAgent {
                     if (response.isSuccessful) {
                         var errorVO = ErrorVO(code = response.body()?.code ?: 404, message = response.body()?.message ?: "Not Found")
                         onSuccess(errorVO)
+                        setToken(response.body()?.token ?: "")
                     } else {
                         onFailure(response.message())
                     }
@@ -64,7 +66,7 @@ object RetrofitCinemaDataAgentImpl: CinemaDataAgent {
         email: String,
         password: String,
         phone: String,
-        onSuccess: (ErrorVO) -> Unit,
+        onSuccess: (LoginResponse) -> Unit,
         onFailure: (String) -> Unit
     ) {
         mCinemaApi?.getSignUpWithEmail(name = name, email = email, password = password, phone = phone)
@@ -74,8 +76,7 @@ object RetrofitCinemaDataAgentImpl: CinemaDataAgent {
                     response: Response<LoginResponse>
                 ) {
                     if (response.isSuccessful) {
-                        var errorVO = ErrorVO(code = response.body()?.code ?: 404, message = response.body()?.message ?: "Not Found")
-                        onSuccess(errorVO)
+                        onSuccess(response.body() ?: LoginResponse())
                     } else {
                         onFailure(response.message())
                     }

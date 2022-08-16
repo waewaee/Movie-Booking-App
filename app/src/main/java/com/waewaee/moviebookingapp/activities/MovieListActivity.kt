@@ -8,6 +8,8 @@ import android.view.Menu
 import androidx.appcompat.app.ActionBarDrawerToggle
 import com.google.android.material.snackbar.Snackbar
 import com.waewaee.moviebookingapp.R
+import com.waewaee.moviebookingapp.data.models.CinemaModel
+import com.waewaee.moviebookingapp.data.models.CinemaModelImpl
 import com.waewaee.moviebookingapp.delegates.MovieViewHolderDelegate
 import com.waewaee.moviebookingapp.view.pods.MovieListViewPod
 import kotlinx.android.synthetic.main.activity_movie_list.*
@@ -17,6 +19,8 @@ class MovieListActivity : AppCompatActivity(), MovieViewHolderDelegate {
     lateinit var mNowShowingMovieListViewPod: MovieListViewPod
     lateinit var mComingSoonMovieListViewPod: MovieListViewPod
     lateinit var actionBarDrawerToggle: ActionBarDrawerToggle
+
+    private val mCinemaModel: CinemaModel = CinemaModelImpl
 
     companion object {
         fun newIntent(context: Context): Intent{
@@ -32,6 +36,8 @@ class MovieListActivity : AppCompatActivity(), MovieViewHolderDelegate {
         setUpViewPods()
         setUpDrawer()
         setUpListeners()
+
+//        Snackbar.make(window.decorView, mCinemaModel.getToken(), Snackbar.LENGTH_SHORT).show()
     }
 
     private fun setUpListeners() {

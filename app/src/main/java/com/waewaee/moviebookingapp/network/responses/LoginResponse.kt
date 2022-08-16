@@ -6,14 +6,14 @@ import com.waewaee.moviebookingapp.data.vos.UserVO
 data class LoginResponse(
 
     @SerializedName("code")
-    val code: Int?,
+    val code: Int? = 0,
 
     @SerializedName("message")
-    val message: String?,
+    val message: String? = "",
 
     @SerializedName("data")
-    val userVO: UserVO,
+    val userVO: UserVO? = null,
 
     @SerializedName("token")
-    val token: String?
+    val token: String? = "",
 )

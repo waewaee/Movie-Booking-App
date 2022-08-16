@@ -11,6 +11,8 @@ interface CinemaModel {
         onFailure: (String) -> Unit,
     )
 
+    fun getToken() : String
+
     fun getSignUpWithEmail(
         name: String,
         email: String,

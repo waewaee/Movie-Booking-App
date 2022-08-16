@@ -7,7 +7,7 @@ import com.waewaee.moviebookingapp.network.dataagents.RetrofitCinemaDataAgentImp
 object CinemaModelImpl: CinemaModel {
 
     val mCinemaDataAgent: CinemaDataAgent = RetrofitCinemaDataAgentImpl
-    private var token = ""
+    private var userToken = ""
 
     override fun getLoginWithEmail(
         email: String,
@@ -15,7 +15,13 @@ object CinemaModelImpl: CinemaModel {
         onSuccess: (ErrorVO) -> Unit,
         onFailure: (String) -> Unit
     ) {
-        mCinemaDataAgent.getLoginWithEmail(email = email, password = password, onSuccess = onSuccess, onFailure = onFailure)
+        mCinemaDataAgent.getLoginWithEmail(email = email, password = password, onSuccess = onSuccess, onFailure = onFailure, setToken = {
+            userToken = it
+        })
+    }
+
+    override fun getToken() : String {
+        return userToken
     }
 
     override fun getSignUpWithEmail(
@@ -26,6 +32,10 @@ object CinemaModelImpl: CinemaModel {
         onSuccess: (ErrorVO) -> Unit,
         onFailure: (String) -> Unit
     ) {
-        mCinemaDataAgent.getSignUpWithEmail(name = name, email = email, password = password, phone = phone, onSuccess = onSuccess, onFailure = onFailure)
+        mCinemaDataAgent.getSignUpWithEmail(name = name, email = email, password = password, phone = phone, onSuccess = { response ->
+            userToken = response.token ?: ""
+            var errorVO = ErrorVO(code = response.code ?: 404, message = response.message ?: "Not Found")
+            onSuccess(errorVO)
+        }, onFailure = onFailure)
     }
 }
