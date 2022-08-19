@@ -3,7 +3,9 @@ package com.waewaee.moviebookingapp.network.dataagents
 import com.waewaee.moviebookingapp.data.vos.ErrorVO
 import com.waewaee.moviebookingapp.network.CinemaApi
 import com.waewaee.moviebookingapp.network.responses.LoginResponse
-import com.waewaee.moviebookingapp.utils.BASE_URL
+import com.waewaee.moviebookingapp.network.responses.MovieListResponse
+import com.waewaee.moviebookingapp.utils.CINEMA_BASE_URL
+import com.waewaee.themovieapp.data.vos.MovieVO
 import okhttp3.OkHttpClient
 import retrofit2.Call
 import retrofit2.Callback
@@ -24,7 +26,7 @@ object RetrofitCinemaDataAgentImpl: CinemaDataAgent {
             .build()
 
         val retrofit = Retrofit.Builder()
-            .baseUrl(BASE_URL)
+            .baseUrl(CINEMA_BASE_URL)
             .client(mOkHttpClient)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
@@ -84,6 +86,56 @@ object RetrofitCinemaDataAgentImpl: CinemaDataAgent {
 
                 override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
                     onFailure(t.message ?: "Failed")
+                }
+
+            })
+    }
+
+    override fun getProfile(
+        authorization: String,
+        onSuccess: (LoginResponse) -> Unit,
+        onFailure: (String) -> Unit
+    ) {
+        mCinemaApi?.getProfile(authorization = authorization)
+            ?.enqueue(object : Callback<LoginResponse> {
+                override fun onResponse(
+                    call: Call<LoginResponse>,
+                    response: Response<LoginResponse>
+                ) {
+                    if (response.isSuccessful) {
+                        onSuccess(response.body() ?: LoginResponse())
+                    } else  {
+                        onFailure(response.message())
+                    }
+                }
+
+                override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+                    onFailure(t.message ?: "")
+                }
+
+            })
+    }
+
+    override fun getNowPlayingMovies(
+        onSuccess: (List<MovieVO>) -> Unit,
+        onFailure: (String) -> Unit
+    ) {
+        mCinemaApi?.getNowPlayingMovies()
+            ?.enqueue(object : Callback<MovieListResponse> {
+                override fun onResponse(
+                    call: Call<MovieListResponse>,
+                    response: Response<MovieListResponse>
+                ) {
+                    if (response.isSuccessful) {
+                        val movieList = response.body()?.results ?: listOf()
+                        onSuccess(movieList)
+                    } else {
+                        onFailure(response.message())
+                    }
+                }
+
+                override fun onFailure(call: Call<MovieListResponse>, t: Throwable) {
+                    onFailure(t.message ?: "")
                 }
 
             })

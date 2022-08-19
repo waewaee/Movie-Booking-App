@@ -67,7 +67,7 @@ class LoginActivity() : AppCompatActivity(), LoginSignUpDelegate {
                 }
             },
             onFailure = {
-                Snackbar.make(window.decorView, "$it.", Snackbar.LENGTH_SHORT).show()
+                Snackbar.make(window.decorView, it, Snackbar.LENGTH_SHORT).show()
             }
         )
     }
@@ -88,7 +88,7 @@ class LoginActivity() : AppCompatActivity(), LoginSignUpDelegate {
                 }
             },
             onFailure = {
-                Snackbar.make(window.decorView, "$it.", Snackbar.LENGTH_SHORT).show()
+                Snackbar.make(window.decorView, it, Snackbar.LENGTH_SHORT).show()
             }
         )
     }

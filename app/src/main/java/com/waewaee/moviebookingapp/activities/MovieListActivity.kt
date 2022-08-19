@@ -4,10 +4,12 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import androidx.appcompat.app.ActionBarDrawerToggle
 import com.google.android.material.snackbar.Snackbar
 import com.waewaee.moviebookingapp.R
+import com.waewaee.moviebookingapp.adapters.MovieAdapter
 import com.waewaee.moviebookingapp.data.models.CinemaModel
 import com.waewaee.moviebookingapp.data.models.CinemaModelImpl
 import com.waewaee.moviebookingapp.delegates.MovieViewHolderDelegate
@@ -19,8 +21,10 @@ class MovieListActivity : AppCompatActivity(), MovieViewHolderDelegate {
     lateinit var mNowShowingMovieListViewPod: MovieListViewPod
     lateinit var mComingSoonMovieListViewPod: MovieListViewPod
     lateinit var actionBarDrawerToggle: ActionBarDrawerToggle
+    lateinit var mMovieAdapter: MovieAdapter
 
     private val mCinemaModel: CinemaModel = CinemaModelImpl
+    private val mToken: String = mCinemaModel.getToken()
 
     companion object {
         fun newIntent(context: Context): Intent{
@@ -36,8 +40,32 @@ class MovieListActivity : AppCompatActivity(), MovieViewHolderDelegate {
         setUpViewPods()
         setUpDrawer()
         setUpListeners()
+        requestData()
 
 //        Snackbar.make(window.decorView, mCinemaModel.getToken(), Snackbar.LENGTH_SHORT).show()
+    }
+
+    private fun requestData() {
+        Log.e("mtoken", "Bearer${mToken}")
+        mCinemaModel.getProfile(
+            authorization = "Bearer${mToken}",
+            {
+                tvProfileName.text = it.name
+                tvProfileNameOnMenu.text = it.name
+                tvProfileEmailOnMenu.text = it.email
+            },
+            {
+                Snackbar.make(window.decorView, it, Snackbar.LENGTH_SHORT).show()
+            })
+
+        mCinemaModel.getNowPlayingMovies(
+            onSuccess = {
+                mMovieAdapter.setNewData(it)
+            },
+            onFailure = {
+                Snackbar.make(window.decorView, it, Snackbar.LENGTH_SHORT).show()
+            }
+        )
     }
 
     private fun setUpListeners() {
@@ -76,6 +104,8 @@ class MovieListActivity : AppCompatActivity(), MovieViewHolderDelegate {
 
         mComingSoonMovieListViewPod = vpComingSoonMovieList as MovieListViewPod
         mComingSoonMovieListViewPod.setUpMovieListViewPod(this, getString(R.string.new_title_movie_list_view_pod))
+
+
     }
 
     override fun onTapMovie() {

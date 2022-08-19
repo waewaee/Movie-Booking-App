@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.waewaee.moviebookingapp.R
 import com.waewaee.moviebookingapp.delegates.MovieViewHolderDelegate
 import com.waewaee.moviebookingapp.adapters.MovieAdapter
+import com.waewaee.themovieapp.data.vos.MovieVO
 import kotlinx.android.synthetic.main.view_pod_movie_list.view.*
 
 class MovieListViewPod @JvmOverloads constructor(
@@ -14,6 +15,7 @@ class MovieListViewPod @JvmOverloads constructor(
 ) : RelativeLayout(context, attrs) {
 
     lateinit var mDelegate: MovieViewHolderDelegate
+    lateinit var mMovieAdapter: MovieAdapter
 
     override fun onFinishInflate() {
 //        setUpMovieRecyclerView()
@@ -27,9 +29,13 @@ class MovieListViewPod @JvmOverloads constructor(
         setUpMovieRecyclerView()
     }
 
+    fun setData(movieList: List<MovieVO>) {
+        mMovieAdapter.setNewData(movieList)
+    }
+
     private fun setUpMovieRecyclerView() {
-        val adapter = MovieAdapter(mDelegate)
-        rvMovieList.adapter = adapter
+        mMovieAdapter = MovieAdapter(mDelegate)
+        rvMovieList.adapter = mMovieAdapter
         rvMovieList.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
     }
 

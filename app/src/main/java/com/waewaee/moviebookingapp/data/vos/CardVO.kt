@@ -5,18 +5,18 @@ import com.google.gson.annotations.SerializedName
 data class CardVO(
 
     @SerializedName("id")
-    val id: Int?,
+    val id: Int? = 0,
 
     @SerializedName("card_holder")
-    val cardHolder: String?,
+    val cardHolder: String? = "",
 
     @SerializedName("card_number")
-    val cardNumber: String?,
+    val cardNumber: String? = "",
 
     @SerializedName("expiration_date")
-    val expirationDate: String?,
+    val expirationDate: String? = "",
 
     @SerializedName("card_type")
-    val cardType: String?,
+    val cardType: String? = "",
 
 )

@@ -1,7 +1,9 @@
 package com.waewaee.moviebookingapp.network.dataagents
 
 import com.waewaee.moviebookingapp.data.vos.ErrorVO
+import com.waewaee.moviebookingapp.data.vos.UserVO
 import com.waewaee.moviebookingapp.network.responses.LoginResponse
+import com.waewaee.themovieapp.data.vos.MovieVO
 
 interface CinemaDataAgent {
 
@@ -20,6 +22,17 @@ interface CinemaDataAgent {
         phone: String,
         onSuccess: (LoginResponse) -> Unit,
         onFailure: (String) -> Unit,
+    )
+
+    fun getProfile(
+        authorization: String,
+        onSuccess: (LoginResponse)-> Unit,
+        onFailure: (String) -> Unit,
+    )
+
+    fun getNowPlayingMovies(
+        onSuccess : (List<MovieVO>) -> Unit,
+        onFailure : (String) -> Unit
     )
 
 }

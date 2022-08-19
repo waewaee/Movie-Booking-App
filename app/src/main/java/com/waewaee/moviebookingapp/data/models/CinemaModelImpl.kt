@@ -1,8 +1,11 @@
 package com.waewaee.moviebookingapp.data.models
 
+import com.waewaee.moviebookingapp.data.vos.CardVO
 import com.waewaee.moviebookingapp.data.vos.ErrorVO
+import com.waewaee.moviebookingapp.data.vos.UserVO
 import com.waewaee.moviebookingapp.network.dataagents.CinemaDataAgent
 import com.waewaee.moviebookingapp.network.dataagents.RetrofitCinemaDataAgentImpl
+import com.waewaee.themovieapp.data.vos.MovieVO
 
 object CinemaModelImpl: CinemaModel {
 
@@ -37,5 +40,24 @@ object CinemaModelImpl: CinemaModel {
             var errorVO = ErrorVO(code = response.code ?: 404, message = response.message ?: "Not Found")
             onSuccess(errorVO)
         }, onFailure = onFailure)
+    }
+
+    override fun getProfile(
+        authorization: String,
+        onSuccess: (UserVO) -> Unit,
+        onFailure: (String) -> Unit
+    ) {
+        mCinemaDataAgent.getProfile(authorization = authorization, onSuccess = { response ->
+            var userVO = response.userVO
+            onSuccess(userVO ?: UserVO())
+        }, onFailure = onFailure)
+    }
+
+    override fun getNowPlayingMovies(
+        onSuccess: (List<MovieVO>) -> Unit,
+        onFailure: (String) -> Unit
+    ) {
+        mCinemaDataAgent.getNowPlayingMovies(onSuccess = onSuccess, onFailure = onFailure)
+
     }
 }
