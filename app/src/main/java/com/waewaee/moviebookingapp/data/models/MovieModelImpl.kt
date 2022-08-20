@@ -21,4 +21,12 @@ object MovieModelImpl: MovieModel {
     ) {
         mMovieDataAgent.getComingSoonMovies(onSuccess = onSuccess, onFailure = onFailure)
     }
+
+    override fun getMovieDetails(
+        movieId: String,
+        onSuccess: (MovieVO) -> Unit,
+        onFailure: (String) -> Unit
+    ) {
+        mMovieDataAgent.getMovieDetails(movieId = movieId, onSuccess = onSuccess, onFailure = onFailure)
+    }
 }

@@ -1,6 +1,6 @@
 package com.waewaee.moviebookingapp.data.vos
 
-class MovieSeatVO(
+data class MovieSeatVO(
     val title: String,
     private val type: String) {
 

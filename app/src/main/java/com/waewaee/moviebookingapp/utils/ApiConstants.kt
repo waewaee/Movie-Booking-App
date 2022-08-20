@@ -10,6 +10,7 @@ const val API_GET_PROFILE = "/api/v1/profile"
 const val API_LOGOUT = "/api/v1/logout"
 const val API_GET_NOW_PLAYING_MOVIES = "/3/movie/now_playing"
 const val API_GET_COMING_SOON_MOVIES = "/3/movie/upcoming"
+const val API_GET_MOVIE_DETAILS = "/3/movie"
 
 // Params
 const val PARAM_NAME = "name"

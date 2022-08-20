@@ -147,8 +147,8 @@ class MovieListActivity : AppCompatActivity(), MovieViewHolderDelegate {
 
     }
 
-    override fun onTapMovie() {
+    override fun onTapMovie(movieId: Int) {
 //        Snackbar.make(window.decorView, "Tapped movie", Snackbar.LENGTH_SHORT).show()
-        startActivity(MovieDetailsActivity.newIntent(this))
+        startActivity(MovieDetailsActivity.newIntent(this, movieId))
     }
 }

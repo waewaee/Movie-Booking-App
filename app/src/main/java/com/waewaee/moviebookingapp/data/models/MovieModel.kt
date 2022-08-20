@@ -12,4 +12,10 @@ interface MovieModel {
         onSuccess: (List<MovieVO>) -> Unit,
         onFailure: (String) -> Unit
     )
+
+    fun getMovieDetails(
+        movieId: String,
+        onSuccess: (MovieVO) -> Unit,
+        onFailure: (String) -> Unit
+    )
 }

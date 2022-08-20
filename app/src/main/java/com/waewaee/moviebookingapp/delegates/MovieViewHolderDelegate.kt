@@ -1,5 +1,5 @@
 package com.waewaee.moviebookingapp.delegates
 
 interface MovieViewHolderDelegate {
-    fun onTapMovie()
+    fun onTapMovie(movieId: Int)
 }

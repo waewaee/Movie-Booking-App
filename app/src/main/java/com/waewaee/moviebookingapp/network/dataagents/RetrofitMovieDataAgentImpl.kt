@@ -82,4 +82,31 @@ object RetrofitMovieDataAgentImpl: MovieDataAgent {
 
             })
     }
+
+    override fun getMovieDetails(
+        movieId: String,
+        onSuccess: (MovieVO) -> Unit,
+        onFailure: (String) -> Unit
+    ) {
+        mMovieApi?.getMovieDetails(movieId = movieId)
+            ?.enqueue(object : Callback<MovieVO> {
+                override fun onResponse(
+                    call: Call<MovieVO>,
+                    response: Response<MovieVO>
+                ) {
+                    if (response.isSuccessful) {
+                        response.body()?.let {
+                            onSuccess(it)
+                        }
+                    } else {
+                        onFailure(response.message())
+                    }
+                }
+
+                override fun onFailure(call: Call<MovieVO>, t: Throwable) {
+                    onFailure(t.message ?: "")
+                }
+
+            })
+    }
 }
