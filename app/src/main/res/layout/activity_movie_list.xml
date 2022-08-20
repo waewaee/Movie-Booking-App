@@ -205,13 +205,13 @@
                 android:id="@+id/tvLogOutOnMenu"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/lbl_log_out"
-                android:textColor="@color/white"
-                android:textSize="@dimen/text_regular_2x"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="@dimen/margin_xxlarge"
                 android:drawableStart="@drawable/ic_baseline_logout_white_24dp"
                 android:drawablePadding="@dimen/margin_medium_2"
-                android:layout_alignParentBottom="true"
-                android:layout_marginBottom="@dimen/margin_xxlarge"/>
+                android:text="@string/lbl_log_out"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_regular_2x" />
 
         </RelativeLayout>
 

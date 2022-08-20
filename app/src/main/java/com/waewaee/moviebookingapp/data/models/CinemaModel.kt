@@ -13,8 +13,6 @@ interface CinemaModel {
         onFailure: (String) -> Unit,
     )
 
-    fun getToken() : String
-
     fun getSignUpWithEmail(
         name: String,
         email: String,
@@ -25,13 +23,13 @@ interface CinemaModel {
     )
 
     fun getProfile(
-        authorization: String,
         onSuccess: (UserVO) -> Unit,
         onFailure: (String) -> Unit,
     )
 
-    fun getNowPlayingMovies(
-        onSuccess : (List<MovieVO>)  -> Unit,
-        onFailure : (String) -> Unit
+    fun logout(
+        onSuccess: (ErrorVO) -> Unit,
+        onFailure: (String) -> Unit,
     )
+
 }

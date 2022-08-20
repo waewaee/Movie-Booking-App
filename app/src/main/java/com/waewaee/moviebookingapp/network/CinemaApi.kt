@@ -25,15 +25,13 @@ interface CinemaApi {
     ) : Call<LoginResponse>
 
     @GET(API_GET_PROFILE)
-    @FormUrlEncoded
     fun getProfile(
         @Header(PARAM_AUTHORIZATION) authorization: String,
     ) : Call<LoginResponse>
 
-    @GET(API_GET_NOW_PLAYING_MOVIES)
-    fun getNowPlayingMovies(
-        @Query(PARAM_API_KEY) apiKey: String = MOVIE_API_KEY,
-        @Query(PARAM_PAGE) page: Int = 1,
-    ) : Call<MovieListResponse>
+    @POST(API_LOGOUT)
+    fun logout(
+        @Header(PARAM_AUTHORIZATION) authorization: String,
+    ) : Call<LoginResponse>
 
 }

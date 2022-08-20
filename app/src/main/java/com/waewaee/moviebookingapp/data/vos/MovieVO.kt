@@ -87,8 +87,8 @@ data class MovieVO(
         return voteAverage?.div(2)?.toFloat() ?: 0.0f
     }
 
-    fun getGenresAsSlashSeparatedString(): String {
-        return genres?.map { it.name }?.joinToString("/") ?: ""
+    fun getGenresAsCommaSeparatedString(): String {
+        return genres?.map { it.name }?.joinToString(",") ?: ""
     }
 
     fun getProductionCountriesAsCommaSeparatedString(): String {

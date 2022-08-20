@@ -69,7 +69,7 @@ object RetrofitCinemaDataAgentImpl: CinemaDataAgent {
         password: String,
         phone: String,
         onSuccess: (LoginResponse) -> Unit,
-        onFailure: (String) -> Unit
+        onFailure: (String) -> Unit,
     ) {
         mCinemaApi?.getSignUpWithEmail(name = name, email = email, password = password, phone = phone)
             ?.enqueue(object : Callback<LoginResponse> {
@@ -110,32 +110,32 @@ object RetrofitCinemaDataAgentImpl: CinemaDataAgent {
                 }
 
                 override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-                    onFailure(t.message ?: "")
+                    onFailure(t.message ?: "Failed")
                 }
 
             })
     }
 
-    override fun getNowPlayingMovies(
-        onSuccess: (List<MovieVO>) -> Unit,
+    override fun logout(
+        authorization: String,
+        onSuccess: (LoginResponse) -> Unit,
         onFailure: (String) -> Unit
     ) {
-        mCinemaApi?.getNowPlayingMovies()
-            ?.enqueue(object : Callback<MovieListResponse> {
+        mCinemaApi?.logout(authorization = authorization)
+            ?.enqueue(object : Callback<LoginResponse> {
                 override fun onResponse(
-                    call: Call<MovieListResponse>,
-                    response: Response<MovieListResponse>
+                    call: Call<LoginResponse>,
+                    response: Response<LoginResponse>
                 ) {
                     if (response.isSuccessful) {
-                        val movieList = response.body()?.results ?: listOf()
-                        onSuccess(movieList)
+                        onSuccess(response.body() ?: LoginResponse())
                     } else {
                         onFailure(response.message())
                     }
                 }
 
-                override fun onFailure(call: Call<MovieListResponse>, t: Throwable) {
-                    onFailure(t.message ?: "")
+                override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+                    onFailure(t.message ?: "Failed")
                 }
 
             })

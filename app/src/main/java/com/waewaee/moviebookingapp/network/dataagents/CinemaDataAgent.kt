@@ -30,9 +30,10 @@ interface CinemaDataAgent {
         onFailure: (String) -> Unit,
     )
 
-    fun getNowPlayingMovies(
-        onSuccess : (List<MovieVO>) -> Unit,
-        onFailure : (String) -> Unit
+    fun logout(
+    authorization: String,
+    onSuccess: (LoginResponse)-> Unit,
+    onFailure: (String) -> Unit,
     )
 
 }

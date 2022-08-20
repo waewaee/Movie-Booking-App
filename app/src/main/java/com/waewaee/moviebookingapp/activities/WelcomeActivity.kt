@@ -15,6 +15,7 @@ class WelcomeActivity : AppCompatActivity() {
 
     private fun setUpListeners() {
         btnStart.setOnClickListener {
+            finish()
             startActivity(LoginActivity.newIntent(this))
         }
     }

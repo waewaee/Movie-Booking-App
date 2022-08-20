@@ -26,6 +26,5 @@ class MovieViewHolder(itemView: View, private val delegate: MovieViewHolderDeleg
             .into(itemView.ivMovieImage)
 
         itemView.tvMovieName.text = movie.title
-        itemView.tvMovieGenre.text = movie.getGenresAsSlashSeparatedString()
     }
 }

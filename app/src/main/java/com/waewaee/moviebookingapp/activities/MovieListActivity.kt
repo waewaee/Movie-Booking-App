@@ -7,12 +7,17 @@ import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import androidx.appcompat.app.ActionBarDrawerToggle
+import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
 import com.waewaee.moviebookingapp.R
 import com.waewaee.moviebookingapp.adapters.MovieAdapter
 import com.waewaee.moviebookingapp.data.models.CinemaModel
 import com.waewaee.moviebookingapp.data.models.CinemaModelImpl
+import com.waewaee.moviebookingapp.data.models.MovieModel
+import com.waewaee.moviebookingapp.data.models.MovieModelImpl
 import com.waewaee.moviebookingapp.delegates.MovieViewHolderDelegate
+import com.waewaee.moviebookingapp.utils.CINEMA_BASE_URL
+import com.waewaee.moviebookingapp.utils.IMAGE_BASE_URL
 import com.waewaee.moviebookingapp.view.pods.MovieListViewPod
 import kotlinx.android.synthetic.main.activity_movie_list.*
 
@@ -24,7 +29,7 @@ class MovieListActivity : AppCompatActivity(), MovieViewHolderDelegate {
     lateinit var mMovieAdapter: MovieAdapter
 
     private val mCinemaModel: CinemaModel = CinemaModelImpl
-    private val mToken: String = mCinemaModel.getToken()
+    private val mMovieModel: MovieModel = MovieModelImpl
 
     companion object {
         fun newIntent(context: Context): Intent{
@@ -46,26 +51,42 @@ class MovieListActivity : AppCompatActivity(), MovieViewHolderDelegate {
     }
 
     private fun requestData() {
-        Log.e("mtoken", "Bearer${mToken}")
         mCinemaModel.getProfile(
-            authorization = "Bearer${mToken}",
-            {
-                tvProfileName.text = it.name
+            onSuccess = {
+                tvProfileName.text = "Hi ${it.name}"
                 tvProfileNameOnMenu.text = it.name
                 tvProfileEmailOnMenu.text = it.email
+
+                Glide.with(this)
+                    .load("$CINEMA_BASE_URL${it.profileImage}")
+                    .into(ivProfile)
+
+                Glide.with(this)
+                    .load("$CINEMA_BASE_URL${it.profileImage}")
+                    .into(ivProfileOnMenu)
             },
-            {
+            onFailure = {
                 Snackbar.make(window.decorView, it, Snackbar.LENGTH_SHORT).show()
             })
 
-        mCinemaModel.getNowPlayingMovies(
+        mMovieModel.getNowPlayingMovies(
             onSuccess = {
-                mMovieAdapter.setNewData(it)
+                mNowShowingMovieListViewPod.setData(it)
             },
             onFailure = {
                 Snackbar.make(window.decorView, it, Snackbar.LENGTH_SHORT).show()
             }
         )
+
+        mMovieModel.getComingSoonMovies(
+            onSuccess = {
+                mComingSoonMovieListViewPod.setData(it)
+            },
+            onFailure = {
+                Snackbar.make(window.decorView, it, Snackbar.LENGTH_SHORT).show()
+            }
+        )
+
     }
 
     private fun setUpListeners() {
@@ -84,6 +105,24 @@ class MovieListActivity : AppCompatActivity(), MovieViewHolderDelegate {
         actionBarDrawerToggle.let {
             drawerLayout.addDrawerListener(it)
             it.syncState()
+        }
+
+        tvLogOutOnMenu.setOnClickListener {
+            drawerLayout.close()
+
+            mCinemaModel.logout(
+                onSuccess = {
+                    if (it.code == 200) {
+                        finishAffinity()
+                        startActivity(LoginActivity.newIntent(this))
+                    } else {
+                        Snackbar.make(window.decorView, "${it.message}", Snackbar.LENGTH_SHORT).show()
+                    }
+                },
+                onFailure = {
+                    Snackbar.make(window.decorView, it, Snackbar.LENGTH_SHORT).show()
+                }
+            )
         }
     }
 

@@ -19,13 +19,10 @@ object CinemaModelImpl: CinemaModel {
         onFailure: (String) -> Unit
     ) {
         mCinemaDataAgent.getLoginWithEmail(email = email, password = password, onSuccess = onSuccess, onFailure = onFailure, setToken = {
-            userToken = it
+            userToken = "Bearer $it"
         })
     }
 
-    override fun getToken() : String {
-        return userToken
-    }
 
     override fun getSignUpWithEmail(
         name: String,
@@ -36,28 +33,33 @@ object CinemaModelImpl: CinemaModel {
         onFailure: (String) -> Unit
     ) {
         mCinemaDataAgent.getSignUpWithEmail(name = name, email = email, password = password, phone = phone, onSuccess = { response ->
-            userToken = response.token ?: ""
+            userToken = "Bearer ${response.token}"
             var errorVO = ErrorVO(code = response.code ?: 404, message = response.message ?: "Not Found")
             onSuccess(errorVO)
-        }, onFailure = onFailure)
+        },
+            onFailure = onFailure)
     }
 
     override fun getProfile(
-        authorization: String,
         onSuccess: (UserVO) -> Unit,
         onFailure: (String) -> Unit
     ) {
-        mCinemaDataAgent.getProfile(authorization = authorization, onSuccess = { response ->
+        mCinemaDataAgent.getProfile(authorization = userToken, onSuccess = { response ->
             var userVO = response.userVO
             onSuccess(userVO ?: UserVO())
         }, onFailure = onFailure)
     }
 
-    override fun getNowPlayingMovies(
-        onSuccess: (List<MovieVO>) -> Unit,
+    override fun logout(
+        onSuccess: (ErrorVO) -> Unit,
         onFailure: (String) -> Unit
     ) {
-        mCinemaDataAgent.getNowPlayingMovies(onSuccess = onSuccess, onFailure = onFailure)
-
+        mCinemaDataAgent.logout(authorization = userToken, onSuccess = { response ->
+            var errorVO = ErrorVO(code = response.code ?: 404, message = response.message ?: "Unauthorized")
+            userToken = ""
+            onSuccess(errorVO)
+        },
+        onFailure = onFailure)
     }
+
 }
