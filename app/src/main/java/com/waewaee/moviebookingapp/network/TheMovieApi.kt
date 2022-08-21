@@ -1,5 +1,6 @@
 package com.waewaee.moviebookingapp.network
 
+import com.waewaee.moviebookingapp.network.responses.GetCreditsByMovieResponse
 import com.waewaee.moviebookingapp.network.responses.MovieListResponse
 import com.waewaee.moviebookingapp.utils.*
 import com.waewaee.themovieapp.data.vos.MovieVO
@@ -25,4 +26,11 @@ interface TheMovieApi {
         @Path("movie_id") movieId: String,
         @Query(PARAM_API_KEY) apiKey: String = MOVIE_API_KEY
     ) : Call<MovieVO>
+
+    @GET("$API_GET_CREDITS_BY_MOVIE/{movie_id}/credits")
+    fun getCreditsByMovie(
+        @Path("movie_id") movieId: String,
+        @Query(PARAM_API_KEY) apiKey: String = MOVIE_API_KEY,
+        @Query(PARAM_PAGE) page: Int = 1,
+    ) : Call<GetCreditsByMovieResponse>
 }

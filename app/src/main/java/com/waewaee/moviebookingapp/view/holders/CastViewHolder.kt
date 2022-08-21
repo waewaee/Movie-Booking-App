@@ -10,6 +10,10 @@ import kotlinx.android.synthetic.main.view_item_cast.view.*
 class CastViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     fun bindData(actor: ActorVO) {
+        Glide.with(itemView.context)
+            .load("$IMAGE_BASE_URL${actor.profilePath}")
+            .into(itemView.ivCastImage)
 
+        itemView.tvCastName.text = actor.name
     }
 }

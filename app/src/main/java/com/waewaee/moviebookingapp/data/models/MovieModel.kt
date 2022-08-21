@@ -1,5 +1,6 @@
 package com.waewaee.moviebookingapp.data.models
 
+import com.waewaee.moviebookingapp.data.vos.ActorVO
 import com.waewaee.themovieapp.data.vos.MovieVO
 
 interface MovieModel {
@@ -16,6 +17,12 @@ interface MovieModel {
     fun getMovieDetails(
         movieId: String,
         onSuccess: (MovieVO) -> Unit,
+        onFailure: (String) -> Unit
+    )
+
+    fun getCreditsByMovie(
+        movieId: String,
+        onSuccess: (List<ActorVO>) -> Unit,
         onFailure: (String) -> Unit
     )
 }

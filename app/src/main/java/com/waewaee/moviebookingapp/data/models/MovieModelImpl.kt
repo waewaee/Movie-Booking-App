@@ -1,5 +1,6 @@
 package com.waewaee.moviebookingapp.data.models
 
+import com.waewaee.moviebookingapp.data.vos.ActorVO
 import com.waewaee.moviebookingapp.network.dataagents.MovieDataAgent
 import com.waewaee.moviebookingapp.network.dataagents.RetrofitMovieDataAgentImpl
 import com.waewaee.themovieapp.data.vos.MovieVO
@@ -28,5 +29,17 @@ object MovieModelImpl: MovieModel {
         onFailure: (String) -> Unit
     ) {
         mMovieDataAgent.getMovieDetails(movieId = movieId, onSuccess = onSuccess, onFailure = onFailure)
+    }
+
+    override fun getCreditsByMovie(
+        movieId: String,
+        onSuccess: (List<ActorVO>) -> Unit,
+        onFailure: (String) -> Unit
+    ) {
+        mMovieDataAgent.getCreditsByMovie(
+            movieId = movieId,
+            onSuccess = onSuccess,
+            onFailure = onFailure
+        )
     }
 }

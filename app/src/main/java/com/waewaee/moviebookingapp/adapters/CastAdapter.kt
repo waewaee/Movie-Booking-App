@@ -25,7 +25,7 @@ class CastAdapter: RecyclerView.Adapter<CastViewHolder>() {
     }
 
     override fun getItemCount(): Int {
-//        return mActorList.count()
+        return mActorList.count()
         return 5
     }
 

@@ -52,11 +52,24 @@ class MovieDetailsActivity : AppCompatActivity() {
 
         val movieId = intent?.getIntExtra(EXTRA_MOVIE_ID, 0)
         movieId?.let {
-            requestData(it)
+            requestDetailData(it)
+            requestCastData(it)
         }
     }
 
-    private fun requestData(movieId: Int) {
+    private fun requestCastData(movieId: Int) {
+        mMovieModel.getCreditsByMovie(
+            movieId = movieId.toString(),
+            onSuccess = {
+                castAdapter.setNewData(it)
+            },
+            onFailure = {
+                Snackbar.make(window.decorView, it, Snackbar.LENGTH_SHORT).show()
+            }
+        )
+    }
+
+    private fun requestDetailData(movieId: Int) {
         mMovieModel.getMovieDetails(
             movieId = movieId.toString(),
             onSuccess = {

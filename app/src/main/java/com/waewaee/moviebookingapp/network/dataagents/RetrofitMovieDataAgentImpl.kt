@@ -1,7 +1,9 @@
 package com.waewaee.moviebookingapp.network.dataagents
 
+import com.waewaee.moviebookingapp.data.vos.ActorVO
 import com.waewaee.moviebookingapp.network.CinemaApi
 import com.waewaee.moviebookingapp.network.TheMovieApi
+import com.waewaee.moviebookingapp.network.responses.GetCreditsByMovieResponse
 import com.waewaee.moviebookingapp.network.responses.MovieListResponse
 import com.waewaee.moviebookingapp.utils.MOVIE_BASE_URL
 import com.waewaee.themovieapp.data.vos.MovieVO
@@ -107,6 +109,32 @@ object RetrofitMovieDataAgentImpl: MovieDataAgent {
                     onFailure(t.message ?: "")
                 }
 
+            })
+    }
+
+    override fun getCreditsByMovie(
+        movieId: String,
+        onSuccess: (List<ActorVO>) -> Unit,
+        onFailure: (String) -> Unit
+    ) {
+        mMovieApi?.getCreditsByMovie(movieId = movieId)
+            ?.enqueue(object : Callback<GetCreditsByMovieResponse> {
+                override fun onResponse(
+                    call: Call<GetCreditsByMovieResponse>,
+                    response: Response<GetCreditsByMovieResponse>
+                ) {
+                    if (response.isSuccessful) {
+                        response.body()?.let {
+                            onSuccess(it.cast ?: listOf())
+                        }
+                    } else {
+                        onFailure(response.message())
+                    }
+                }
+
+                override fun onFailure(call: Call<GetCreditsByMovieResponse>, t: Throwable) {
+                    onFailure(t.message ?: "")
+                }
             })
     }
 }
