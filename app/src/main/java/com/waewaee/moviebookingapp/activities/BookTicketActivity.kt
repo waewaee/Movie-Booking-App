@@ -4,16 +4,19 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.waewaee.moviebookingapp.R
 import com.waewaee.moviebookingapp.adapters.CinemaAdapter
 import com.waewaee.moviebookingapp.adapters.DatePickerAdapter
-import com.waewaee.moviebookingapp.adapters.ShowTimeAdapter
+import com.waewaee.moviebookingapp.data.vos.CalendarVO
+import com.waewaee.moviebookingapp.delegates.CalendarViewHolderDelegate
+import com.waewaee.moviebookingapp.dummy.TWO_WEEKS_DATES
 import kotlinx.android.synthetic.main.activity_book_ticket.*
-import kotlinx.android.synthetic.main.view_item_cinema.*
 
-class BookTicketActivity : AppCompatActivity() {
+class BookTicketActivity : AppCompatActivity(), CalendarViewHolderDelegate {
+
+//    private var mTwoWeeksDates: List<CalendarVO>? = null
+    lateinit var datePickerAdapter: DatePickerAdapter
 
     companion object {
         fun newIntent(context: Context): Intent {
@@ -47,8 +50,15 @@ class BookTicketActivity : AppCompatActivity() {
     }
 
     private fun setUpDatePickerRecyclerView() {
-        val datePickerAdapter = DatePickerAdapter()
+        datePickerAdapter = DatePickerAdapter(TWO_WEEKS_DATES, this)
         rvDatePicker.adapter = datePickerAdapter
         rvDatePicker.layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false )
+    }
+
+    override fun onTapDate(date: Int) {
+        TWO_WEEKS_DATES.map {
+            it.isSelected = it.dateOfMonth == date
+        }
+        datePickerAdapter.setNewData(TWO_WEEKS_DATES)
     }
 }

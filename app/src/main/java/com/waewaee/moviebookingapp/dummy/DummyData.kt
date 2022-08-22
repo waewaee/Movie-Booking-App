@@ -1,6 +1,7 @@
 package com.waewaee.moviebookingapp.dummy
 
 import com.waewaee.moviebookingapp.data.vos.*
+import com.waewaee.themovieapp.data.vos.DateVO
 
 val DUMMY_SEATS = listOf(
     MovieSeatVO(title = "A", type = SEAT_TYPE_TEXT),
@@ -79,4 +80,23 @@ val DUMMY_SEATS = listOf(
     MovieSeatVO(title = "", type = SEAT_TYPE_AVAILABLE),
     MovieSeatVO(title = "", type = SEAT_TYPE_AVAILABLE),
     MovieSeatVO(title = "G", type = SEAT_TYPE_TEXT),
+)
+
+val TWO_WEEKS_DATES = listOf(
+    CalendarVO(dayOfWeek = "Sun", dateOfMonth = 14),
+    CalendarVO(dayOfWeek = "Mon", dateOfMonth = 15),
+    CalendarVO(dayOfWeek = "Tue", dateOfMonth = 16),
+    CalendarVO(dayOfWeek = "Wed", dateOfMonth = 17),
+    CalendarVO(dayOfWeek = "Thur", dateOfMonth = 18),
+    CalendarVO(dayOfWeek = "Fri", dateOfMonth = 19),
+    CalendarVO(dayOfWeek = "Sat", dateOfMonth = 20),
+
+    CalendarVO(dayOfWeek = "Sun", dateOfMonth = 21),
+    CalendarVO(dayOfWeek = "Mon", dateOfMonth = 22),
+    CalendarVO(dayOfWeek = "Tues", dateOfMonth = 23),
+    CalendarVO(dayOfWeek = "Wed", dateOfMonth = 24),
+    CalendarVO(dayOfWeek = "Thur", dateOfMonth = 25),
+    CalendarVO(dayOfWeek = "Fri", dateOfMonth = 26),
+    CalendarVO(dayOfWeek = "Sat", dateOfMonth = 27),
+
 )

@@ -13,7 +13,7 @@ import com.waewaee.moviebookingapp.adapters.CastAdapter
 import com.waewaee.moviebookingapp.adapters.GenreChipAdapter
 import com.waewaee.moviebookingapp.data.models.MovieModel
 import com.waewaee.moviebookingapp.data.models.MovieModelImpl
-import com.waewaee.moviebookingapp.utils.IMAGE_BASE_URL
+import com.waewaee.moviebookingapp.utils.MOVIE_IMAGE_BASE_URL
 import com.waewaee.themovieapp.data.vos.MovieVO
 import kotlinx.android.synthetic.main.activity_movie_details.*
 
@@ -83,7 +83,7 @@ class MovieDetailsActivity : AppCompatActivity() {
 
     private fun bindDetailData(movie: MovieVO) {
         Glide.with(this)
-            .load("$IMAGE_BASE_URL${movie.posterPath}")
+            .load("$MOVIE_IMAGE_BASE_URL${movie.posterPath}")
             .into(ivMovieImage)
 
         tvMovieName.text = movie.title ?: ""

@@ -2,7 +2,7 @@ package com.waewaee.moviebookingapp.utils
 
 const val CINEMA_BASE_URL = "https://tmba.padc.com.mm"
 const val MOVIE_BASE_URL = "https://api.themoviedb.org"
-const val IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w200"
+const val MOVIE_IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w200"
 
 const val API_LOGIN_WITH_EMAIL = "/api/v1/email-login"
 const val API_SIGN_UP_WITH_EMAIL = "/api/v1/register"

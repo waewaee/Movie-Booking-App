@@ -45,8 +45,8 @@ data class MovieVO(
     @SerializedName("vote_count")
     val voteCount: Int?,
 
-    @SerializedName("belongs_to_collection")
-    val belongsToCollection: Boolean?,
+//    @SerializedName("belongs_to_collection")
+//    val belongsToCollection: Boolean?,
 
     @SerializedName("budget")
     val budget: Int?,

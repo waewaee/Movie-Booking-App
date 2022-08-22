@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import androidx.appcompat.app.ActionBarDrawerToggle
 import com.bumptech.glide.Glide
@@ -17,7 +16,6 @@ import com.waewaee.moviebookingapp.data.models.MovieModel
 import com.waewaee.moviebookingapp.data.models.MovieModelImpl
 import com.waewaee.moviebookingapp.delegates.MovieViewHolderDelegate
 import com.waewaee.moviebookingapp.utils.CINEMA_BASE_URL
-import com.waewaee.moviebookingapp.utils.IMAGE_BASE_URL
 import com.waewaee.moviebookingapp.view.pods.MovieListViewPod
 import kotlinx.android.synthetic.main.activity_movie_list.*
 

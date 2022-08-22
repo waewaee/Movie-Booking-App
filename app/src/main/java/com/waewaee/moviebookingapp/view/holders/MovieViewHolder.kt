@@ -4,7 +4,7 @@ import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.waewaee.moviebookingapp.delegates.MovieViewHolderDelegate
-import com.waewaee.moviebookingapp.utils.IMAGE_BASE_URL
+import com.waewaee.moviebookingapp.utils.MOVIE_IMAGE_BASE_URL
 import com.waewaee.themovieapp.data.vos.MovieVO
 import kotlinx.android.synthetic.main.view_item_movie.view.*
 
@@ -24,7 +24,7 @@ class MovieViewHolder(itemView: View, private val delegate: MovieViewHolderDeleg
         mMovie = movie
 
         Glide.with(itemView.context)
-            .load("$IMAGE_BASE_URL${movie.posterPath}")
+            .load("$MOVIE_IMAGE_BASE_URL${movie.posterPath}")
             .into(itemView.ivMovieImage)
 
         itemView.tvMovieName.text = movie.title
