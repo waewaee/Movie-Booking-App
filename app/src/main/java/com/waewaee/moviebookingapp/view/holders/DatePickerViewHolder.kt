@@ -24,14 +24,12 @@ class DatePickerViewHolder(itemView: View, private var mDelegate: CalendarViewHo
         itemView.tvDay.text = date.dayOfWeek
         itemView.tvDate.text = date.dateOfMonth.toString()
 
-        mDate.isSelected?.let {
-            if (mDate.isSelected!!) {
-                itemView.tvDay.setTextColor(Color.WHITE)
-                itemView.tvDate.setTextColor(Color.WHITE)
-            } else {
-                itemView.tvDay.setTextColor(ContextCompat.getColor(itemView.context, R.color.secondary_text))
-                itemView.tvDate.setTextColor(ContextCompat.getColor(itemView.context, R.color.secondary_text))
-            }
+        if (mDate.isSelected) {
+            itemView.tvDay.setTextColor(Color.WHITE)
+            itemView.tvDate.setTextColor(Color.WHITE)
+        } else {
+            itemView.tvDay.setTextColor(ContextCompat.getColor(itemView.context, R.color.secondary_text))
+            itemView.tvDate.setTextColor(ContextCompat.getColor(itemView.context, R.color.secondary_text))
         }
     }
 }

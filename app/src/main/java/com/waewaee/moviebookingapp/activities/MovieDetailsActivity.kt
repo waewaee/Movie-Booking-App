@@ -24,6 +24,8 @@ class MovieDetailsActivity : AppCompatActivity() {
     lateinit var castAdapter: CastAdapter
     lateinit var genreChipAdapter: GenreChipAdapter
 
+    private var movieId: Int = 0
+
     companion object {
         private val EXTRA_MOVIE_ID = "EXTRA_MOVIE_ID"
 
@@ -50,11 +52,9 @@ class MovieDetailsActivity : AppCompatActivity() {
         setUpCastRecyclerView()
         setUpListeners()
 
-        val movieId = intent?.getIntExtra(EXTRA_MOVIE_ID, 0)
-        movieId?.let {
-            requestDetailData(it)
-            requestCastData(it)
-        }
+        movieId = intent?.getIntExtra(EXTRA_MOVIE_ID, 0) ?: 0
+        requestDetailData(movieId)
+        requestCastData(movieId)
     }
 
     private fun requestCastData(movieId: Int) {
@@ -98,7 +98,7 @@ class MovieDetailsActivity : AppCompatActivity() {
 
     private fun setUpListeners() {
         btnGetTicket.setOnClickListener {
-            startActivity(BookTicketActivity.newIntent(this))
+            startActivity(BookTicketActivity.newIntent(this, movieId))
         }
 
         btnBack.setOnClickListener {

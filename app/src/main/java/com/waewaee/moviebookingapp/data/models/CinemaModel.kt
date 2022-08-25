@@ -1,5 +1,6 @@
 package com.waewaee.moviebookingapp.data.models
 
+import com.waewaee.moviebookingapp.data.vos.CinemaVO
 import com.waewaee.moviebookingapp.data.vos.ErrorVO
 import com.waewaee.moviebookingapp.data.vos.UserVO
 import com.waewaee.themovieapp.data.vos.MovieVO
@@ -29,6 +30,12 @@ interface CinemaModel {
 
     fun logout(
         onSuccess: (ErrorVO) -> Unit,
+        onFailure: (String) -> Unit,
+    )
+
+    fun getCinemaTimeslots(
+        date: String,
+        onSuccess: (List<CinemaVO>) -> Unit,
         onFailure: (String) -> Unit,
     )
 

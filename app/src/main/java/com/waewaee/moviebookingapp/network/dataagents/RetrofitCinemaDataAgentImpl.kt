@@ -4,6 +4,7 @@ import com.waewaee.moviebookingapp.data.vos.ErrorVO
 import com.waewaee.moviebookingapp.network.CinemaApi
 import com.waewaee.moviebookingapp.network.responses.LoginResponse
 import com.waewaee.moviebookingapp.network.responses.MovieListResponse
+import com.waewaee.moviebookingapp.network.responses.TimeslotsResponse
 import com.waewaee.moviebookingapp.utils.CINEMA_BASE_URL
 import com.waewaee.themovieapp.data.vos.MovieVO
 import okhttp3.OkHttpClient
@@ -135,6 +136,32 @@ object RetrofitCinemaDataAgentImpl: CinemaDataAgent {
                 }
 
                 override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+                    onFailure(t.message ?: "Failed")
+                }
+
+            })
+    }
+
+    override fun getCinemaTimeslots(
+        date: String,
+        authorization: String,
+        onSuccess: (TimeslotsResponse) -> Unit,
+        onFailure: (String) -> Unit
+    ) {
+        mCinemaApi?.getCinemaTimeslots(authorization = authorization, date = date)
+            ?.enqueue(object : Callback<TimeslotsResponse> {
+                override fun onResponse(
+                    call: Call<TimeslotsResponse>,
+                    response: Response<TimeslotsResponse>
+                ) {
+                    if (response.isSuccessful) {
+                        onSuccess(response.body() ?: TimeslotsResponse())
+                    } else {
+                        onFailure(response.message())
+                    }
+                }
+
+                override fun onFailure(call: Call<TimeslotsResponse>, t: Throwable) {
                     onFailure(t.message ?: "Failed")
                 }
 

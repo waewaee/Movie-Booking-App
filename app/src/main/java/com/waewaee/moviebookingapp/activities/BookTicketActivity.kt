@@ -5,22 +5,38 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.snackbar.Snackbar
 import com.waewaee.moviebookingapp.R
 import com.waewaee.moviebookingapp.adapters.CinemaAdapter
 import com.waewaee.moviebookingapp.adapters.DatePickerAdapter
-import com.waewaee.moviebookingapp.data.vos.CalendarVO
+import com.waewaee.moviebookingapp.data.models.CinemaModel
+import com.waewaee.moviebookingapp.data.models.CinemaModelImpl
+import com.waewaee.moviebookingapp.data.vos.CinemaVO
 import com.waewaee.moviebookingapp.delegates.CalendarViewHolderDelegate
+import com.waewaee.moviebookingapp.delegates.TimeslotDelegate
 import com.waewaee.moviebookingapp.dummy.TWO_WEEKS_DATES
 import kotlinx.android.synthetic.main.activity_book_ticket.*
 
-class BookTicketActivity : AppCompatActivity(), CalendarViewHolderDelegate {
+class BookTicketActivity : AppCompatActivity(), CalendarViewHolderDelegate, TimeslotDelegate {
 
-//    private var mTwoWeeksDates: List<CalendarVO>? = null
     lateinit var datePickerAdapter: DatePickerAdapter
+    lateinit var cinemaAdapter: CinemaAdapter
+    lateinit var movieDate: String
+    lateinit var movieTime: String
+    lateinit var cinemaName: String
+    lateinit var cinemaList: List<CinemaVO>
+
+    private val mCinemaModel: CinemaModel = CinemaModelImpl
+    private var movieId: Int = 0
+
 
     companion object {
-        fun newIntent(context: Context): Intent {
-            return Intent(context, BookTicketActivity::class.java)
+        private val EXTRA_MOVIE_ID = "EXTRA_MOVIE_ID"
+
+        fun newIntent(context: Context, movieId: Int): Intent {
+            val intent = Intent(context, BookTicketActivity::class.java)
+            intent.putExtra(EXTRA_MOVIE_ID, movieId)
+            return intent
         }
     }
 
@@ -31,6 +47,21 @@ class BookTicketActivity : AppCompatActivity(), CalendarViewHolderDelegate {
         setUpDatePickerRecyclerView()
         setUpCinemaRecyclerView()
         setUpListeners()
+
+        movieId = intent?.getIntExtra(EXTRA_MOVIE_ID, 0) ?: 0
+    }
+
+    private fun requestCinemaData() {
+        mCinemaModel.getCinemaTimeslots(
+            date = movieDate,
+            onSuccess = {
+                cinemaAdapter.setNewData(it)
+                cinemaList = it
+            },
+            onFailure = {
+                Snackbar.make(window.decorView, it, Snackbar.LENGTH_SHORT).show()
+            }
+        )
     }
 
     private fun setUpListeners() {
@@ -39,12 +70,14 @@ class BookTicketActivity : AppCompatActivity(), CalendarViewHolderDelegate {
         }
 
         btnNext.setOnClickListener {
-            startActivity(SeatingPlanActivity.newIntent(this))
+            if (movieDate.isNotEmpty() && movieTime.isNotEmpty() && cinemaName.isNotEmpty()) {
+                startActivity(SeatingPlanActivity.newIntent(this))
+            }
         }
     }
 
     private fun setUpCinemaRecyclerView() {
-        val cinemaAdapter = CinemaAdapter()
+        cinemaAdapter = CinemaAdapter(this)
         rvCinema.adapter = cinemaAdapter
         rvCinema.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
     }
@@ -56,9 +89,29 @@ class BookTicketActivity : AppCompatActivity(), CalendarViewHolderDelegate {
     }
 
     override fun onTapDate(date: Int) {
+        movieDate = "2022-08-$date"
+        requestCinemaData()
+
         TWO_WEEKS_DATES.map {
             it.isSelected = it.dateOfMonth == date
         }
         datePickerAdapter.setNewData(TWO_WEEKS_DATES)
+    }
+
+    override fun onTapTimeslot(startTime: String, cinemaId: Int) {
+        movieTime = startTime
+        cinemaList.map {
+            if (it.cinemaId == cinemaId) {
+                cinemaName = it.cinema ?: ""
+                it.timeslots?.map {
+                    it.isSelected = it.startTime == startTime
+                }
+            } else {
+                it.timeslots?.map {
+                    it.isSelected = false
+                }
+            }
+        }
+        cinemaAdapter.setNewData(cinemaList)
     }
 }
