@@ -23,6 +23,8 @@ class MovieDetailsActivity : AppCompatActivity() {
 
     lateinit var castAdapter: CastAdapter
     lateinit var genreChipAdapter: GenreChipAdapter
+    lateinit var movieName: String
+    lateinit var movieDuration: String
 
     private var movieId: Int = 0
 
@@ -87,18 +89,23 @@ class MovieDetailsActivity : AppCompatActivity() {
             .into(ivMovieImage)
 
         tvMovieName.text = movie.title ?: ""
+        movieName = movie.title ?: ""
+
         tvMovieDuration.text = movie.getRuntimeHourMinute()
+        movieDuration = movie.getRuntimeHourMinute()
+
         ratingBar.rating = movie.getRatingBasedOnFiveStars()
         movie.voteAverage?.let {
             tvMovieRating.text = "iMDb $it"
         }
-        genreChipAdapter.setNewData(movie.genres ?: listOf())
         tvPlotSummary.text = movie.overView ?: ""
+
+        genreChipAdapter.setNewData(movie.genres ?: listOf())
     }
 
     private fun setUpListeners() {
         btnGetTicket.setOnClickListener {
-            startActivity(BookTicketActivity.newIntent(this, movieId))
+            startActivity(BookTicketActivity.newIntent(this, movieId, movieName, movieDuration))
         }
 
         btnBack.setOnClickListener {

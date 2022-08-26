@@ -14,7 +14,7 @@ class ShowTimeViewHolder(itemView: View, private var mDelegate: TimeslotDelegate
 
     init {
         itemView.setOnClickListener {
-            mDelegate.onTapTimeslot(mShowTime?.startTime ?: "", mCinemaId)
+            mDelegate.onTapTimeslot(mShowTime?.startTime ?: "", mCinemaId, mShowTime?.cinemaDayTimeslotId ?: 0)
         }
     }
 

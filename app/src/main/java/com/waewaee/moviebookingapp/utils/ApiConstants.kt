@@ -13,6 +13,7 @@ const val API_GET_COMING_SOON_MOVIES = "/3/movie/upcoming"
 const val API_GET_MOVIE_DETAILS = "/3/movie"
 const val API_GET_CREDITS_BY_MOVIE = "/3/movie"
 const val API_GET_CINEMA_TIMESLOTS = "/api/v1/cinema-day-timeslots"
+const val API_GET_SEATING_PLAN = "/api/v1/seat-plan"
 
 // Params
 const val PARAM_NAME = "name"
@@ -23,5 +24,7 @@ const val PARAM_AUTHORIZATION = "Authorization"
 const val PARAM_API_KEY = "api_key"
 const val PARAM_PAGE = "page"
 const val PARAM_DATE = "date"
+const val PARAM_TIMESLOT_ID = "cinema_day_timeslot_id"
+const val PARAM_BOOKING_DATE = "booking_date"
 
 const val MOVIE_API_KEY = "786d33e13acb4c167055fd7919eaa262"

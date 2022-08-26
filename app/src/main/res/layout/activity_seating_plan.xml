@@ -20,11 +20,11 @@
         android:id="@+id/tvBookedMovieName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/btnBack"
+        android:gravity="center"
         android:text="John Wick 3: Parabellum"
         android:textColor="@color/black"
-        android:textSize="@dimen/text_heading_1x"
-        android:gravity="center"
-        android:layout_below="@id/btnBack"/>
+        android:textSize="@dimen/text_heading_1x" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvBookedCinemaName"

@@ -1,8 +1,10 @@
 package com.waewaee.moviebookingapp.network.dataagents
 
 import com.waewaee.moviebookingapp.data.vos.ErrorVO
+import com.waewaee.moviebookingapp.data.vos.MovieSeatRowVO
 import com.waewaee.moviebookingapp.data.vos.UserVO
 import com.waewaee.moviebookingapp.network.responses.LoginResponse
+import com.waewaee.moviebookingapp.network.responses.SeatingPlanResponse
 import com.waewaee.moviebookingapp.network.responses.TimeslotsResponse
 import com.waewaee.themovieapp.data.vos.MovieVO
 
@@ -42,6 +44,14 @@ interface CinemaDataAgent {
         authorization: String,
         onSuccess: (TimeslotsResponse) -> Unit,
         onFailure: (String) -> Unit
+    )
+
+    fun getSeatingPlan(
+        timeslotId: Int,
+        date: String,
+        authorization: String,
+        onSuccess: (SeatingPlanResponse) -> Unit,
+        onFailure: (String) -> Unit,
     )
 
 }

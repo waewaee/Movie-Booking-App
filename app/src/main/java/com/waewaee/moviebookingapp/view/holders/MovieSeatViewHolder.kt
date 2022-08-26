@@ -29,7 +29,7 @@ class MovieSeatViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
             data.isMovieSeatRowTitle() == true -> {
                 itemView.tvMovieSeatTitle.visibility = View.VISIBLE
-                itemView.tvMovieSeatTitle.text = data.title
+                itemView.tvMovieSeatTitle.text = data.symbol.toString()
                 itemView.setBackgroundColor(
                     ContextCompat.getColor(
                         itemView.context,

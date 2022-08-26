@@ -3,7 +3,7 @@ package com.waewaee.moviebookingapp.network.responses
 import com.google.gson.annotations.SerializedName
 import com.waewaee.moviebookingapp.data.vos.ActorVO
 
-data class GetCreditsByMovieResponse(
+data class CreditsByMovieResponse(
     @SerializedName("cast")
     val cast: List<ActorVO>?,
 

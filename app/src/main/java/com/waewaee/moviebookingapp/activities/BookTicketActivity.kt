@@ -21,21 +21,29 @@ class BookTicketActivity : AppCompatActivity(), CalendarViewHolderDelegate, Time
 
     lateinit var datePickerAdapter: DatePickerAdapter
     lateinit var cinemaAdapter: CinemaAdapter
+
     lateinit var movieDate: String
     lateinit var movieTime: String
+    lateinit var movieName: String
+    lateinit var movieDuration: String
     lateinit var cinemaName: String
     lateinit var cinemaList: List<CinemaVO>
 
     private val mCinemaModel: CinemaModel = CinemaModelImpl
     private var movieId: Int = 0
+    private var movieTimeslotId: Int = 0
 
 
     companion object {
         private val EXTRA_MOVIE_ID = "EXTRA_MOVIE_ID"
+        private val EXTRA_MOVIE_NAME = "EXTRA_MOVIE_NAME"
+        private val EXTRA_MOVIE_DURATION = "EXTRA_MOVIE_DURATION"
 
-        fun newIntent(context: Context, movieId: Int): Intent {
+        fun newIntent(context: Context, movieId: Int, movieName: String, movieDuration: String): Intent {
             val intent = Intent(context, BookTicketActivity::class.java)
             intent.putExtra(EXTRA_MOVIE_ID, movieId)
+            intent.putExtra(EXTRA_MOVIE_NAME, movieName)
+            intent.putExtra(EXTRA_MOVIE_DURATION, movieDuration)
             return intent
         }
     }
@@ -49,6 +57,8 @@ class BookTicketActivity : AppCompatActivity(), CalendarViewHolderDelegate, Time
         setUpListeners()
 
         movieId = intent?.getIntExtra(EXTRA_MOVIE_ID, 0) ?: 0
+        movieName = intent?.getStringExtra(EXTRA_MOVIE_NAME) ?: ""
+        movieDuration = intent?.getStringExtra(EXTRA_MOVIE_DURATION) ?: ""
     }
 
     private fun requestCinemaData() {
@@ -71,7 +81,7 @@ class BookTicketActivity : AppCompatActivity(), CalendarViewHolderDelegate, Time
 
         btnNext.setOnClickListener {
             if (movieDate.isNotEmpty() && movieTime.isNotEmpty() && cinemaName.isNotEmpty()) {
-                startActivity(SeatingPlanActivity.newIntent(this))
+                startActivity(SeatingPlanActivity.newIntent(this, movieName, movieDuration, movieDate, movieTime, cinemaName, movieTimeslotId))
             }
         }
     }
@@ -98,13 +108,14 @@ class BookTicketActivity : AppCompatActivity(), CalendarViewHolderDelegate, Time
         datePickerAdapter.setNewData(TWO_WEEKS_DATES)
     }
 
-    override fun onTapTimeslot(startTime: String, cinemaId: Int) {
+    override fun onTapTimeslot(startTime: String, cinemaId: Int, timeslotId: Int) {
         movieTime = startTime
         cinemaList.map {
             if (it.cinemaId == cinemaId) {
                 cinemaName = it.cinema ?: ""
                 it.timeslots?.map {
                     it.isSelected = it.startTime == startTime
+                    movieTimeslotId = it.cinemaDayTimeslotId ?: 0
                 }
             } else {
                 it.timeslots?.map {

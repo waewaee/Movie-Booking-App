@@ -1,9 +1,11 @@
 package com.waewaee.moviebookingapp.network.dataagents
 
 import com.waewaee.moviebookingapp.data.vos.ErrorVO
+import com.waewaee.moviebookingapp.data.vos.MovieSeatRowVO
 import com.waewaee.moviebookingapp.network.CinemaApi
 import com.waewaee.moviebookingapp.network.responses.LoginResponse
 import com.waewaee.moviebookingapp.network.responses.MovieListResponse
+import com.waewaee.moviebookingapp.network.responses.SeatingPlanResponse
 import com.waewaee.moviebookingapp.network.responses.TimeslotsResponse
 import com.waewaee.moviebookingapp.utils.CINEMA_BASE_URL
 import com.waewaee.themovieapp.data.vos.MovieVO
@@ -166,6 +168,33 @@ object RetrofitCinemaDataAgentImpl: CinemaDataAgent {
                 }
 
             })
+    }
+
+    override fun getSeatingPlan(
+        timeslotId: Int,
+        date: String,
+        authorization: String,
+        onSuccess: (SeatingPlanResponse) -> Unit,
+        onFailure: (String) -> Unit
+    ) {
+        mCinemaApi?.getSeatingPlan(timeslotId = timeslotId, date = date, authorization = authorization)
+            ?.enqueue(object : Callback<SeatingPlanResponse> {
+                override fun onResponse(
+                    call: Call<SeatingPlanResponse>,
+                    response: Response<SeatingPlanResponse>
+                ) {
+                    if (response.isSuccessful) {
+                        onSuccess(response.body() ?: SeatingPlanResponse())
+                    } else {
+                        onFailure(response.message())
+                    }
+                }
+
+                override fun onFailure(call: Call<SeatingPlanResponse>, t: Throwable) {
+                    onFailure(t.message ?: "Failed")
+                }
+
+            } )
     }
 
 }

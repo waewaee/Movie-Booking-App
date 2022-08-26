@@ -1,9 +1,6 @@
 package com.waewaee.moviebookingapp.data.models
 
-import com.waewaee.moviebookingapp.data.vos.CardVO
-import com.waewaee.moviebookingapp.data.vos.CinemaVO
-import com.waewaee.moviebookingapp.data.vos.ErrorVO
-import com.waewaee.moviebookingapp.data.vos.UserVO
+import com.waewaee.moviebookingapp.data.vos.*
 import com.waewaee.moviebookingapp.network.dataagents.CinemaDataAgent
 import com.waewaee.moviebookingapp.network.dataagents.RetrofitCinemaDataAgentImpl
 import com.waewaee.themovieapp.data.vos.MovieVO
@@ -19,7 +16,8 @@ object CinemaModelImpl: CinemaModel {
         onSuccess: (ErrorVO) -> Unit,
         onFailure: (String) -> Unit
     ) {
-        mCinemaDataAgent.getLoginWithEmail(email = email, password = password, onSuccess = onSuccess, onFailure = onFailure, setToken = {
+        mCinemaDataAgent.getLoginWithEmail(email = email, password = password, onSuccess = onSuccess, onFailure = onFailure,
+            setToken = {
             userToken = "Bearer $it"
         })
     }
@@ -33,10 +31,11 @@ object CinemaModelImpl: CinemaModel {
         onSuccess: (ErrorVO) -> Unit,
         onFailure: (String) -> Unit
     ) {
-        mCinemaDataAgent.getSignUpWithEmail(name = name, email = email, password = password, phone = phone, onSuccess = { response ->
-            userToken = "Bearer ${response.token}"
-            var errorVO = ErrorVO(code = response.code ?: 404, message = response.message ?: "Not Found")
-            onSuccess(errorVO)
+        mCinemaDataAgent.getSignUpWithEmail(name = name, email = email, password = password, phone = phone,
+            onSuccess = { response ->
+                userToken = "Bearer ${response.token}"
+                var errorVO = ErrorVO(code = response.code ?: 404, message = response.message ?: "Not Found")
+                onSuccess(errorVO)
         },
             onFailure = onFailure)
     }
@@ -45,9 +44,10 @@ object CinemaModelImpl: CinemaModel {
         onSuccess: (UserVO) -> Unit,
         onFailure: (String) -> Unit
     ) {
-        mCinemaDataAgent.getProfile(authorization = userToken, onSuccess = { response ->
-            var userVO = response.userVO
-            onSuccess(userVO ?: UserVO())
+        mCinemaDataAgent.getProfile(authorization = userToken,
+            onSuccess = { response ->
+                var userVO = response.userVO
+                onSuccess(userVO ?: UserVO())
         }, onFailure = onFailure)
     }
 
@@ -55,10 +55,11 @@ object CinemaModelImpl: CinemaModel {
         onSuccess: (ErrorVO) -> Unit,
         onFailure: (String) -> Unit
     ) {
-        mCinemaDataAgent.logout(authorization = userToken, onSuccess = { response ->
-            var errorVO = ErrorVO(code = response.code ?: 404, message = response.message ?: "Unauthorized")
-            userToken = ""
-            onSuccess(errorVO)
+        mCinemaDataAgent.logout(authorization = userToken,
+            onSuccess = { response ->
+                var errorVO = ErrorVO(code = response.code ?: 404, message = response.message ?: "Unauthorized")
+                userToken = ""
+                onSuccess(errorVO)
         },
         onFailure = onFailure)
     }
@@ -68,11 +69,26 @@ object CinemaModelImpl: CinemaModel {
         onSuccess: (List<CinemaVO>) -> Unit,
         onFailure: (String) -> Unit
     ) {
-        mCinemaDataAgent.getCinemaTimeslots(authorization = userToken, date = date, onSuccess = { response ->
-            val cinemaList = response.cinemaList
-            onSuccess(cinemaList ?: listOf())
+        mCinemaDataAgent.getCinemaTimeslots(authorization = userToken, date = date,
+            onSuccess = { response ->
+                val cinemaList = response.cinemaList
+                onSuccess(cinemaList ?: listOf())
         },
         onFailure = onFailure)
+    }
+
+    override fun getSeatingPlan(
+        date: String,
+        timeslotId: Int,
+        onSuccess: (List<List<MovieSeatVO>>) -> Unit,
+        onFailure: (String) -> Unit
+    ) {
+        mCinemaDataAgent.getSeatingPlan(authorization = userToken, date = date, timeslotId = timeslotId,
+            onSuccess = { response ->
+                val rowList: List<List<MovieSeatVO>> = response.data ?: listOf()
+                onSuccess(rowList)
+        },
+            onFailure = onFailure)
     }
 
 }
