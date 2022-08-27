@@ -23,17 +23,19 @@ class MovieSeatViewHolder(itemView: View, private val mDelegate: SeatDelegate) :
 
         when {
             data.isMovieSeatAvailable() == true -> {
-                itemView.tvMovieSeatTitle.text = ""
                 if (data.isSelected) {
+                    itemView.tvMovieSeatTitle.text = data.title?.substring(2)
+                    itemView.tvMovieSeatTitle.setTextColor(ContextCompat.getColor(itemView.context, R.color.white))
                     itemView.background = ContextCompat.getDrawable(
                         itemView.context,
                         R.drawable.background_movie_seat_selected
                     )
                 } else {
-                        itemView.background = ContextCompat.getDrawable(
+                    itemView.tvMovieSeatTitle.text = ""
+                    itemView.background = ContextCompat.getDrawable(
                             itemView.context,
                             R.drawable.background_movie_seat_available
-                        )
+                    )
                 }
 
             }
