@@ -10,18 +10,25 @@ import com.waewaee.moviebookingapp.R
 import com.waewaee.moviebookingapp.adapters.MovieSeatAdapter
 import com.waewaee.moviebookingapp.data.models.CinemaModel
 import com.waewaee.moviebookingapp.data.models.CinemaModelImpl
+import com.waewaee.moviebookingapp.data.vos.MovieSeatVO
+import com.waewaee.moviebookingapp.delegates.SeatDelegate
+import com.waewaee.moviebookingapp.dummy.DUMMY_SEATS
 import kotlinx.android.synthetic.main.activity_seating_plan.*
 
-class SeatingPlanActivity : AppCompatActivity() {
+class SeatingPlanActivity : AppCompatActivity(), SeatDelegate {
 
     lateinit var movieDate: String
     lateinit var movieTime: String
     lateinit var movieName: String
     lateinit var movieDuration: String
     lateinit var cinemaName: String
+    lateinit var mAdapter: MovieSeatAdapter
+    lateinit var seatList: List<MovieSeatVO>
 
     private var timeslotId: Int = 0
-    private val mAdapter= MovieSeatAdapter()
+    private var ticketCount = 0
+    private var seatNames = ""
+    private var mPrice = 0
     private val mCinemaModel: CinemaModel = CinemaModelImpl
     
     companion object {
@@ -68,8 +75,9 @@ class SeatingPlanActivity : AppCompatActivity() {
     }
 
     private fun setUpSeatRecyclerView() {
+        mAdapter= MovieSeatAdapter(DUMMY_SEATS, this)
         rvSeats.adapter = mAdapter
-        rvSeats.layoutManager = GridLayoutManager(this, 10)
+        rvSeats.layoutManager = GridLayoutManager(this, 14)
         requestSeatData()
     }
 
@@ -88,12 +96,28 @@ class SeatingPlanActivity : AppCompatActivity() {
             date = movieDate,
             timeslotId = timeslotId,
             onSuccess = {
-                val flatten = it.flatten()
-                mAdapter.setNewData(it.flatten())
+                val flattenList = it.flatten()
+                mAdapter.setNewData(flattenList)
+                seatList = flattenList
             },
             onFailure = {
                 Snackbar.make(window.decorView, it, Snackbar.LENGTH_SHORT).show()
             }
         )
+    }
+
+    override fun onTapSeat(title: String, price: Int) {
+        seatList.map {
+            if (it.title.equals(title)) {
+                it.isSelected = true
+                ticketCount += 1
+                seatNames += "${it.title}, "
+                mPrice += price
+                tvSeatCount.text = ticketCount.toString()
+                tvSeatName.text = seatNames
+                btnNext.text = "Buy tickets for $$mPrice"
+            }
+        }
+        mAdapter.setNewData(seatList)
     }
 }

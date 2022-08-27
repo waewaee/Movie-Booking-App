@@ -53,5 +53,6 @@
     <dimen name="margin_top_left_menu_profile">64dp</dimen>
     <dimen name="width_circle">24dp</dimen>
     <dimen name="height_circle">24dp</dimen>
+    <dimen name="padding_bottom_seating_plan">150dp</dimen>
 
 </resources>

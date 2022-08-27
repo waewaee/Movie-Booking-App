@@ -1,7 +1,6 @@
 package com.waewaee.moviebookingapp.network.responses
 
 import com.google.gson.annotations.SerializedName
-import com.waewaee.moviebookingapp.data.vos.MovieSeatRowVO
 import com.waewaee.moviebookingapp.data.vos.MovieSeatVO
 
 data class SeatingPlanResponse(

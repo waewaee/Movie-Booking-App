@@ -1,14 +1,11 @@
 package com.waewaee.moviebookingapp.network.dataagents
 
 import com.waewaee.moviebookingapp.data.vos.ErrorVO
-import com.waewaee.moviebookingapp.data.vos.MovieSeatRowVO
 import com.waewaee.moviebookingapp.network.CinemaApi
 import com.waewaee.moviebookingapp.network.responses.LoginResponse
-import com.waewaee.moviebookingapp.network.responses.MovieListResponse
 import com.waewaee.moviebookingapp.network.responses.SeatingPlanResponse
 import com.waewaee.moviebookingapp.network.responses.TimeslotsResponse
 import com.waewaee.moviebookingapp.utils.CINEMA_BASE_URL
-import com.waewaee.themovieapp.data.vos.MovieVO
 import okhttp3.OkHttpClient
 import retrofit2.Call
 import retrofit2.Callback

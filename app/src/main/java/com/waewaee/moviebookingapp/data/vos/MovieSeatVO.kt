@@ -4,32 +4,34 @@ import com.google.gson.annotations.SerializedName
 
 data class MovieSeatVO(
     @SerializedName("seat_name")
-    val title: String?,
+    var title: String?,
 
     @SerializedName("type")
-    private val type: String?,
+     val type: String?,
 
     @SerializedName("id")
-    val id: Int?,
+    val id: Int? = 0,
 
     @SerializedName("symbol")
-    val symbol: Char?,
+    val symbol: Char? = '-',
 
     @SerializedName("price")
-    val price: Int?,
+    val price: Int? = 0,
+
+    var isSelected: Boolean = false
 
 ) {
 
     fun isMovieSeatAvailable(): Boolean?{
-        return type === SEAT_TYPE_AVAILABLE
+        return type == SEAT_TYPE_AVAILABLE
     }
 
     fun isMovieSeatTaken(): Boolean? {
-        return type === SEAT_TYPE_TAKEN
+        return type == SEAT_TYPE_TAKEN
     }
 
     fun isMovieSeatRowTitle(): Boolean? {
-        return type === SEAT_TYPE_TEXT
+        return type == SEAT_TYPE_TEXT
     }
 }
 
