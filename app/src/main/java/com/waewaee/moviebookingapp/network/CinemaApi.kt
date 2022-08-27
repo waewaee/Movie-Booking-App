@@ -1,9 +1,6 @@
 package com.waewaee.moviebookingapp.network
 
-import com.waewaee.moviebookingapp.network.responses.LoginResponse
-import com.waewaee.moviebookingapp.network.responses.MovieListResponse
-import com.waewaee.moviebookingapp.network.responses.SeatingPlanResponse
-import com.waewaee.moviebookingapp.network.responses.TimeslotsResponse
+import com.waewaee.moviebookingapp.network.responses.*
 import com.waewaee.moviebookingapp.utils.*
 import retrofit2.Call
 import retrofit2.http.*
@@ -49,5 +46,10 @@ interface CinemaApi {
         @Query(PARAM_TIMESLOT_ID) timeslotId: Int,
         @Query(PARAM_BOOKING_DATE) date:String,
     ) : Call<SeatingPlanResponse>
+
+    @GET(API_GET_SNACKLIST)
+    fun getSnackList(
+        @Header(PARAM_AUTHORIZATION) authorization: String,
+    ) : Call<SnackListResponse>
 
 }

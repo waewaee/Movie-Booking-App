@@ -3,6 +3,7 @@ package com.waewaee.moviebookingapp.network.dataagents
 import com.waewaee.moviebookingapp.data.vos.ErrorVO
 import com.waewaee.moviebookingapp.network.responses.LoginResponse
 import com.waewaee.moviebookingapp.network.responses.SeatingPlanResponse
+import com.waewaee.moviebookingapp.network.responses.SnackListResponse
 import com.waewaee.moviebookingapp.network.responses.TimeslotsResponse
 
 interface CinemaDataAgent {
@@ -48,6 +49,12 @@ interface CinemaDataAgent {
         date: String,
         authorization: String,
         onSuccess: (SeatingPlanResponse) -> Unit,
+        onFailure: (String) -> Unit,
+    )
+
+    fun getSnackList(
+        authorization: String,
+        onSuccess: (SnackListResponse) -> Unit,
         onFailure: (String) -> Unit,
     )
 

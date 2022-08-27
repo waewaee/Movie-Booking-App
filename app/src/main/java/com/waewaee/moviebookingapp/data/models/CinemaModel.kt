@@ -44,4 +44,9 @@ interface CinemaModel {
         onFailure: (String) -> Unit,
     )
 
+    fun getSnackList(
+        onSuccess: (List<SnackVO>) -> Unit,
+        onFailure: (String) -> Unit,
+    )
+
 }

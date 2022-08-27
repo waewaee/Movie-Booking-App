@@ -87,7 +87,7 @@ class SeatingPlanActivity : AppCompatActivity(), SeatDelegate {
         }
 
         btnNext.setOnClickListener {
-//            startActivity(ChooseSnackActivity.newIntent(this))
+            startActivity(ChooseSnackActivity.newIntent(this, movieName, movieDuration, movieDate, movieTime, cinemaName, seatNames, mPrice))
         }
     }
 

@@ -91,4 +91,16 @@ object CinemaModelImpl: CinemaModel {
             onFailure = onFailure)
     }
 
+    override fun getSnackList(
+        onSuccess: (List<SnackVO>) -> Unit,
+        onFailure: (String) -> Unit
+    ) {
+        mCinemaDataAgent.getSnackList(authorization = userToken,
+            onSuccess = { response ->
+                val snackList: List<SnackVO> = response.snackList ?: listOf()
+                onSuccess(snackList)
+        },
+            onFailure = onFailure)
+    }
+
 }
