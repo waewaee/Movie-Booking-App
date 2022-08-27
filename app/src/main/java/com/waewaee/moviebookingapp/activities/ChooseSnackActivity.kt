@@ -25,6 +25,7 @@ class ChooseSnackActivity : AppCompatActivity(), SnackDelegate, PaymentMethodDel
     lateinit var movieDuration: String
     lateinit var cinemaName: String
     lateinit var seatNames: String
+    lateinit var paymentMethod: String
     lateinit var snackList: List<SnackVO>
     lateinit var methodList: List<PaymentMethodVO>
     lateinit var snackAdapter: SnackAdapter
@@ -104,7 +105,9 @@ class ChooseSnackActivity : AppCompatActivity(), SnackDelegate, PaymentMethodDel
 
     private fun setUpListeners() {
         btnPay.setOnClickListener {
-//            startActivity(PaymentActivity.newIntent(this))
+            if (paymentMethod.isNotEmpty()) {
+                startActivity(PaymentActivity.newIntent(this))
+            }
         }
 
         btnBack.setOnClickListener {
@@ -155,6 +158,7 @@ class ChooseSnackActivity : AppCompatActivity(), SnackDelegate, PaymentMethodDel
     override fun onTapPaymentMethod(id: Int) {
         methodList.map {
             it.isSelected = it.id == id
+            paymentMethod = it.paymentName ?: ""
         }
         paymentMethodAdapter.setNewData(methodList)
     }

@@ -3,6 +3,7 @@ package com.waewaee.moviebookingapp.view.holders
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.waewaee.moviebookingapp.R
 import com.waewaee.moviebookingapp.delegates.MovieViewHolderDelegate
 import com.waewaee.moviebookingapp.utils.MOVIE_IMAGE_BASE_URL
 import com.waewaee.themovieapp.data.vos.MovieVO
@@ -25,6 +26,7 @@ class MovieViewHolder(itemView: View, private val delegate: MovieViewHolderDeleg
 
         Glide.with(itemView.context)
             .load("$MOVIE_IMAGE_BASE_URL${movie.posterPath}")
+            .placeholder(R.drawable.john_wick_image)
             .into(itemView.ivMovieImage)
 
         itemView.tvMovieName.text = movie.title
