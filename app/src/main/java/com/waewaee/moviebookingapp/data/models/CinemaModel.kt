@@ -49,4 +49,9 @@ interface CinemaModel {
         onFailure: (String) -> Unit,
     )
 
+    fun getPaymentMethods(
+        onSuccess: (List<PaymentMethodVO>) -> Unit,
+        onFailure: (String) -> Unit,
+    )
+
 }

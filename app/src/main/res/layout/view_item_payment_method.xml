@@ -17,20 +17,20 @@
         android:id="@+id/tvCardType"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_large"
+        android:layout_toEndOf="@id/ivCardImage"
         android:text="Credit Card"
         android:textColor="@color/black"
-        android:textStyle="bold"
         android:textSize="@dimen/text_regular_2x"
-        android:layout_toEndOf="@id/ivCardImage"
-        android:layout_marginStart="@dimen/margin_large"/>
+        android:textStyle="bold" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvCardTypeDetails"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Visa, master card, JCB"
+        android:layout_below="@id/tvCardType"
         android:layout_alignStart="@id/tvCardType"
-        android:layout_below="@id/tvCardType"/>
+        android:text="Visa, master card, JCB" />
 
 
 </RelativeLayout>

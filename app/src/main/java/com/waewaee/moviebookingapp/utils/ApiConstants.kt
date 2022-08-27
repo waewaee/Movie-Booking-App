@@ -15,6 +15,7 @@ const val API_GET_CREDITS_BY_MOVIE = "/3/movie"
 const val API_GET_CINEMA_TIMESLOTS = "/api/v1/cinema-day-timeslots"
 const val API_GET_SEATING_PLAN = "/api/v1/seat-plan"
 const val API_GET_SNACKLIST = "/api/v1/snacks"
+const val API_GET_PAYMENT_METHODS = "/api/v1/payment-methods"
 
 // Params
 const val PARAM_NAME = "name"

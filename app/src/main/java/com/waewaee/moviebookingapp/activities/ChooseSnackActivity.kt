@@ -11,11 +11,13 @@ import com.waewaee.moviebookingapp.adapters.PaymentMethodAdapter
 import com.waewaee.moviebookingapp.adapters.SnackAdapter
 import com.waewaee.moviebookingapp.data.models.CinemaModel
 import com.waewaee.moviebookingapp.data.models.CinemaModelImpl
+import com.waewaee.moviebookingapp.data.vos.PaymentMethodVO
 import com.waewaee.moviebookingapp.data.vos.SnackVO
+import com.waewaee.moviebookingapp.delegates.PaymentMethodDelegate
 import com.waewaee.moviebookingapp.delegates.SnackDelegate
 import kotlinx.android.synthetic.main.activity_choose_snack.*
 
-class ChooseSnackActivity : AppCompatActivity(), SnackDelegate {
+class ChooseSnackActivity : AppCompatActivity(), SnackDelegate, PaymentMethodDelegate {
 
     lateinit var movieDate: String
     lateinit var movieTime: String
@@ -24,10 +26,10 @@ class ChooseSnackActivity : AppCompatActivity(), SnackDelegate {
     lateinit var cinemaName: String
     lateinit var seatNames: String
     lateinit var snackList: List<SnackVO>
+    lateinit var methodList: List<PaymentMethodVO>
     lateinit var snackAdapter: SnackAdapter
     lateinit var paymentMethodAdapter: PaymentMethodAdapter
 
-//    private var seatPrice = 0
     private var subTotal: Int = 0
     private val mCinemaModel: CinemaModel = CinemaModelImpl
 
@@ -62,6 +64,7 @@ class ChooseSnackActivity : AppCompatActivity(), SnackDelegate {
         setUpPaymentMethodRecyclerView()
         setUpListeners()
         requestSnackData()
+        requestPaymentMethodData()
 
         movieName = intent?.getStringExtra(EXTRA_MOVIE_NAME) ?: ""
         movieDuration = intent?.getStringExtra(EXTRA_MOVIE_DURATION) ?: ""
@@ -75,11 +78,23 @@ class ChooseSnackActivity : AppCompatActivity(), SnackDelegate {
         btnPay.text = "Pay $$subTotal"
     }
 
+    private fun requestPaymentMethodData() {
+        mCinemaModel.getPaymentMethods(
+            onSuccess = {
+                methodList= it
+                paymentMethodAdapter.setNewData(it)
+            },
+            onFailure = {
+                Snackbar.make(window.decorView, it, Snackbar.LENGTH_SHORT).show()
+            }
+        )
+    }
+
     private fun requestSnackData() {
         mCinemaModel.getSnackList(
             onSuccess = {
-                snackAdapter.setNewData(it)
                 snackList = it
+                snackAdapter.setNewData(it)
             },
             onFailure = {
                 Snackbar.make(window.decorView, it, Snackbar.LENGTH_SHORT).show()
@@ -98,7 +113,7 @@ class ChooseSnackActivity : AppCompatActivity(), SnackDelegate {
     }
 
     private fun setUpPaymentMethodRecyclerView() {
-        paymentMethodAdapter = PaymentMethodAdapter()
+        paymentMethodAdapter = PaymentMethodAdapter(this)
         rvPaymentMethods.adapter = paymentMethodAdapter
         rvPaymentMethods.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
     }
@@ -135,6 +150,13 @@ class ChooseSnackActivity : AppCompatActivity(), SnackDelegate {
             }
         }
         snackAdapter.setNewData(snackList)
+    }
+
+    override fun onTapPaymentMethod(id: Int) {
+        methodList.map {
+            it.isSelected = it.id == id
+        }
+        paymentMethodAdapter.setNewData(methodList)
     }
 
 

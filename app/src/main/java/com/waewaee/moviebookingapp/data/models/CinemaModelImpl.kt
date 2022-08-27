@@ -3,7 +3,6 @@ package com.waewaee.moviebookingapp.data.models
 import com.waewaee.moviebookingapp.data.vos.*
 import com.waewaee.moviebookingapp.network.dataagents.CinemaDataAgent
 import com.waewaee.moviebookingapp.network.dataagents.RetrofitCinemaDataAgentImpl
-import com.waewaee.themovieapp.data.vos.MovieVO
 
 object CinemaModelImpl: CinemaModel {
 
@@ -100,6 +99,18 @@ object CinemaModelImpl: CinemaModel {
                 val snackList: List<SnackVO> = response.snackList ?: listOf()
                 onSuccess(snackList)
         },
+            onFailure = onFailure)
+    }
+
+    override fun getPaymentMethods(
+        onSuccess: (List<PaymentMethodVO>) -> Unit,
+        onFailure: (String) -> Unit
+    ) {
+        mCinemaDataAgent.getPaymentMethods(authorization = userToken,
+            onSuccess = { response ->
+                val methodList: List<PaymentMethodVO> = response.methodList ?: listOf()
+                onSuccess(methodList)
+            },
             onFailure = onFailure)
     }
 

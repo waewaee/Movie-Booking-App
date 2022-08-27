@@ -2,10 +2,7 @@ package com.waewaee.moviebookingapp.network.dataagents
 
 import com.waewaee.moviebookingapp.data.vos.ErrorVO
 import com.waewaee.moviebookingapp.network.CinemaApi
-import com.waewaee.moviebookingapp.network.responses.LoginResponse
-import com.waewaee.moviebookingapp.network.responses.SeatingPlanResponse
-import com.waewaee.moviebookingapp.network.responses.SnackListResponse
-import com.waewaee.moviebookingapp.network.responses.TimeslotsResponse
+import com.waewaee.moviebookingapp.network.responses.*
 import com.waewaee.moviebookingapp.utils.CINEMA_BASE_URL
 import okhttp3.OkHttpClient
 import retrofit2.Call
@@ -216,6 +213,28 @@ object RetrofitCinemaDataAgentImpl: CinemaDataAgent {
                 override fun onFailure(call: Call<SnackListResponse>, t: Throwable) {
                     onFailure(t.message ?: "Failed")
                 }
+
+            })
+    }
+
+    override fun getPaymentMethods(
+        authorization: String,
+        onSuccess: (PaymentMethodResponse) -> Unit,
+        onFailure: (String) -> Unit
+    ) {
+        mCinemaApi?.getPaymentMethods(authorization = authorization)
+            ?.enqueue(object: Callback<PaymentMethodResponse> {
+                override fun onResponse(
+                    call: Call<PaymentMethodResponse>,
+                    response: Response<PaymentMethodResponse>
+                ) {
+                    onSuccess(response.body() ?: PaymentMethodResponse())
+                }
+
+                override fun onFailure(call: Call<PaymentMethodResponse>, t: Throwable) {
+
+                }
+
 
             })
     }

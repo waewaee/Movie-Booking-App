@@ -1,10 +1,7 @@
 package com.waewaee.moviebookingapp.network.dataagents
 
 import com.waewaee.moviebookingapp.data.vos.ErrorVO
-import com.waewaee.moviebookingapp.network.responses.LoginResponse
-import com.waewaee.moviebookingapp.network.responses.SeatingPlanResponse
-import com.waewaee.moviebookingapp.network.responses.SnackListResponse
-import com.waewaee.moviebookingapp.network.responses.TimeslotsResponse
+import com.waewaee.moviebookingapp.network.responses.*
 
 interface CinemaDataAgent {
 
@@ -55,6 +52,12 @@ interface CinemaDataAgent {
     fun getSnackList(
         authorization: String,
         onSuccess: (SnackListResponse) -> Unit,
+        onFailure: (String) -> Unit,
+    )
+
+    fun getPaymentMethods(
+        authorization: String,
+        onSuccess: (PaymentMethodResponse) -> Unit,
         onFailure: (String) -> Unit,
     )
 

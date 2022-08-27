@@ -52,4 +52,9 @@ interface CinemaApi {
         @Header(PARAM_AUTHORIZATION) authorization: String,
     ) : Call<SnackListResponse>
 
+    @GET(API_GET_PAYMENT_METHODS)
+    fun getPaymentMethods(
+        @Header(PARAM_AUTHORIZATION) authorization: String,
+    ) : Call<PaymentMethodResponse>
+
 }
