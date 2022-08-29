@@ -1,5 +1,6 @@
 package com.waewaee.moviebookingapp.network
 
+import com.waewaee.moviebookingapp.data.vos.VisaCardVO
 import com.waewaee.moviebookingapp.network.responses.*
 import com.waewaee.moviebookingapp.utils.*
 import retrofit2.Call
@@ -56,5 +57,15 @@ interface CinemaApi {
     fun getPaymentMethods(
         @Header(PARAM_AUTHORIZATION) authorization: String,
     ) : Call<PaymentMethodResponse>
+
+    @POST(API_CREATE_CARD)
+    @FormUrlEncoded
+    fun addNewCard(
+        @Header(PARAM_AUTHORIZATION) authorization: String,
+        @Field(PARAM_CARD_NUMBER) cardNumber: String,
+        @Field(PARAM_CARD_HOLDER) cardHolder: String,
+        @Field(PARAM_EXPIRATION_DATE) expirationDate: String,
+        @Field(PARAM_CVC) cvc: Int,
+    ) : Call<AddNewCardResponse>
 
 }

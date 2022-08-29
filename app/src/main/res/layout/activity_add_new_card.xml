@@ -29,10 +29,10 @@
         android:id="@+id/etCardNumber"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/hint_card_number"
-        android:inputType="number"
         android:layout_below="@id/tvCardNumberLabel"
-        android:layout_marginTop="@dimen/margin_medium_2"/>
+        android:layout_marginTop="@dimen/margin_medium_2"
+        android:hint="@string/hint_card_number"
+        android:inputType="number" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvCardHolderLabel"
@@ -48,10 +48,10 @@
         android:id="@+id/etCardHolderName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/name_hint"
-        android:inputType="text"
         android:layout_below="@id/tvCardHolderLabel"
-        android:layout_marginTop="@dimen/margin_medium_2"/>
+        android:layout_marginTop="@dimen/margin_medium_2"
+        android:hint="@string/name_hint"
+        android:inputType="text" />
 
     <LinearLayout
         android:id="@+id/llForTwoLabels"
@@ -94,8 +94,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="@string/hint_expiration_date"
-            android:inputType="number" />
+            android:hint="@string/hint_expiration_date" />
 
         <androidx.appcompat.widget.AppCompatEditText
             android:id="@+id/etCVC"

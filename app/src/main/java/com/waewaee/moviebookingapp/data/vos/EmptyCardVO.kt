@@ -1,4 +1,4 @@
-package alirezat775.carouselview.sample
+package com.waewaee.moviebookingapp.data.vos
 
 import alirezat775.lib.carouselview.CarouselModel
 

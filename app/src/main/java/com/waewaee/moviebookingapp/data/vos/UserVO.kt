@@ -23,5 +23,5 @@ data class UserVO(
     val profileImage: String? = "",
 
     @SerializedName("cards")
-    val cards: List<CardVO>? = listOf(),
+    val cards: List<VisaCardVO>? = listOf(),
 )

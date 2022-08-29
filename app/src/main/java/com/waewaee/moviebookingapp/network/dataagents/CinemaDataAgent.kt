@@ -1,6 +1,7 @@
 package com.waewaee.moviebookingapp.network.dataagents
 
 import com.waewaee.moviebookingapp.data.vos.ErrorVO
+import com.waewaee.moviebookingapp.data.vos.VisaCardVO
 import com.waewaee.moviebookingapp.network.responses.*
 
 interface CinemaDataAgent {
@@ -59,6 +60,16 @@ interface CinemaDataAgent {
         authorization: String,
         onSuccess: (PaymentMethodResponse) -> Unit,
         onFailure: (String) -> Unit,
+    )
+
+    fun addNewCard(
+        authorization: String,
+        cardNumber: String,
+        cardHolder: String,
+        expirationDate: String,
+        cvc: Int,
+        onSuccess: (AddNewCardResponse) -> Unit,
+        onFailure: (String) -> Unit
     )
 
 }

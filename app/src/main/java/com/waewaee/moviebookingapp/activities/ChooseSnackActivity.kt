@@ -106,7 +106,7 @@ class ChooseSnackActivity : AppCompatActivity(), SnackDelegate, PaymentMethodDel
     private fun setUpListeners() {
         btnPay.setOnClickListener {
             if (paymentMethod.isNotEmpty()) {
-                startActivity(PaymentActivity.newIntent(this))
+                startActivity(PaymentActivity.newIntent(this, movieName, movieDuration, movieDate, movieTime, cinemaName, seatNames, subTotal, paymentMethod))
             }
         }
 

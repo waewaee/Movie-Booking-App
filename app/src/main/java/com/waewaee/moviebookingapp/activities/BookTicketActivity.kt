@@ -23,7 +23,6 @@ class BookTicketActivity : AppCompatActivity(), CalendarViewHolderDelegate, Time
     lateinit var cinemaAdapter: CinemaAdapter
 
     lateinit var movieDate: String
-    lateinit var movieTime: String
     lateinit var movieName: String
     lateinit var movieDuration: String
     lateinit var cinemaName: String
@@ -32,6 +31,7 @@ class BookTicketActivity : AppCompatActivity(), CalendarViewHolderDelegate, Time
     private val mCinemaModel: CinemaModel = CinemaModelImpl
     private var movieId: Int = 0
     private var movieTimeslotId: Int = 0
+    private var movieTime: String = ""
 
 
     companion object {

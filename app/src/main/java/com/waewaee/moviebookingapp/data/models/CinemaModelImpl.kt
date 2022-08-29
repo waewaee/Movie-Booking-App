@@ -114,4 +114,20 @@ object CinemaModelImpl: CinemaModel {
             onFailure = onFailure)
     }
 
+    override fun addNewCard(
+        cardNumber: String,
+        cardHolder: String,
+        expirationDate: String,
+        cvc: Int,
+        onSuccess: (List<VisaCardVO>) -> Unit,
+        onFailure: (String) -> Unit
+    ) {
+        mCinemaDataAgent.addNewCard(authorization = userToken, cardNumber = cardNumber, cardHolder = cardHolder, expirationDate = expirationDate, cvc = cvc,
+            onSuccess = { response ->
+            val cardList: List<VisaCardVO> = response.card ?: listOf()
+                onSuccess(cardList)
+        },
+            onFailure = onFailure)
+    }
+
 }

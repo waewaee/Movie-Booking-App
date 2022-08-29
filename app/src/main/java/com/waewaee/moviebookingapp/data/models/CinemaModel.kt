@@ -54,4 +54,13 @@ interface CinemaModel {
         onFailure: (String) -> Unit,
     )
 
+    fun addNewCard(
+        cardNumber: String,
+        cardHolder: String,
+        expirationDate: String,
+        cvc: Int,
+        onSuccess: (List<VisaCardVO>) -> Unit,
+        onFailure: (String) -> Unit,
+    )
+
 }

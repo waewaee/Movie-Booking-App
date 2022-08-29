@@ -1,15 +1,13 @@
 package com.waewaee.moviebookingapp.adapters
 
-import alirezat775.carouselview.sample.EmptyCardVO
-import alirezat775.carouselview.sample.VisaCardVO
+import com.waewaee.moviebookingapp.data.vos.EmptyCardVO
+import com.waewaee.moviebookingapp.data.vos.VisaCardVO
 import alirezat775.lib.carouselview.CarouselAdapter
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import com.waewaee.moviebookingapp.R
-import kotlinx.android.synthetic.main.view_item_carousel.view.*
-import kotlinx.android.synthetic.main.view_item_empty_carousel.view.*
 
 /**
  * Author:  Alireza Tizfahm Fard
@@ -17,12 +15,13 @@ import kotlinx.android.synthetic.main.view_item_empty_carousel.view.*
  * Email:   alirezat775@gmail.com
  */
 
-class CarouselAdapter : CarouselAdapter() {
+class CarouselAdapter() : CarouselAdapter() {
 
     private val EMPTY_ITEM = 0
     private val NORMAL_ITEM = 1
-
     private var vh: CarouselViewHolder? = null
+
+    lateinit var mCardList: List<VisaCardVO>
 
     override fun getItemViewType(position: Int): Int {
         return when (getItems()[position]) {
@@ -39,8 +38,8 @@ class CarouselAdapter : CarouselAdapter() {
             vh as MyViewHolder
         } else {
             val v = inflater.inflate(R.layout.view_item_empty_carousel, parent, false)
-            vh = EmptyMyViewHolder(v)
-            vh as EmptyMyViewHolder
+            vh = EmptyViewHolder(v)
+            vh as EmptyViewHolder
         }
     }
 
@@ -57,10 +56,16 @@ class CarouselAdapter : CarouselAdapter() {
         }
     }
 
+    @SuppressLint("NotifyDataSetChanged")
+    fun setNewData(cardList: List<VisaCardVO>) {
+        mCardList = cardList
+        notifyDataSetChanged()
+    }
+
     inner class MyViewHolder(itemView: View) : CarouselViewHolder(itemView) {
     }
 
-    inner class EmptyMyViewHolder(itemView: View) : CarouselViewHolder(itemView) {
+    inner class EmptyViewHolder(itemView: View) : CarouselViewHolder(itemView) {
     }
 
 }

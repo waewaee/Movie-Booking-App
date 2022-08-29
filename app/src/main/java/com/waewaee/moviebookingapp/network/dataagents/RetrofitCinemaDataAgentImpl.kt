@@ -1,6 +1,7 @@
 package com.waewaee.moviebookingapp.network.dataagents
 
 import com.waewaee.moviebookingapp.data.vos.ErrorVO
+import com.waewaee.moviebookingapp.data.vos.VisaCardVO
 import com.waewaee.moviebookingapp.network.CinemaApi
 import com.waewaee.moviebookingapp.network.responses.*
 import com.waewaee.moviebookingapp.utils.CINEMA_BASE_URL
@@ -228,13 +229,46 @@ object RetrofitCinemaDataAgentImpl: CinemaDataAgent {
                     call: Call<PaymentMethodResponse>,
                     response: Response<PaymentMethodResponse>
                 ) {
-                    onSuccess(response.body() ?: PaymentMethodResponse())
+                    if (response.isSuccessful) {
+                        onSuccess(response.body() ?: PaymentMethodResponse())
+                    } else {
+                        onFailure(response.message())
+                    }
                 }
 
                 override fun onFailure(call: Call<PaymentMethodResponse>, t: Throwable) {
-
+                    onFailure(t.message ?: "Failed")
                 }
 
+
+            })
+    }
+
+    override fun addNewCard(
+        authorization: String,
+        cardNumber: String,
+        cardHolder: String,
+        expirationDate: String,
+        cvc: Int,
+        onSuccess: (AddNewCardResponse) -> Unit,
+        onFailure: (String) -> Unit
+    ) {
+        mCinemaApi?.addNewCard(authorization = authorization, cardNumber = cardNumber, cardHolder = cardHolder, expirationDate = expirationDate, cvc = cvc)
+            ?.enqueue(object : Callback<AddNewCardResponse> {
+                override fun onResponse(
+                    call: Call<AddNewCardResponse>,
+                    response: Response<AddNewCardResponse>
+                ) {
+                    if (response.isSuccessful) {
+                        onSuccess(response.body() ?: AddNewCardResponse())
+                    } else {
+                        onFailure(response.message())
+                    }
+                }
+
+                override fun onFailure(call: Call<AddNewCardResponse>, t: Throwable) {
+                    onFailure(t.message ?: "Failed")
+                }
 
             })
     }
