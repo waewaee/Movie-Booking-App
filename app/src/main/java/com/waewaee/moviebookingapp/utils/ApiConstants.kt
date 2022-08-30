@@ -17,6 +17,7 @@ const val API_GET_SEATING_PLAN = "/api/v1/seat-plan"
 const val API_GET_SNACKLIST = "/api/v1/snacks"
 const val API_GET_PAYMENT_METHODS = "/api/v1/payment-methods"
 const val API_CREATE_CARD = "/api/v1/card"
+const val API_CHECKOUT = "/api/v1/checkout"
 
 // Params
 const val PARAM_NAME = "name"

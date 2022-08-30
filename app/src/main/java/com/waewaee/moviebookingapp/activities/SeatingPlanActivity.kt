@@ -25,27 +25,34 @@ class SeatingPlanActivity : AppCompatActivity(), SeatDelegate {
     lateinit var mAdapter: MovieSeatAdapter
     lateinit var seatList: List<MovieSeatVO>
 
+    private var movieId: Int = 0
+    private var cinemaId: Int = 0
     private var timeslotId: Int = 0
     private var ticketCount = 0
     private var seatNames = ""
+    private var seatRows = ""
     private var mPrice = 0
     private val mCinemaModel: CinemaModel = CinemaModelImpl
     
     companion object {
+        private val EXTRA_MOVIE_ID = "EXTRA_MOVIE_ID"
         private val EXTRA_MOVIE_NAME = "EXTRA_MOVIE_NAME"
         private val EXTRA_MOVIE_DURATION = "EXTRA_MOVIE_DURATION"
         private val EXTRA_MOVIE_DATE = "EXTRA_MOVIE_DATE"
         private val EXTRA_MOVIE_TIME = "EXTRA_MOVIE_TIME"
         private val EXTRA_CINEMA_NAME = "EXTRA_CINEMA_NAME"
+        private val EXTRA_CINEMA_ID = "EXTRA_CINEMA_ID"
         private val EXTRA_TIMESLOT_ID = "EXTRA_TIMESLOT_ID"
 
-        fun newIntent(context: Context, movieName: String, movieDuration: String, movieDate: String, movieTime: String, cinemaName: String, timeslotId: Int): Intent {
+        fun newIntent(context: Context, movieId: Int, movieName: String, movieDuration: String, movieDate: String, movieTime: String, cinemaName: String, cinemaId: Int, timeslotId: Int): Intent {
             val intent =  Intent(context, SeatingPlanActivity::class.java)
+            intent.putExtra(EXTRA_MOVIE_ID, movieId)
             intent.putExtra(EXTRA_MOVIE_NAME, movieName)
             intent.putExtra(EXTRA_MOVIE_DURATION, movieDuration)
             intent.putExtra(EXTRA_MOVIE_DATE, movieDate)
             intent.putExtra(EXTRA_MOVIE_TIME, movieTime)
             intent.putExtra(EXTRA_CINEMA_NAME, cinemaName)
+            intent.putExtra(EXTRA_CINEMA_ID, cinemaId)
             intent.putExtra(EXTRA_TIMESLOT_ID, timeslotId)
             return intent
         }
@@ -55,10 +62,12 @@ class SeatingPlanActivity : AppCompatActivity(), SeatDelegate {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_seating_plan)
 
+        movieId = intent?.getIntExtra(EXTRA_MOVIE_ID, 0) ?: 0
         movieName = intent?.getStringExtra(EXTRA_MOVIE_NAME) ?: ""
         movieDuration = intent?.getStringExtra(EXTRA_MOVIE_DURATION) ?: ""
         movieDate = intent?.getStringExtra(EXTRA_MOVIE_DATE) ?: ""
         movieTime = intent?.getStringExtra(EXTRA_MOVIE_TIME) ?: ""
+        cinemaId = intent?.getIntExtra(EXTRA_CINEMA_ID, 0) ?: 0
         cinemaName = intent?.getStringExtra(EXTRA_CINEMA_NAME) ?: ""
         timeslotId = intent?.getIntExtra(EXTRA_TIMESLOT_ID, 0) ?: 0
 
@@ -88,7 +97,7 @@ class SeatingPlanActivity : AppCompatActivity(), SeatDelegate {
 
         btnNext.setOnClickListener {
             if (mPrice != 0) {
-                startActivity(ChooseSnackActivity.newIntent(this, movieName, movieDuration, movieDate, movieTime, cinemaName, seatNames, mPrice))
+                startActivity(ChooseSnackActivity.newIntent(this, movieId, movieName, movieDuration, movieDate, movieTime, cinemaId, cinemaName, seatRows, seatNames, mPrice))
             }
         }
     }
@@ -113,6 +122,7 @@ class SeatingPlanActivity : AppCompatActivity(), SeatDelegate {
             if (it.title.equals(title)) {
                 it.isSelected = true
                 ticketCount += 1
+                seatRows += "${it.symbol}, "
                 seatNames += "${it.title}, "
                 mPrice += price
                 tvSeatCount.text = ticketCount.toString()

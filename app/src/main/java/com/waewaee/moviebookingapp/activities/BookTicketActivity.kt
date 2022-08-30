@@ -30,6 +30,7 @@ class BookTicketActivity : AppCompatActivity(), CalendarViewHolderDelegate, Time
 
     private val mCinemaModel: CinemaModel = CinemaModelImpl
     private var movieId: Int = 0
+    private var mCinemaId: Int = 0
     private var movieTimeslotId: Int = 0
     private var movieTime: String = ""
 
@@ -80,8 +81,8 @@ class BookTicketActivity : AppCompatActivity(), CalendarViewHolderDelegate, Time
         }
 
         btnNext.setOnClickListener {
-            if (movieDate.isNotEmpty() && movieTime.isNotEmpty() && cinemaName.isNotEmpty()) {
-                startActivity(SeatingPlanActivity.newIntent(this, movieName, movieDuration, movieDate, movieTime, cinemaName, movieTimeslotId))
+            if (movieDate.isNotEmpty() && movieTime.isNotEmpty() && cinemaName.isNotEmpty() && mCinemaId != 0) {
+                startActivity(SeatingPlanActivity.newIntent(this, movieId, movieName, movieDuration, movieDate, movieTime, cinemaName, mCinemaId, movieTimeslotId))
             }
         }
     }
@@ -113,6 +114,7 @@ class BookTicketActivity : AppCompatActivity(), CalendarViewHolderDelegate, Time
         cinemaList.map {
             if (it.cinemaId == cinemaId) {
                 cinemaName = it.cinema ?: ""
+                mCinemaId = it.cinemaId
                 it.timeslots?.map {
                     it.isSelected = it.startTime == startTime
                     movieTimeslotId = it.cinemaDayTimeslotId ?: 0
