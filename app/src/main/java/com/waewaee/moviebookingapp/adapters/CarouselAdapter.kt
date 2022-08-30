@@ -4,10 +4,15 @@ import com.waewaee.moviebookingapp.data.vos.EmptyCardVO
 import com.waewaee.moviebookingapp.data.vos.VisaCardVO
 import alirezat775.lib.carouselview.CarouselAdapter
 import android.annotation.SuppressLint
+import android.opengl.Visibility
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.GONE
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import com.waewaee.moviebookingapp.R
+import com.waewaee.moviebookingapp.delegates.VisaCardDelegate
+import kotlinx.android.synthetic.main.view_item_carousel.view.*
 
 /**
  * Author:  Alireza Tizfahm Fard
@@ -15,7 +20,7 @@ import com.waewaee.moviebookingapp.R
  * Email:   alirezat775@gmail.com
  */
 
-class CarouselAdapter() : CarouselAdapter() {
+class CarouselAdapter(private val mDelegate: VisaCardDelegate) : CarouselAdapter() {
 
     private val EMPTY_ITEM = 0
     private val NORMAL_ITEM = 1
@@ -34,7 +39,7 @@ class CarouselAdapter() : CarouselAdapter() {
         val inflater = LayoutInflater.from(parent.context)
         return if (viewType == NORMAL_ITEM) {
             val v = inflater.inflate(R.layout.view_item_carousel, parent, false)
-            vh = MyViewHolder(v)
+            vh = MyViewHolder(v, mDelegate)
             vh as MyViewHolder
         } else {
             val v = inflater.inflate(R.layout.view_item_empty_carousel, parent, false)
@@ -46,11 +51,11 @@ class CarouselAdapter() : CarouselAdapter() {
     override fun onBindViewHolder(holder: CarouselViewHolder, position: Int) {
         when (holder) {
             is MyViewHolder -> {
-                vh = holder
                 val model = getItems()[position] as VisaCardVO
+                holder.bindData(model)
+
             }
             else -> {
-                vh = holder
                 val model = getItems()[position] as EmptyCardVO
             }
         }
@@ -62,7 +67,39 @@ class CarouselAdapter() : CarouselAdapter() {
         notifyDataSetChanged()
     }
 
-    inner class MyViewHolder(itemView: View) : CarouselViewHolder(itemView) {
+    inner class MyViewHolder(itemView: View, private val mDelegate: VisaCardDelegate) : CarouselViewHolder(itemView) {
+
+        lateinit var mCard: VisaCardVO
+
+        init {
+            itemView.setOnClickListener {
+                mDelegate.onTapCard(mCard.id ?: 0)
+            }
+        }
+
+
+        fun bindData(card: VisaCardVO){
+            mCard = card
+
+            var cardNumber = card.cardNumber ?: ""
+            var list = mutableListOf<String>()
+            for (i in 0..3) { list.add(cardNumber.substring(i*4, (i+1)*4))}
+            cardNumber = list.joinToString(" ")
+
+            itemView.tvFirstFourDigits.text = cardNumber
+            itemView.tvSecondFourDigits.visibility = GONE
+            itemView.tvThirdFourDigits.visibility = GONE
+            itemView.tvFourthFourDigits.visibility = GONE
+
+            itemView.tvCardHolderName.text = card.cardHolder
+            itemView.tvExpiresDate.text = card.expirationDate
+
+            if (card.isSelected) {
+                itemView.layoutVisaCard.setBackgroundColor(ContextCompat.getColor(itemView.context, R.color.colorPrimary))
+            } else {
+                itemView.layoutVisaCard.setBackgroundColor(ContextCompat.getColor(itemView.context, R.color.color_visa_card))
+            }
+        }
     }
 
     inner class EmptyViewHolder(itemView: View) : CarouselViewHolder(itemView) {

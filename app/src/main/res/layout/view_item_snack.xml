@@ -17,11 +17,13 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvSnackSetDetails"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="Combo Size M 22oz. Coke (X1) \n medium popcorn (X1)"
         android:textColor="@color/secondary_text"
         android:layout_below="@id/tvSnackSetName"
+        android:layout_alignParentStart="true"
+        android:layout_toStartOf="@id/btnMinus"
         android:layout_marginTop="@dimen/margin_medium"/>
 
     <androidx.appcompat.widget.AppCompatTextView

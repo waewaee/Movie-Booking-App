@@ -1,5 +1,6 @@
 package com.waewaee.moviebookingapp.activities
 
+import alirezat775.lib.carouselview.Carousel
 import com.waewaee.moviebookingapp.data.vos.VisaCardVO
 import alirezat775.lib.carouselview.CarouselView
 import android.app.Activity
@@ -7,13 +8,18 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.bumptech.glide.Glide
+import com.google.android.material.snackbar.Snackbar
 import com.waewaee.moviebookingapp.R
 import com.waewaee.moviebookingapp.adapters.CarouselAdapter
 import com.waewaee.moviebookingapp.data.models.CinemaModel
 import com.waewaee.moviebookingapp.data.models.CinemaModelImpl
+import com.waewaee.moviebookingapp.delegates.VisaCardDelegate
+import com.waewaee.moviebookingapp.utils.CINEMA_BASE_URL
+import kotlinx.android.synthetic.main.activity_movie_list.*
 import kotlinx.android.synthetic.main.activity_payment.*
 
-class PaymentActivity : AppCompatActivity() {
+class PaymentActivity : AppCompatActivity(), VisaCardDelegate {
 
     lateinit var movieDate: String
     lateinit var movieTime: String
@@ -23,6 +29,9 @@ class PaymentActivity : AppCompatActivity() {
     lateinit var seatNames: String
     lateinit var paymentMethod: String
     lateinit var cardObj: VisaCardVO
+    lateinit var cardList: List<VisaCardVO>
+    lateinit var carousel: Carousel
+    lateinit var carouselAdapter: CarouselAdapter
 
     private var subTotal: Int = 0
     private val mCinemaModel: CinemaModel = CinemaModelImpl
@@ -80,7 +89,7 @@ class PaymentActivity : AppCompatActivity() {
         }
 
         btnAddNewCard.setOnClickListener {
-            startActivityForResult(AddNewCardActivity.newIntent(this), 100)
+            startActivity(AddNewCardActivity.newIntent(this))
         }
 
         btnPay.setOnClickListener {
@@ -89,8 +98,8 @@ class PaymentActivity : AppCompatActivity() {
     }
 
     private fun setUpCarousel() {
-        val adapter = CarouselAdapter()
-        val carousel = alirezat775.lib.carouselview.Carousel(this, cardCarousel, adapter)
+         carouselAdapter = CarouselAdapter(this)
+        carousel = Carousel(this, cardCarousel, carouselAdapter)
         carousel.setOrientation(CarouselView.HORIZONTAL, false)
         carousel.scaleView(true)
 
@@ -99,14 +108,32 @@ class PaymentActivity : AppCompatActivity() {
 //        carousel.add(VisaCardVO(3))
 //        carousel.add(VisaCardVO(4))
 //        carousel.add(VisaCardVO(5))
-
-        carousel.setCurrentPosition(3)
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == CARD_REQUEST_CODE && resultCode == Activity.RESULT_OK && data?.data != null) {
-            cardObj =data.getSerializableExtra(EXTRA_NEW_CARD) as VisaCardVO
+//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+//        super.onActivityResult(requestCode, resultCode, data)
+//        if (requestCode == CARD_REQUEST_CODE && resultCode == Activity.RESULT_OK && data?.data != null) {
+//            cardObj =data.getSerializableExtra(EXTRA_NEW_CARD) as VisaCardVO
+//        }
+//    }
+
+    override fun onResume() {
+        super.onResume()
+        mCinemaModel.getProfile(
+            onSuccess = {
+                cardList = it.cards ?: listOf()
+                carousel.addAll(it.cards?.reversed()?.toMutableList() ?: mutableListOf())
+//                carousel.setCurrentPosition(3)
+            },
+            onFailure = {
+                Snackbar.make(window.decorView, it, Snackbar.LENGTH_SHORT).show()
+            })
+    }
+
+    override fun onTapCard(cardId: Int) {
+        cardList.map {
+            it.isSelected = it.id == cardId
         }
+        carouselAdapter.setNewData(cardList)
     }
 }

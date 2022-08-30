@@ -44,9 +44,9 @@ class AddNewCardActivity : AppCompatActivity(), Serializable {
             cvc = etCVC.text.toString().toInt(),
             onSuccess = {
                 cardObj = it.lastOrNull() ?: VisaCardVO()
-                val intent = Intent()
-                    .putExtra(EXTRA_NEW_CARD, cardObj as Serializable)
-                setResult(Activity.RESULT_OK, intent)
+//                val intent = Intent()
+//                    .putExtra(EXTRA_NEW_CARD, cardObj as Serializable)
+//                setResult(Activity.RESULT_OK, intent)
                 finish()
             },
             onFailure = {

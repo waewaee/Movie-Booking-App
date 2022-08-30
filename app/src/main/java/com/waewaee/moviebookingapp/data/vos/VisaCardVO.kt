@@ -20,6 +20,8 @@ data class VisaCardVO (
     @SerializedName("card_type")
     val cardType: String? = "",
 
+    var isSelected: Boolean = false,
+
     ) : CarouselModel() {
 
 }

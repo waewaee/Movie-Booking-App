@@ -7,6 +7,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <RelativeLayout
+        android:id="@+id/layoutVisaCard"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/color_visa_card"
@@ -32,12 +33,12 @@
             android:id="@+id/tvFirstFourDigits"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@id/ivCardLogo"
+            android:layout_marginTop="@dimen/margin_large"
+            android:letterSpacing="0.2"
             android:text="@string/card_stars"
             android:textColor="@color/white"
-            android:textSize="@dimen/text_regular_3x"
-            android:letterSpacing="0.2"
-            android:layout_below="@id/ivCardLogo"
-            android:layout_marginTop="@dimen/margin_large"/>
+            android:textSize="@dimen/text_regular_2x" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvSecondFourDigits"
@@ -45,7 +46,7 @@
             android:layout_height="wrap_content"
             android:text="@string/card_stars"
             android:textColor="@color/white"
-            android:textSize="@dimen/text_regular_3x"
+            android:textSize="@dimen/text_regular_2x"
             android:letterSpacing="0.2"
             android:layout_toEndOf="@id/tvFirstFourDigits"
             android:layout_marginStart="@dimen/margin_medium_2"
@@ -57,7 +58,7 @@
             android:layout_height="wrap_content"
             android:text="@string/card_stars"
             android:textColor="@color/white"
-            android:textSize="@dimen/text_regular_3x"
+            android:textSize="@dimen/text_regular_2x"
             android:letterSpacing="0.2"
             android:layout_toEndOf="@id/tvSecondFourDigits"
             android:layout_marginStart="@dimen/margin_medium_2"
@@ -69,7 +70,7 @@
             android:layout_height="wrap_content"
             android:text="8041"
             android:textColor="@color/white"
-            android:textSize="@dimen/text_regular_3x"
+            android:textSize="@dimen/text_regular_2x"
             android:letterSpacing="0.2"
             android:layout_toEndOf="@id/tvThirdFourDigits"
             android:layout_marginStart="@dimen/margin_medium_2"
