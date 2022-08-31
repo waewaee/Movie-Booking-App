@@ -25,6 +25,7 @@ class MovieDetailsActivity : AppCompatActivity() {
     lateinit var genreChipAdapter: GenreChipAdapter
     lateinit var movieName: String
     lateinit var movieDuration: String
+    lateinit var posterPath: String
 
     private var movieId: Int = 0
 
@@ -88,6 +89,8 @@ class MovieDetailsActivity : AppCompatActivity() {
             .load("$MOVIE_IMAGE_BASE_URL${movie.posterPath}")
             .into(ivMovieImage)
 
+        posterPath = movie.posterPath ?: ""
+
         tvMovieName.text = movie.title ?: ""
         movieName = movie.title ?: ""
 
@@ -105,7 +108,7 @@ class MovieDetailsActivity : AppCompatActivity() {
 
     private fun setUpListeners() {
         btnGetTicket.setOnClickListener {
-            startActivity(BookTicketActivity.newIntent(this, movieId, movieName, movieDuration))
+            startActivity(BookTicketActivity.newIntent(this, movieId, movieName, movieDuration, posterPath))
         }
 
         btnBack.setOnClickListener {

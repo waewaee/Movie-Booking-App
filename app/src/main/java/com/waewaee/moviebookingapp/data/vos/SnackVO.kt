@@ -1,6 +1,7 @@
 package com.waewaee.moviebookingapp.data.vos
 
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 data class SnackVO(
     @SerializedName("id")
@@ -18,7 +19,10 @@ data class SnackVO(
     @SerializedName("image")
     val imagePath: String?,
 
-    var totalPrice: Int = 0,
+    @SerializedName("quantity")
     var snackCount: Int = 0,
 
-)
+    @SerializedName("total_price")
+    var totalPrice: Int = 0,
+
+): Serializable

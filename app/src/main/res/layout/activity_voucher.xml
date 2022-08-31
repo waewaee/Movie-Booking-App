@@ -121,11 +121,11 @@
                 android:id="@+id/tvBookingNo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="CG123456789"
-                android:textStyle="bold"
-                android:layout_alignParentEnd="true"
                 android:layout_alignTop="@id/tvBookingNoLabel"
-                android:layout_marginEnd="@dimen/margin_medium_2"/>
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="@dimen/margin_medium_2"
+                android:text="CG123456789"
+                android:textStyle="bold" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvShowtimeDateLabel"
@@ -140,11 +140,11 @@
                 android:id="@+id/tvShowtimeDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="7:00 PM - 10 May"
-                android:textStyle="bold"
-                android:layout_alignParentEnd="true"
                 android:layout_alignTop="@id/tvShowtimeDateLabel"
-                android:layout_marginEnd="@dimen/margin_medium_2"/>
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="@dimen/margin_medium_2"
+                android:text="7:00 PM - 10 May"
+                android:textStyle="bold" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvTheaterLabel"
@@ -159,11 +159,11 @@
                 android:id="@+id/tvTheater"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Galaxy Cinema - Golden City"
-                android:textStyle="bold"
-                android:layout_alignParentEnd="true"
                 android:layout_alignTop="@id/tvTheaterLabel"
-                android:layout_marginEnd="@dimen/margin_medium_2"/>
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="@dimen/margin_medium_2"
+                android:text="Galaxy Cinema - Golden City"
+                android:textStyle="bold" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvScreenLabel"
@@ -197,11 +197,11 @@
                 android:id="@+id/tvRow"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="D"
-                android:textStyle="bold"
-                android:layout_alignParentEnd="true"
                 android:layout_alignTop="@id/tvRowLabel"
-                android:layout_marginEnd="@dimen/margin_medium_2"/>
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="@dimen/margin_medium_2"
+                android:text="D"
+                android:textStyle="bold" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvSeatLabel"

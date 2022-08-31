@@ -1,8 +1,10 @@
 package com.waewaee.moviebookingapp.network.dataagents
 
+import com.waewaee.moviebookingapp.data.vos.CheckoutMovieInfoVO
 import com.waewaee.moviebookingapp.data.vos.ErrorVO
 import com.waewaee.moviebookingapp.data.vos.VisaCardVO
 import com.waewaee.moviebookingapp.network.CinemaApi
+import com.waewaee.moviebookingapp.network.request.VoucherRequest
 import com.waewaee.moviebookingapp.network.responses.*
 import com.waewaee.moviebookingapp.utils.CINEMA_BASE_URL
 import okhttp3.OkHttpClient
@@ -267,6 +269,32 @@ object RetrofitCinemaDataAgentImpl: CinemaDataAgent {
                 }
 
                 override fun onFailure(call: Call<AddNewCardResponse>, t: Throwable) {
+                    onFailure(t.message ?: "Failed")
+                }
+
+            })
+    }
+
+    override fun checkout(
+        authorization: String,
+        voucherRequest: String,
+        onSuccess: (CheckoutResponse) -> Unit,
+        onFailure: (String) -> Unit
+    ) {
+        mCinemaApi?.checkOut(authorization = authorization, voucherRequest = voucherRequest)
+            ?.enqueue(object : Callback<CheckoutResponse> {
+                override fun onResponse(
+                    call: Call<CheckoutResponse>,
+                    response: Response<CheckoutResponse>
+                ) {
+                    if (response.isSuccessful) {
+                        onSuccess(response.body() ?: CheckoutResponse())
+                    }else {
+                        onFailure(response.message())
+                    }
+                }
+
+                override fun onFailure(call: Call<CheckoutResponse>, t: Throwable) {
                     onFailure(t.message ?: "Failed")
                 }
 

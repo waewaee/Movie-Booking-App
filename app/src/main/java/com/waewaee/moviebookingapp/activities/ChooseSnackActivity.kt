@@ -31,9 +31,11 @@ class ChooseSnackActivity : AppCompatActivity(), SnackDelegate, PaymentMethodDel
     lateinit var methodList: List<PaymentMethodVO>
     lateinit var snackAdapter: SnackAdapter
     lateinit var paymentMethodAdapter: PaymentMethodAdapter
+    lateinit var posterPath: String
 
     private var movieId: Int = 0
     private var cinemaId: Int = 0
+    private var timeslotId: Int = 0
     private var subTotal: Int = 0
     private val mCinemaModel: CinemaModel = CinemaModelImpl
 
@@ -41,7 +43,9 @@ class ChooseSnackActivity : AppCompatActivity(), SnackDelegate, PaymentMethodDel
         private val EXTRA_MOVIE_ID = "EXTRA_MOVIE_ID"
         private val EXTRA_MOVIE_NAME = "EXTRA_MOVIE_NAME"
         private val EXTRA_MOVIE_DURATION = "EXTRA_MOVIE_DURATION"
+        private val EXTRA_POSTER_PATH = "EXTRA_POSTER_PATH"
         private val EXTRA_MOVIE_DATE = "EXTRA_MOVIE_DATE"
+        private val EXTRA_TIMESLOT_ID = "EXTRA_TIMESLOT_ID"
         private val EXTRA_MOVIE_TIME = "EXTRA_MOVIE_TIME"
         private val EXTRA_CINEMA_NAME = "EXTRA_CINEMA_NAME"
         private val EXTRA_CINEMA_ID = "EXTRA_CINEMA_ID"
@@ -49,13 +53,15 @@ class ChooseSnackActivity : AppCompatActivity(), SnackDelegate, PaymentMethodDel
         private val EXTRA_SEAT_NAME = "EXTRA_SEAT_NAME"
         private val EXTRA_SEAT_PRICE = "EXTRA_SEAT_PRICE"
 
-        fun newIntent(context: Context, movieId: Int, movieName: String, movieDuration: String, movieDate: String, movieTime: String, cinemaId: Int, cinemaName: String, seatRows: String, seatNames: String, seatPrice: Int): Intent {
+        fun newIntent(context: Context, movieId: Int, movieName: String, movieDuration: String, posterPath: String, movieDate: String, timeslotId: Int, movieTime: String, cinemaId: Int, cinemaName: String, seatRows: String, seatNames: String, seatPrice: Int): Intent {
             val intent = Intent(context, ChooseSnackActivity::class.java)
 
             intent.putExtra(EXTRA_MOVIE_ID, movieId)
             intent.putExtra(EXTRA_MOVIE_NAME, movieName)
             intent.putExtra(EXTRA_MOVIE_DURATION, movieDuration)
+            intent.putExtra(EXTRA_POSTER_PATH, posterPath)
             intent.putExtra(EXTRA_MOVIE_DATE, movieDate)
+            intent.putExtra(EXTRA_TIMESLOT_ID, timeslotId)
             intent.putExtra(EXTRA_MOVIE_TIME, movieTime)
             intent.putExtra(EXTRA_CINEMA_NAME, cinemaName)
             intent.putExtra(EXTRA_CINEMA_ID, cinemaId)
@@ -80,8 +86,10 @@ class ChooseSnackActivity : AppCompatActivity(), SnackDelegate, PaymentMethodDel
         movieId = intent?.getIntExtra(EXTRA_MOVIE_ID, 0) ?: 0
         movieName = intent?.getStringExtra(EXTRA_MOVIE_NAME) ?: ""
         movieDuration = intent?.getStringExtra(EXTRA_MOVIE_DURATION) ?: ""
+        posterPath= intent?.getStringExtra(EXTRA_POSTER_PATH) ?: ""
         movieDate = intent?.getStringExtra(EXTRA_MOVIE_DATE) ?: ""
         movieTime = intent?.getStringExtra(EXTRA_MOVIE_TIME) ?: ""
+        timeslotId = intent?.getIntExtra(EXTRA_TIMESLOT_ID, 0) ?: 0
         cinemaName = intent?.getStringExtra(EXTRA_CINEMA_NAME) ?: ""
         cinemaId = intent?.getIntExtra(EXTRA_CINEMA_ID, 0) ?: 0
         seatRows = intent?.getStringExtra(EXTRA_SEAT_ROW) ?: ""
@@ -119,7 +127,7 @@ class ChooseSnackActivity : AppCompatActivity(), SnackDelegate, PaymentMethodDel
     private fun setUpListeners() {
         btnPay.setOnClickListener {
             if (paymentMethod.isNotEmpty()) {
-                startActivity(PaymentActivity.newIntent(this, movieId, movieName, movieDuration, movieDate, movieTime, cinemaId, cinemaName, seatRows, seatNames, snackList, subTotal, paymentMethod))
+                startActivity(PaymentActivity.newIntent(this, movieId, movieName, movieDuration, movieDate, posterPath, timeslotId, movieTime, cinemaId, cinemaName, seatRows, seatNames, snackList, subTotal, paymentMethod))
             }
         }
 

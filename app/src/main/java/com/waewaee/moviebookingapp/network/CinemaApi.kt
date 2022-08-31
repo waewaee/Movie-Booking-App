@@ -1,6 +1,7 @@
 package com.waewaee.moviebookingapp.network
 
 import com.waewaee.moviebookingapp.data.vos.VisaCardVO
+import com.waewaee.moviebookingapp.network.request.VoucherRequest
 import com.waewaee.moviebookingapp.network.responses.*
 import com.waewaee.moviebookingapp.utils.*
 import retrofit2.Call
@@ -67,5 +68,11 @@ interface CinemaApi {
         @Field(PARAM_EXPIRATION_DATE) expirationDate: String,
         @Field(PARAM_CVC) cvc: Int,
     ) : Call<AddNewCardResponse>
+
+    @POST(API_CHECKOUT)
+    fun checkOut(
+        @Header(PARAM_AUTHORIZATION) authorization: String,
+        @Body voucherRequest: String,
+    ) : Call<CheckoutResponse>
 
 }

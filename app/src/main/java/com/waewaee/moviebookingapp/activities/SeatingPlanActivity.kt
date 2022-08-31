@@ -24,6 +24,7 @@ class SeatingPlanActivity : AppCompatActivity(), SeatDelegate {
     lateinit var cinemaName: String
     lateinit var mAdapter: MovieSeatAdapter
     lateinit var seatList: List<MovieSeatVO>
+    lateinit var posterPath: String
 
     private var movieId: Int = 0
     private var cinemaId: Int = 0
@@ -43,12 +44,14 @@ class SeatingPlanActivity : AppCompatActivity(), SeatDelegate {
         private val EXTRA_CINEMA_NAME = "EXTRA_CINEMA_NAME"
         private val EXTRA_CINEMA_ID = "EXTRA_CINEMA_ID"
         private val EXTRA_TIMESLOT_ID = "EXTRA_TIMESLOT_ID"
+        private val EXTRA_POSTER_PATH = "EXTRA_POSTER_PATH"
 
-        fun newIntent(context: Context, movieId: Int, movieName: String, movieDuration: String, movieDate: String, movieTime: String, cinemaName: String, cinemaId: Int, timeslotId: Int): Intent {
+        fun newIntent(context: Context, movieId: Int, movieName: String, movieDuration: String, posterPath: String,  movieDate: String, movieTime: String, cinemaName: String, cinemaId: Int, timeslotId: Int): Intent {
             val intent =  Intent(context, SeatingPlanActivity::class.java)
             intent.putExtra(EXTRA_MOVIE_ID, movieId)
             intent.putExtra(EXTRA_MOVIE_NAME, movieName)
             intent.putExtra(EXTRA_MOVIE_DURATION, movieDuration)
+            intent.putExtra(EXTRA_POSTER_PATH, posterPath)
             intent.putExtra(EXTRA_MOVIE_DATE, movieDate)
             intent.putExtra(EXTRA_MOVIE_TIME, movieTime)
             intent.putExtra(EXTRA_CINEMA_NAME, cinemaName)
@@ -65,6 +68,7 @@ class SeatingPlanActivity : AppCompatActivity(), SeatDelegate {
         movieId = intent?.getIntExtra(EXTRA_MOVIE_ID, 0) ?: 0
         movieName = intent?.getStringExtra(EXTRA_MOVIE_NAME) ?: ""
         movieDuration = intent?.getStringExtra(EXTRA_MOVIE_DURATION) ?: ""
+        posterPath= intent?.getStringExtra(EXTRA_POSTER_PATH) ?: ""
         movieDate = intent?.getStringExtra(EXTRA_MOVIE_DATE) ?: ""
         movieTime = intent?.getStringExtra(EXTRA_MOVIE_TIME) ?: ""
         cinemaId = intent?.getIntExtra(EXTRA_CINEMA_ID, 0) ?: 0
@@ -97,7 +101,7 @@ class SeatingPlanActivity : AppCompatActivity(), SeatDelegate {
 
         btnNext.setOnClickListener {
             if (mPrice != 0) {
-                startActivity(ChooseSnackActivity.newIntent(this, movieId, movieName, movieDuration, movieDate, movieTime, cinemaId, cinemaName, seatRows, seatNames, mPrice))
+                startActivity(ChooseSnackActivity.newIntent(this, movieId, movieName, movieDuration, posterPath, movieDate, timeslotId, movieTime, cinemaId, cinemaName, seatRows, seatNames, mPrice))
             }
         }
     }

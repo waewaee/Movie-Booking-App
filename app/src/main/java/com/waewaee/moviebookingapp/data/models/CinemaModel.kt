@@ -1,6 +1,7 @@
 package com.waewaee.moviebookingapp.data.models
 
 import com.waewaee.moviebookingapp.data.vos.*
+import com.waewaee.moviebookingapp.network.request.VoucherRequest
 import com.waewaee.themovieapp.data.vos.MovieVO
 
 interface CinemaModel {
@@ -60,6 +61,12 @@ interface CinemaModel {
         expirationDate: String,
         cvc: Int,
         onSuccess: (List<VisaCardVO>) -> Unit,
+        onFailure: (String) -> Unit,
+    )
+
+    fun checkout(
+        voucherRequest: String,
+        onSuccess: (CheckoutMovieInfoVO) -> Unit,
         onFailure: (String) -> Unit,
     )
 

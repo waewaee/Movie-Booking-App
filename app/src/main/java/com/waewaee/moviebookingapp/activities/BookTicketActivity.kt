@@ -27,6 +27,7 @@ class BookTicketActivity : AppCompatActivity(), CalendarViewHolderDelegate, Time
     lateinit var movieDuration: String
     lateinit var cinemaName: String
     lateinit var cinemaList: List<CinemaVO>
+    lateinit var posterPath: String
 
     private val mCinemaModel: CinemaModel = CinemaModelImpl
     private var movieId: Int = 0
@@ -39,12 +40,14 @@ class BookTicketActivity : AppCompatActivity(), CalendarViewHolderDelegate, Time
         private val EXTRA_MOVIE_ID = "EXTRA_MOVIE_ID"
         private val EXTRA_MOVIE_NAME = "EXTRA_MOVIE_NAME"
         private val EXTRA_MOVIE_DURATION = "EXTRA_MOVIE_DURATION"
+        private val EXTRA_POSTER_PATH = "EXTRA_POSTER_PATH"
 
-        fun newIntent(context: Context, movieId: Int, movieName: String, movieDuration: String): Intent {
+        fun newIntent(context: Context, movieId: Int, movieName: String, movieDuration: String, posterPath: String): Intent {
             val intent = Intent(context, BookTicketActivity::class.java)
             intent.putExtra(EXTRA_MOVIE_ID, movieId)
             intent.putExtra(EXTRA_MOVIE_NAME, movieName)
             intent.putExtra(EXTRA_MOVIE_DURATION, movieDuration)
+            intent.putExtra(EXTRA_POSTER_PATH, posterPath)
             return intent
         }
     }
@@ -60,6 +63,9 @@ class BookTicketActivity : AppCompatActivity(), CalendarViewHolderDelegate, Time
         movieId = intent?.getIntExtra(EXTRA_MOVIE_ID, 0) ?: 0
         movieName = intent?.getStringExtra(EXTRA_MOVIE_NAME) ?: ""
         movieDuration = intent?.getStringExtra(EXTRA_MOVIE_DURATION) ?: ""
+        posterPath= intent?.getStringExtra(EXTRA_POSTER_PATH) ?: ""
+
+        onTapDate(14)
     }
 
     private fun requestCinemaData() {
@@ -82,7 +88,7 @@ class BookTicketActivity : AppCompatActivity(), CalendarViewHolderDelegate, Time
 
         btnNext.setOnClickListener {
             if (movieDate.isNotEmpty() && movieTime.isNotEmpty() && cinemaName.isNotEmpty() && mCinemaId != 0) {
-                startActivity(SeatingPlanActivity.newIntent(this, movieId, movieName, movieDuration, movieDate, movieTime, cinemaName, mCinemaId, movieTimeslotId))
+                startActivity(SeatingPlanActivity.newIntent(this, movieId, movieName, movieDuration, posterPath, movieDate, movieTime, cinemaName, mCinemaId, movieTimeslotId))
             }
         }
     }

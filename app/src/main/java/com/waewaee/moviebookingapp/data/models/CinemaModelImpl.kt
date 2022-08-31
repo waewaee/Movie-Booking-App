@@ -3,6 +3,7 @@ package com.waewaee.moviebookingapp.data.models
 import com.waewaee.moviebookingapp.data.vos.*
 import com.waewaee.moviebookingapp.network.dataagents.CinemaDataAgent
 import com.waewaee.moviebookingapp.network.dataagents.RetrofitCinemaDataAgentImpl
+import com.waewaee.moviebookingapp.network.request.VoucherRequest
 
 object CinemaModelImpl: CinemaModel {
 
@@ -127,6 +128,18 @@ object CinemaModelImpl: CinemaModel {
             val cardList: List<VisaCardVO> = response.card ?: listOf()
                 onSuccess(cardList)
         },
+            onFailure = onFailure)
+    }
+
+    override fun checkout(
+        voucherRequest: String,
+        onSuccess: (CheckoutMovieInfoVO) -> Unit,
+        onFailure: (String) -> Unit
+    ) {
+        mCinemaDataAgent.checkout(authorization = userToken, voucherRequest = voucherRequest,
+            onSuccess = { response ->
+                onSuccess(response.data ?: CheckoutMovieInfoVO())
+            },
             onFailure = onFailure)
     }
 

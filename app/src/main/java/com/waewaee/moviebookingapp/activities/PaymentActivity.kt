@@ -21,7 +21,7 @@ import kotlinx.android.synthetic.main.activity_movie_list.*
 import kotlinx.android.synthetic.main.activity_payment.*
 import java.io.Serializable
 
-class PaymentActivity : AppCompatActivity(), VisaCardDelegate, Serializable {
+class PaymentActivity : AppCompatActivity(), VisaCardDelegate {
 
     lateinit var movieDate: String
     lateinit var movieTime: String
@@ -36,9 +36,11 @@ class PaymentActivity : AppCompatActivity(), VisaCardDelegate, Serializable {
     lateinit var carousel: Carousel
     lateinit var carouselAdapter: CarouselAdapter
     lateinit var snackList: List<SnackVO>
+    lateinit var posterPath: String
 
     private var movieId: Int = 0
     private var cinemaId: Int = 0
+    private var timeslotId: Int = 0
     private var subTotal: Int = 0
     private var selectedCardId = 0
     private val mCinemaModel: CinemaModel = CinemaModelImpl
@@ -49,7 +51,9 @@ class PaymentActivity : AppCompatActivity(), VisaCardDelegate, Serializable {
         private val EXTRA_MOVIE_ID = "EXTRA_MOVIE_ID"
         private val EXTRA_MOVIE_NAME = "EXTRA_MOVIE_NAME"
         private val EXTRA_MOVIE_DURATION = "EXTRA_MOVIE_DURATION"
+        private val EXTRA_POSTER_PATH = "EXTRA_POSTER_PATH"
         private val EXTRA_MOVIE_DATE = "EXTRA_MOVIE_DATE"
+        private val EXTRA_TIMESLOT_ID = "EXTRA_TIMESLOT_ID"
         private val EXTRA_MOVIE_TIME = "EXTRA_MOVIE_TIME"
         private val EXTRA_CINEMA_NAME = "EXTRA_CINEMA_NAME"
         private val EXTRA_CINEMA_ID = "EXTRA_CINEMA_ID"
@@ -60,13 +64,15 @@ class PaymentActivity : AppCompatActivity(), VisaCardDelegate, Serializable {
         private val EXTRA_PAYMENT_METHOD = "EXTRA_PAYMENT_METHOD"
         private val EXTRA_NEW_CARD = "EXTRA_NEW_CARD"
 
-        fun newIntent(context: Context, movieId: Int, movieName: String, movieDuration: String, movieDate: String, movieTime: String, cinemaId: Int, cinemaName: String, seatRows: String, seatNames: String, snackList: List<SnackVO>, subTotal: Int, paymentMethod: String): Intent {
+        fun newIntent(context: Context, movieId: Int, movieName: String, movieDuration: String, posterPath: String, movieDate: String, timeslotId: Int, movieTime: String, cinemaId: Int, cinemaName: String, seatRows: String, seatNames: String, snackList: List<SnackVO>, subTotal: Int, paymentMethod: String): Intent {
             val intent = Intent(context, PaymentActivity::class.java)
 
             intent.putExtra(EXTRA_MOVIE_ID, movieId)
             intent.putExtra(EXTRA_MOVIE_NAME, movieName)
             intent.putExtra(EXTRA_MOVIE_DURATION, movieDuration)
+            intent.putExtra(EXTRA_POSTER_PATH, posterPath)
             intent.putExtra(EXTRA_MOVIE_DATE, movieDate)
+            intent.putExtra(EXTRA_TIMESLOT_ID, timeslotId)
             intent.putExtra(EXTRA_MOVIE_TIME, movieTime)
             intent.putExtra(EXTRA_CINEMA_NAME, cinemaName)
             intent.putExtra(EXTRA_CINEMA_ID, cinemaId)
@@ -91,7 +97,9 @@ class PaymentActivity : AppCompatActivity(), VisaCardDelegate, Serializable {
         movieId = intent?.getIntExtra(EXTRA_MOVIE_ID, 0) ?: 0
         movieName = intent?.getStringExtra(EXTRA_MOVIE_NAME) ?: ""
         movieDuration = intent?.getStringExtra(EXTRA_MOVIE_DURATION) ?: ""
+        posterPath= intent?.getStringExtra(EXTRA_POSTER_PATH) ?: ""
         movieDate = intent?.getStringExtra(EXTRA_MOVIE_DATE) ?: ""
+        timeslotId = intent?.getIntExtra(EXTRA_TIMESLOT_ID, 0) ?: 0
         movieTime = intent?.getStringExtra(EXTRA_MOVIE_TIME) ?: ""
         cinemaName = intent?.getStringExtra(EXTRA_CINEMA_NAME) ?: ""
         cinemaId = intent?.getIntExtra(EXTRA_CINEMA_ID, 0) ?: 0
@@ -115,7 +123,7 @@ class PaymentActivity : AppCompatActivity(), VisaCardDelegate, Serializable {
 
         btnPay.setOnClickListener {
             selectedCardId.let {
-                startActivity(VoucherActivity.newIntent(this, movieId, movieName, movieDuration, movieDate, movieTime, cinemaId, cinemaName, seatRows, seatNames, snackList, subTotal, paymentMethod, selectedCardId))
+                startActivity(VoucherActivity.newIntent(this, movieId, movieName, movieDuration, posterPath, movieDate, timeslotId, movieTime, cinemaId, cinemaName, seatRows, seatNames, snackList, subTotal, paymentMethod, selectedCardId))
             }
         }
     }
@@ -156,6 +164,7 @@ class PaymentActivity : AppCompatActivity(), VisaCardDelegate, Serializable {
     override fun onTapCard(cardId: Int) {
         cardList.map {
             it.isSelected = it.id == cardId
+            selectedCardId = cardId
         }
         carouselAdapter.setNewData(cardList)
     }
