@@ -116,17 +116,17 @@ class VoucherActivity : AppCompatActivity() {
             cinema_day_timeslot_id = timeslotId,
             cinema_id = cinemaId,
             movie_id = movieId,
-            row = seatRows.dropLast(1),
-            seat_number = seatNames.dropLast(1),
+            row = seatRows,
+            seat_number = seatNames,
             snacks = snackCriteriaList,
             total_price = totalPrice
         )
 
-        val requestString: String = Gson().toJson(voucherRequest)
-        requestCheckOutData(requestString)
+//        val requestString: String = Gson().toJson(voucherRequest)
+        requestCheckOutData(voucherRequest)
     }
 
-    private fun requestCheckOutData(request: String) {
+    private fun requestCheckOutData(request: VoucherRequest) {
         mCinemaModel.checkout(
             voucherRequest = request,
             onSuccess = {

@@ -75,7 +75,7 @@ interface CinemaDataAgent {
 
     fun checkout(
         authorization: String,
-        voucherRequest: String,
+        voucherRequest: VoucherRequest,
         onSuccess: (CheckoutResponse) -> Unit,
         onFailure: (String) -> Unit,
     )

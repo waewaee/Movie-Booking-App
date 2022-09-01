@@ -132,7 +132,7 @@ object CinemaModelImpl: CinemaModel {
     }
 
     override fun checkout(
-        voucherRequest: String,
+        voucherRequest: VoucherRequest,
         onSuccess: (CheckoutMovieInfoVO) -> Unit,
         onFailure: (String) -> Unit
     ) {

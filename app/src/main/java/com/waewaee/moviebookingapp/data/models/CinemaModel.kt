@@ -65,7 +65,7 @@ interface CinemaModel {
     )
 
     fun checkout(
-        voucherRequest: String,
+        voucherRequest: VoucherRequest,
         onSuccess: (CheckoutMovieInfoVO) -> Unit,
         onFailure: (String) -> Unit,
     )

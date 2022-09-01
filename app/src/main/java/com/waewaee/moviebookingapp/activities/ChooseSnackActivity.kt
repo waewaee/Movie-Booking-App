@@ -37,6 +37,7 @@ class ChooseSnackActivity : AppCompatActivity(), SnackDelegate, PaymentMethodDel
     private var cinemaId: Int = 0
     private var timeslotId: Int = 0
     private var subTotal: Int = 0
+    private var selectedSnackList = mutableListOf<SnackVO>()
     private val mCinemaModel: CinemaModel = CinemaModelImpl
 
     companion object {
@@ -127,7 +128,12 @@ class ChooseSnackActivity : AppCompatActivity(), SnackDelegate, PaymentMethodDel
     private fun setUpListeners() {
         btnPay.setOnClickListener {
             if (paymentMethod.isNotEmpty()) {
-                startActivity(PaymentActivity.newIntent(this, movieId, movieName, movieDuration, movieDate, posterPath, timeslotId, movieTime, cinemaId, cinemaName, seatRows, seatNames, snackList, subTotal, paymentMethod))
+                snackList.map {
+                    if (it.snackCount > 0) {
+                        selectedSnackList.add(it)
+                    }
+                }
+                startActivity(PaymentActivity.newIntent(this, movieId, movieName, movieDuration, movieDate, posterPath, timeslotId, movieTime, cinemaId, cinemaName, seatRows, seatNames, selectedSnackList, subTotal, paymentMethod))
             }
         }
 

@@ -126,8 +126,20 @@ class SeatingPlanActivity : AppCompatActivity(), SeatDelegate {
             if (it.title.equals(title)) {
                 it.isSelected = true
                 ticketCount += 1
-                seatRows += "${it.symbol}, "
-                seatNames += "${it.title}, "
+
+                if (!seatRows.contains("${it.symbol}")) {
+                    if (seatRows.isEmpty()) {
+                        seatRows += "${it.symbol}"
+                    } else {
+                        seatRows += ", ${it.symbol}"
+                    }
+                }
+
+                if (seatNames.isEmpty()) {
+                    seatNames += "${it.title}"
+                } else {
+                    seatNames += ", ${it.title}"
+                }
                 mPrice += price
                 tvSeatCount.text = ticketCount.toString()
                 tvSeatName.text = seatNames

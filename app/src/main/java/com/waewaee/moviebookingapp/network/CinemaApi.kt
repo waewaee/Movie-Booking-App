@@ -72,7 +72,7 @@ interface CinemaApi {
     @POST(API_CHECKOUT)
     fun checkOut(
         @Header(PARAM_AUTHORIZATION) authorization: String,
-        @Body voucherRequest: String,
+        @Body voucherRequest: VoucherRequest,
     ) : Call<CheckoutResponse>
 
 }
