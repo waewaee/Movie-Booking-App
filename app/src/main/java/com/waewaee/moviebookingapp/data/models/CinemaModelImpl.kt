@@ -1,14 +1,24 @@
 package com.waewaee.moviebookingapp.data.models
 
+import android.content.Context
 import com.waewaee.moviebookingapp.data.vos.*
 import com.waewaee.moviebookingapp.network.dataagents.CinemaDataAgent
 import com.waewaee.moviebookingapp.network.dataagents.RetrofitCinemaDataAgentImpl
 import com.waewaee.moviebookingapp.network.request.VoucherRequest
+import com.waewaee.moviebookingapp.persistence.CinemaDatabase
 
 object CinemaModelImpl: CinemaModel {
 
+    // Data Agent
     val mCinemaDataAgent: CinemaDataAgent = RetrofitCinemaDataAgentImpl
     private var userToken = ""
+
+    // Database
+    var mCinemaDatabase: CinemaDatabase? = null
+
+    fun initDatabase(context: Context) {
+        mCinemaDatabase = CinemaDatabase.getDbInstance(context)
+    }
 
     override fun getLoginWithEmail(
         email: String,
@@ -16,7 +26,14 @@ object CinemaModelImpl: CinemaModel {
         onSuccess: (ErrorVO) -> Unit,
         onFailure: (String) -> Unit
     ) {
-        mCinemaDataAgent.getLoginWithEmail(email = email, password = password, onSuccess = onSuccess, onFailure = onFailure,
+        mCinemaDataAgent.getLoginWithEmail(email = email, password = password,
+            onSuccess = { response ->
+                mCinemaDatabase?.userDao()?.insertUser(response.userVO ?: UserVO())
+
+                var errorVO = ErrorVO(code = response.code ?: 404, message = response.message ?: "Not Found")
+                onSuccess(errorVO)
+        },
+            onFailure = onFailure,
             setToken = {
             userToken = "Bearer $it"
         })
@@ -44,11 +61,18 @@ object CinemaModelImpl: CinemaModel {
         onSuccess: (UserVO) -> Unit,
         onFailure: (String) -> Unit
     ) {
-        mCinemaDataAgent.getProfile(authorization = userToken,
-            onSuccess = { response ->
-                var userVO = response.userVO
-                onSuccess(userVO ?: UserVO())
-        }, onFailure = onFailure)
+        // Database
+        var result = mCinemaDatabase?.userDao()?.getAllUsers()?.firstOrNull() ?: UserVO()
+        onSuccess(result)
+
+        // Network
+//        mCinemaDataAgent.getProfile(authorization = userToken,
+//            onSuccess = { response ->
+//                var userVO = response.userVO
+////                onSuccess(userVO ?: UserVO())
+//
+//                mCinemaDatabase?.userDao()?.insertUser(userVO ?: UserVO())
+//        }, onFailure = onFailure)
     }
 
     override fun logout(

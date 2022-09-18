@@ -35,7 +35,6 @@ interface CinemaApi {
         @Header(PARAM_AUTHORIZATION) authorization: String,
     ) : Call<LoginResponse>
 
-    @Headers("Accept: application/json")
     @GET(API_GET_CINEMA_TIMESLOTS)
     fun getCinemaTimeslots(
         @Query(PARAM_DATE) date: String,
@@ -69,9 +68,12 @@ interface CinemaApi {
         @Field(PARAM_CVC) cvc: Int,
     ) : Call<AddNewCardResponse>
 
+//    @Headers("Accept: application/json")
     @POST(API_CHECKOUT)
     fun checkOut(
         @Header(PARAM_AUTHORIZATION) authorization: String,
+        @Header("Accept") accept: String = "application/json",
+        @Header("Content-Type") contentType: String = "application/json",
         @Body voucherRequest: VoucherRequest,
     ) : Call<CheckoutResponse>
 

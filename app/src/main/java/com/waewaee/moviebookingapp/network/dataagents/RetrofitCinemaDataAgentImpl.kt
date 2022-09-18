@@ -38,7 +38,7 @@ object RetrofitCinemaDataAgentImpl: CinemaDataAgent {
     override fun getLoginWithEmail(
         email: String,
         password: String,
-        onSuccess: (ErrorVO) -> Unit,
+        onSuccess: (LoginResponse) -> Unit,
         onFailure: (String) -> Unit,
         setToken: (String) -> Unit,
     ) {
@@ -49,8 +49,8 @@ object RetrofitCinemaDataAgentImpl: CinemaDataAgent {
                     response: Response<LoginResponse>
                 ) {
                     if (response.isSuccessful) {
-                        var errorVO = ErrorVO(code = response.body()?.code ?: 404, message = response.body()?.message ?: "Not Found")
-                        onSuccess(errorVO)
+//                        var errorVO = ErrorVO(code = response.body()?.code ?: 404, message = response.body()?.message ?: "Not Found")
+                        onSuccess(response.body() ?: LoginResponse())
                         setToken(response.body()?.token ?: "")
                     } else {
                         onFailure(response.message())

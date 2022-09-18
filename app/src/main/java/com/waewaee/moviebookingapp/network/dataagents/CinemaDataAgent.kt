@@ -10,7 +10,7 @@ interface CinemaDataAgent {
     fun getLoginWithEmail(
         email: String,
         password: String,
-        onSuccess: (ErrorVO) -> Unit,
+        onSuccess: (LoginResponse) -> Unit,
         onFailure: (String) -> Unit,
         setToken: (String) -> Unit,
     )

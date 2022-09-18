@@ -119,7 +119,7 @@ class VoucherActivity : AppCompatActivity() {
             row = seatRows,
             seat_number = seatNames,
             snacks = snackCriteriaList,
-            total_price = totalPrice
+            total_price = totalPrice.toDouble()
         )
 
 //        val requestString: String = Gson().toJson(voucherRequest)

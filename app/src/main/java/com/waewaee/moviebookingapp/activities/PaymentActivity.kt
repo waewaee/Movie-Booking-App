@@ -109,7 +109,7 @@ class PaymentActivity : AppCompatActivity(), VisaCardDelegate {
         subTotal = intent?.getIntExtra(EXTRA_SUB_TOTAL, 0) ?: 0
         paymentMethod = intent?.getStringExtra(EXTRA_PAYMENT_METHOD) ?: ""
 
-        tvTotal.text = "$ $subTotal"
+        tvTotal.text = "$ ${subTotal.toString()}"
     }
 
     private fun setUpListeners() {

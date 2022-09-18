@@ -9,7 +9,7 @@ data class VoucherRequest(
     val row: String,
     val seat_number: String,
     val snacks: List<SnackCriteria>,
-    val total_price: Int
+    val total_price: Double
 )
 
 data class SnackCriteria(

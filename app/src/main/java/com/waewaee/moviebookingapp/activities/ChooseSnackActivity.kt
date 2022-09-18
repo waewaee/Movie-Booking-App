@@ -133,7 +133,7 @@ class ChooseSnackActivity : AppCompatActivity(), SnackDelegate, PaymentMethodDel
                         selectedSnackList.add(it)
                     }
                 }
-                startActivity(PaymentActivity.newIntent(this, movieId, movieName, movieDuration, movieDate, posterPath, timeslotId, movieTime, cinemaId, cinemaName, seatRows, seatNames, selectedSnackList, subTotal, paymentMethod))
+                startActivity(PaymentActivity.newIntent(this, movieId, movieName, movieDuration, posterPath, movieDate, timeslotId, movieTime, cinemaId, cinemaName, seatRows, seatNames, selectedSnackList, subTotal, paymentMethod))
             }
         }
 
