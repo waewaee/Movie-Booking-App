@@ -1,7 +1,7 @@
 package com.waewaee.moviebookingapp.data.models
 
 import com.waewaee.moviebookingapp.data.vos.ActorVO
-import com.waewaee.themovieapp.data.vos.MovieVO
+import com.waewaee.moviebookingapp.data.vos.MovieVO
 
 interface MovieModel {
     fun getNowPlayingMovies(

@@ -14,7 +14,7 @@ import com.waewaee.moviebookingapp.adapters.GenreChipAdapter
 import com.waewaee.moviebookingapp.data.models.MovieModel
 import com.waewaee.moviebookingapp.data.models.MovieModelImpl
 import com.waewaee.moviebookingapp.utils.MOVIE_IMAGE_BASE_URL
-import com.waewaee.themovieapp.data.vos.MovieVO
+import com.waewaee.moviebookingapp.data.vos.MovieVO
 import kotlinx.android.synthetic.main.activity_movie_details.*
 
 class MovieDetailsActivity : AppCompatActivity() {

@@ -3,6 +3,7 @@ package com.waewaee.moviebookingapp.activities
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.waewaee.moviebookingapp.R
+import com.waewaee.moviebookingapp.data.models.CinemaModelImpl
 import kotlinx.android.synthetic.main.activity_welcome.*
 
 class WelcomeActivity : AppCompatActivity() {
@@ -16,7 +17,12 @@ class WelcomeActivity : AppCompatActivity() {
     private fun setUpListeners() {
         btnStart.setOnClickListener {
             finish()
-            startActivity(LoginActivity.newIntent(this))
+
+           if (CinemaModelImpl.checkLoginUser()) {
+               startActivity(MovieListActivity.newIntent(this))
+           } else {
+               startActivity(LoginActivity.newIntent(this))
+           }
         }
     }
 }

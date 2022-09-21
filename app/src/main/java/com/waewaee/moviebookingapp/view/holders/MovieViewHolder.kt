@@ -6,7 +6,7 @@ import com.bumptech.glide.Glide
 import com.waewaee.moviebookingapp.R
 import com.waewaee.moviebookingapp.delegates.MovieViewHolderDelegate
 import com.waewaee.moviebookingapp.utils.MOVIE_IMAGE_BASE_URL
-import com.waewaee.themovieapp.data.vos.MovieVO
+import com.waewaee.moviebookingapp.data.vos.MovieVO
 import kotlinx.android.synthetic.main.view_item_movie.view.*
 
 class MovieViewHolder(itemView: View, private val delegate: MovieViewHolderDelegate) : RecyclerView.ViewHolder(itemView) {

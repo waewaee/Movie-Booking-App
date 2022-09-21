@@ -1,8 +1,8 @@
 package com.waewaee.moviebookingapp.network.responses
 
 import com.google.gson.annotations.SerializedName
-import com.waewaee.themovieapp.data.vos.DateVO
-import com.waewaee.themovieapp.data.vos.MovieVO
+import com.waewaee.moviebookingapp.data.vos.DateVO
+import com.waewaee.moviebookingapp.data.vos.MovieVO
 
 data class MovieListResponse(
     @SerializedName("dates")

@@ -1,7 +1,7 @@
 package com.waewaee.moviebookingapp.network.dataagents
 
 import com.waewaee.moviebookingapp.data.vos.ActorVO
-import com.waewaee.themovieapp.data.vos.MovieVO
+import com.waewaee.moviebookingapp.data.vos.MovieVO
 
 interface MovieDataAgent {
 

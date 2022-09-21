@@ -3,7 +3,7 @@ package com.waewaee.moviebookingapp.network
 import com.waewaee.moviebookingapp.network.responses.CreditsByMovieResponse
 import com.waewaee.moviebookingapp.network.responses.MovieListResponse
 import com.waewaee.moviebookingapp.utils.*
-import com.waewaee.themovieapp.data.vos.MovieVO
+import com.waewaee.moviebookingapp.data.vos.MovieVO
 import retrofit2.Call
 import retrofit2.http.*
 

@@ -1,4 +1,4 @@
-package com.waewaee.themovieapp.data.vos
+package com.waewaee.moviebookingapp.data.vos
 
 import com.google.gson.annotations.SerializedName
 import java.time.DayOfWeek

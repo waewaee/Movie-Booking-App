@@ -5,7 +5,7 @@ import com.waewaee.moviebookingapp.network.TheMovieApi
 import com.waewaee.moviebookingapp.network.responses.CreditsByMovieResponse
 import com.waewaee.moviebookingapp.network.responses.MovieListResponse
 import com.waewaee.moviebookingapp.utils.MOVIE_BASE_URL
-import com.waewaee.themovieapp.data.vos.MovieVO
+import com.waewaee.moviebookingapp.data.vos.MovieVO
 import okhttp3.OkHttpClient
 import retrofit2.Call
 import retrofit2.Callback

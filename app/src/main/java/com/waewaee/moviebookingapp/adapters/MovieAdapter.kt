@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.waewaee.moviebookingapp.R
 import com.waewaee.moviebookingapp.delegates.MovieViewHolderDelegate
 import com.waewaee.moviebookingapp.view.holders.MovieViewHolder
-import com.waewaee.themovieapp.data.vos.MovieVO
+import com.waewaee.moviebookingapp.data.vos.MovieVO
 
 class MovieAdapter(val delegate: MovieViewHolderDelegate): RecyclerView.Adapter<MovieViewHolder>() {
 

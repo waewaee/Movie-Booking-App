@@ -20,6 +20,11 @@ object CinemaModelImpl: CinemaModel {
         mCinemaDatabase = CinemaDatabase.getDbInstance(context)
     }
 
+    fun checkLoginUser(): Boolean {
+        val user = mCinemaDatabase?.userDao()?.getAllUsers()?.firstOrNull()
+        return user != null
+    }
+
     override fun getLoginWithEmail(
         email: String,
         password: String,
@@ -50,8 +55,11 @@ object CinemaModelImpl: CinemaModel {
     ) {
         mCinemaDataAgent.getSignUpWithEmail(name = name, email = email, password = password, phone = phone,
             onSuccess = { response ->
+                mCinemaDatabase?.userDao()?.insertUser(response.userVO ?: UserVO())
+
                 userToken = "Bearer ${response.token}"
                 var errorVO = ErrorVO(code = response.code ?: 404, message = response.message ?: "Not Found")
+
                 onSuccess(errorVO)
         },
             onFailure = onFailure)
@@ -79,6 +87,8 @@ object CinemaModelImpl: CinemaModel {
         onSuccess: (ErrorVO) -> Unit,
         onFailure: (String) -> Unit
     ) {
+        mCinemaDatabase?.userDao()?.deleteAllUsers()
+
         mCinemaDataAgent.logout(authorization = userToken,
             onSuccess = { response ->
                 var errorVO = ErrorVO(code = response.code ?: 404, message = response.message ?: "Unauthorized")

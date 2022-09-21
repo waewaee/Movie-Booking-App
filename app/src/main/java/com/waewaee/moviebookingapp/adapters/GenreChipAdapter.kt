@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.waewaee.moviebookingapp.R
 import com.waewaee.moviebookingapp.view.holders.GenreChipViewHolder
-import com.waewaee.themovieapp.data.vos.GenreVO
+import com.waewaee.moviebookingapp.data.vos.GenreVO
 
 class GenreChipAdapter: RecyclerView.Adapter<GenreChipViewHolder>() {
 
