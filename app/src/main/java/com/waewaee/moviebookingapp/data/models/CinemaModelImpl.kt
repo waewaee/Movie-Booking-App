@@ -22,6 +22,9 @@ object CinemaModelImpl: CinemaModel {
 
     fun checkLoginUser(): Boolean {
         val user = mCinemaDatabase?.userDao()?.getAllUsers()?.firstOrNull()
+        user?.let {
+            userToken = user.token ?: ""
+        }
         return user != null
     }
 
@@ -33,7 +36,10 @@ object CinemaModelImpl: CinemaModel {
     ) {
         mCinemaDataAgent.getLoginWithEmail(email = email, password = password,
             onSuccess = { response ->
-                mCinemaDatabase?.userDao()?.insertUser(response.userVO ?: UserVO())
+                var userVO = response.userVO
+                userVO?.token = response.token
+                mCinemaDatabase?.userDao()?.insertUser(userVO ?: UserVO())
+                val user = mCinemaDatabase?.userDao()?.getAllUsers()
 
                 var errorVO = ErrorVO(code = response.code ?: 404, message = response.message ?: "Not Found")
                 onSuccess(errorVO)
@@ -55,7 +61,9 @@ object CinemaModelImpl: CinemaModel {
     ) {
         mCinemaDataAgent.getSignUpWithEmail(name = name, email = email, password = password, phone = phone,
             onSuccess = { response ->
-                mCinemaDatabase?.userDao()?.insertUser(response.userVO ?: UserVO())
+                var userVO = response.userVO
+                userVO?.token = "Bearer ${response.token}"
+                mCinemaDatabase?.userDao()?.insertUser(userVO ?: UserVO())
 
                 userToken = "Bearer ${response.token}"
                 var errorVO = ErrorVO(code = response.code ?: 404, message = response.message ?: "Not Found")
@@ -70,17 +78,17 @@ object CinemaModelImpl: CinemaModel {
         onFailure: (String) -> Unit
     ) {
         // Database
-        var result = mCinemaDatabase?.userDao()?.getAllUsers()?.firstOrNull() ?: UserVO()
-        onSuccess(result)
+        onSuccess(mCinemaDatabase?.userDao()?.getAllUsers()?.firstOrNull() ?: UserVO())
 
-        // Network
-//        mCinemaDataAgent.getProfile(authorization = userToken,
-//            onSuccess = { response ->
-//                var userVO = response.userVO
-////                onSuccess(userVO ?: UserVO())
-//
-//                mCinemaDatabase?.userDao()?.insertUser(userVO ?: UserVO())
-//        }, onFailure = onFailure)
+         // Network
+        mCinemaDataAgent.getProfile(authorization = userToken,
+            onSuccess = { response ->
+                var userVO = response.userVO
+                userVO?.token = userToken
+                onSuccess(userVO ?: UserVO())
+
+                mCinemaDatabase?.userDao()?.insertUser(userVO ?: UserVO())
+        }, onFailure = onFailure)
     }
 
     override fun logout(
@@ -103,9 +111,18 @@ object CinemaModelImpl: CinemaModel {
         onSuccess: (List<CinemaVO>) -> Unit,
         onFailure: (String) -> Unit
     ) {
+        onSuccess(mCinemaDatabase?.cinemaDao()?.getCinemaByDate(date = date) ?: listOf())
+
         mCinemaDataAgent.getCinemaTimeslots(authorization = userToken, date = date,
             onSuccess = { response ->
                 val cinemaList = response.cinemaList
+
+                cinemaList?.forEach {
+                    it.date = date
+                    it.key = "$date-${it.cinemaId}"
+                }
+                mCinemaDatabase?.cinemaDao()?.insertCinemas(cinemaList ?: listOf())
+
                 onSuccess(cinemaList ?: listOf())
         },
         onFailure = onFailure)

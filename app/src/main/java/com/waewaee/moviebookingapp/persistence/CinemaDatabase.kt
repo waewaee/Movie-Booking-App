@@ -5,13 +5,15 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.waewaee.moviebookingapp.data.vos.ActorVO
+import com.waewaee.moviebookingapp.data.vos.CinemaVO
 import com.waewaee.moviebookingapp.data.vos.MovieVO
 import com.waewaee.moviebookingapp.data.vos.UserVO
 import com.waewaee.moviebookingapp.persistence.daos.ActorDao
+import com.waewaee.moviebookingapp.persistence.daos.CinemaDao
 import com.waewaee.moviebookingapp.persistence.daos.MovieDao
 import com.waewaee.moviebookingapp.persistence.daos.UserDao
 
-@Database(entities = [UserVO::class, MovieVO::class, ActorVO::class], version = 6, exportSchema = false)
+@Database(entities = [UserVO::class, MovieVO::class, ActorVO::class, CinemaVO::class], version = 10, exportSchema = false)
 abstract class CinemaDatabase: RoomDatabase() {
 
     companion object {
@@ -35,4 +37,5 @@ abstract class CinemaDatabase: RoomDatabase() {
     abstract fun userDao(): UserDao
     abstract fun movieDao(): MovieDao
     abstract fun actorDao(): ActorDao
+    abstract fun cinemaDao(): CinemaDao
 }

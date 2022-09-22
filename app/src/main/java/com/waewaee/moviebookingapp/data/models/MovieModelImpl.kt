@@ -26,8 +26,7 @@ object MovieModelImpl: MovieModel {
         onFailure: (String) -> Unit
     ) {
         // Database
-        var result = mMovieDatabase?.movieDao()?.getMoviesByType(type = NOW_PLAYING) ?: listOf()
-        onSuccess(result)
+        onSuccess(mMovieDatabase?.movieDao()?.getMoviesByType(type = NOW_PLAYING) ?: listOf())
 
         // Network
         mMovieDataAgent.getNowPlayingMovies(onSuccess = {
@@ -44,8 +43,7 @@ object MovieModelImpl: MovieModel {
         onFailure: (String) -> Unit
     ) {
         // Database
-        var result = mMovieDatabase?.movieDao()?.getMoviesByType(type = UPCOMING) ?: listOf()
-        onSuccess(result)
+        onSuccess(mMovieDatabase?.movieDao()?.getMoviesByType(type = UPCOMING) ?: listOf())
 
         // Network
         mMovieDataAgent.getComingSoonMovies(onSuccess = {
