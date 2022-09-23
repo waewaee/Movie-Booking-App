@@ -36,12 +36,12 @@ object CinemaModelImpl: CinemaModel {
     ) {
         mCinemaDataAgent.getLoginWithEmail(email = email, password = password,
             onSuccess = { response ->
-                var userVO = response.userVO
-                userVO?.token = response.token
-                mCinemaDatabase?.userDao()?.insertUser(userVO ?: UserVO())
-                val user = mCinemaDatabase?.userDao()?.getAllUsers()
+                val userVO = response.userVO
+                userVO?.token = "Bearer ${response.token}"
 
-                var errorVO = ErrorVO(code = response.code ?: 404, message = response.message ?: "Not Found")
+                mCinemaDatabase?.userDao()?.insertUser(userVO ?: UserVO())
+
+                val errorVO = ErrorVO(code = response.code ?: 404, message = response.message ?: "Not Found")
                 onSuccess(errorVO)
         },
             onFailure = onFailure,
@@ -61,12 +61,13 @@ object CinemaModelImpl: CinemaModel {
     ) {
         mCinemaDataAgent.getSignUpWithEmail(name = name, email = email, password = password, phone = phone,
             onSuccess = { response ->
-                var userVO = response.userVO
+                val userVO = response.userVO
                 userVO?.token = "Bearer ${response.token}"
+
                 mCinemaDatabase?.userDao()?.insertUser(userVO ?: UserVO())
 
                 userToken = "Bearer ${response.token}"
-                var errorVO = ErrorVO(code = response.code ?: 404, message = response.message ?: "Not Found")
+                val errorVO = ErrorVO(code = response.code ?: 404, message = response.message ?: "Not Found")
 
                 onSuccess(errorVO)
         },
@@ -83,7 +84,7 @@ object CinemaModelImpl: CinemaModel {
          // Network
         mCinemaDataAgent.getProfile(authorization = userToken,
             onSuccess = { response ->
-                var userVO = response.userVO
+                val userVO = response.userVO
                 userVO?.token = userToken
                 onSuccess(userVO ?: UserVO())
 
@@ -99,7 +100,7 @@ object CinemaModelImpl: CinemaModel {
 
         mCinemaDataAgent.logout(authorization = userToken,
             onSuccess = { response ->
-                var errorVO = ErrorVO(code = response.code ?: 404, message = response.message ?: "Unauthorized")
+                val errorVO = ErrorVO(code = response.code ?: 404, message = response.message ?: "Unauthorized")
                 userToken = ""
                 onSuccess(errorVO)
         },
@@ -146,9 +147,13 @@ object CinemaModelImpl: CinemaModel {
         onSuccess: (List<SnackVO>) -> Unit,
         onFailure: (String) -> Unit
     ) {
+        onSuccess(mCinemaDatabase?.snackDao()?.getAllSnacks() ?: listOf())
+
         mCinemaDataAgent.getSnackList(authorization = userToken,
             onSuccess = { response ->
                 val snackList: List<SnackVO> = response.snackList ?: listOf()
+
+                mCinemaDatabase?.snackDao()?.insertSnacks(snackList)
                 onSuccess(snackList)
         },
             onFailure = onFailure)
@@ -158,9 +163,13 @@ object CinemaModelImpl: CinemaModel {
         onSuccess: (List<PaymentMethodVO>) -> Unit,
         onFailure: (String) -> Unit
     ) {
+        onSuccess(mCinemaDatabase?.paymentMethodDao()?.getAllPaymentMethods() ?: listOf())
+
         mCinemaDataAgent.getPaymentMethods(authorization = userToken,
             onSuccess = { response ->
                 val methodList: List<PaymentMethodVO> = response.methodList ?: listOf()
+
+                mCinemaDatabase?.paymentMethodDao()?.insertPaymentMethods(methodList)
                 onSuccess(methodList)
             },
             onFailure = onFailure)
