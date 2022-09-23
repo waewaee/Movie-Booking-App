@@ -5,10 +5,10 @@ import com.google.gson.annotations.SerializedName
 data class TimeslotVO (
 
     @SerializedName("cinema_day_timeslot_id")
-    val cinemaDayTimeslotId: Int?,
+    val cinemaDayTimeslotId: Int? = 0,
 
     @SerializedName("start_time")
-    val startTime: String?,
+    val startTime: String? = "",
 
     var isSelected: Boolean = false
 )

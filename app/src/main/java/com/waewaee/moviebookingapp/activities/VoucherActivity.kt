@@ -15,6 +15,7 @@ import com.waewaee.moviebookingapp.data.vos.SnackVO
 import com.waewaee.moviebookingapp.network.request.SnackCriteria
 import com.waewaee.moviebookingapp.network.request.VoucherRequest
 import com.waewaee.moviebookingapp.utils.MOVIE_BASE_URL
+import com.waewaee.moviebookingapp.utils.MOVIE_IMAGE_BASE_URL
 import kotlinx.android.synthetic.main.activity_voucher.*
 import java.io.Serializable
 
@@ -140,7 +141,8 @@ class VoucherActivity : AppCompatActivity() {
 
     private fun bindData(movieInfo: CheckoutMovieInfoVO) {
         Glide.with(this)
-            .load("$MOVIE_BASE_URL$posterPath")
+            .load("$MOVIE_IMAGE_BASE_URL$posterPath")
+            .placeholder(R.drawable.john_wick_image)
             .into(ivMovieImage)
 
         tvMovieName.text = movieName
@@ -152,7 +154,7 @@ class VoucherActivity : AppCompatActivity() {
         tvTheater.text = cinemaName
         tvRow.text = movieInfo.seatRows
         tvSeat.text = movieInfo.seatNames
-        tvPrice.text = movieInfo.totalPrice.toString()
+        tvPrice.text = movieInfo.totalPrice
     }
 
     private fun setUpListeners() {

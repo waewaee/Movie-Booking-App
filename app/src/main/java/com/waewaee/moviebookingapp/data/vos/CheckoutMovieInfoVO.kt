@@ -23,7 +23,7 @@ data class CheckoutMovieInfoVO(
     val seatCount: Int? = 0,
 
     @SerializedName("total")
-    val totalPrice: Int? = 0,
+    val totalPrice: String? = "",
 
     @SerializedName("movie_id")
     val movieId: Int? = 0,
@@ -35,7 +35,7 @@ data class CheckoutMovieInfoVO(
     val userName: String? = "",
 
     @SerializedName("timeslot")
-    val timeslot: List<TimeslotVO>? = listOf(),
+    val timeslot: TimeslotVO? = TimeslotVO(),
 
     @SerializedName("snacks")
     val snackList: List<SnackVO>? = listOf(),

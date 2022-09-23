@@ -288,7 +288,11 @@ object RetrofitCinemaDataAgentImpl: CinemaDataAgent {
                     response: Response<CheckoutResponse>
                 ) {
                     if (response.isSuccessful) {
-                        onSuccess(response.body() ?: CheckoutResponse())
+                        if (response.body()?.code != 200) {
+                            onFailure(response.body()?.message ?: "Server Error")
+                        } else {
+                            onSuccess(response.body() ?: CheckoutResponse())
+                        }
                     }else {
                         onFailure(response.message())
                     }

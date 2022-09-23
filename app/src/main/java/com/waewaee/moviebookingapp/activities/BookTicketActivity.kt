@@ -106,7 +106,7 @@ class BookTicketActivity : AppCompatActivity(), CalendarViewHolderDelegate, Time
     }
 
     override fun onTapDate(date: Int) {
-        movieDate = "2022-08-$date"
+        movieDate = "2022-10-$date"
         requestCinemaData()
 
         TWO_WEEKS_DATES.map {
